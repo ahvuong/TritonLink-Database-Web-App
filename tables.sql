@@ -38,6 +38,10 @@ DROP TABLE IF EXISTS past_classes CASCADE;
 
 DROP TABLE IF EXISTS thesis_committee CASCADE;
 
+DROP TABLE IF EXISTS teaching CASCADE;
+
+DROP TABLE IF EXISTS advisor CASCADE;
+
 
 CREATE TABLE students
 (
@@ -51,11 +55,49 @@ CREATE TABLE students
     enrollment boolean
 );
 
+CREATE TABLE courses
+(
+    new_number varchar(5) PRIMARY KEY,
+    old_number varchar(5),
+    grade varchar(5),
+    units int,
+    department varchar(5), 
+    prerequisites varchar(5), 
+    lab_requirements varchar(5)
+);
+
+CREATE TABLE classes
+(
+    section_id serial PRIMARY KEY,
+    title varchar(5),
+    year int,
+    quarter varchar(5),
+    instructor_name varchar(5),
+    enrollment_limit int,  
+    FOREIGN KEY(title) references courses(new_number) ON DELETE CASCADE
+);
+
+CREATE TABLE faculty
+(
+    faculty_name varchar(5) PRIMARY KEY,
+    member_name varchar(5),
+    member_title varchar(5)
+);
+
+CREATE TABLE teaching
+(
+    faculty_name varchar(5),
+    section_id serial,
+    PRIMARY KEY(faculty_name),
+    FOREIGN KEY(faculty_name) references faculty(faculty_name) ON DELETE CASCADE,
+    FOREIGN KEY(section_id) references classes(section_id) ON DELETE CASCADE
+);
+
 CREATE TABLE attendance_period
 (
     student_id int PRIMARY KEY,
     begin varchar(10),
-    end varchar(20),
+    complete varchar(20),
     FOREIGN KEY(student_id) references students(student_id) ON DELETE CASCADE
 );
 
@@ -115,8 +157,15 @@ CREATE TABLE PhD_candidates
     student_id int PRIMARY KEY,
     department varchar(10),
     PhD_candidate boolean,
-    advisor varchar(256),
-    FOREIGN KEY(advisor) references faculty(member_names) ON DELETE CASCADE,
+    FOREIGN KEY(student_id) references students(student_id) ON DELETE CASCADE
+);
+
+CREATE TABLE advisor
+(
+    student_id int,
+    faculty_name varchar(5),
+    PRIMARY KEY(student_id),
+    FOREIGN KEY(faculty_name) references faculty(faculty_name) ON DELETE CASCADE,
     FOREIGN KEY(student_id) references students(student_id) ON DELETE CASCADE
 );
 
@@ -137,25 +186,6 @@ CREATE TABLE ms_degree
     concentration_courses varchar(5),
     concentration_total_units int,
     FOREIGN KEY(degree_id) references degree(degree_id) ON DELETE CASCADE
-);
-
-CREATE TABLE faculty
-(
-    faculty_name varchar(5) PRIMARY KEY,
-    member_names varchar(5),
-    member_titles varchar(5)
-    FOREIGN KEY(member_name) references classes(instructor_name) ON DELETE CASCADE
-);
-
-CREATE TABLE classes
-(
-    section_id serial PRIMARY KEY,
-    title varchar(5),
-    year int,
-    quarter varchar(5),
-    instructor_name varchar(5),
-    enrollment_limit int,  
-    FOREIGN KEY(title) references courses(new_number) ON DELETE CASCADE
 );
 
 CREATE TABLE past_classes
@@ -201,37 +231,30 @@ CREATE TABLE review
     FOREIGN KEY(section_id) references classes(section_id) ON DELETE CASCADE
 );
 
-
-CREATE TABLE courses
-(
-    new_number varchar(5) PRIMARY KEY,
-    old_number varchar(5),
-    grade varchar(5),
-    units int,
-    department varchar(5), 
-    prerequisites varchar(5), 
-    lab_requirements varchar(5)
-);
-
 CREATE TABLE thesis_committee
 (
     student_id int,
     instructor_name varchar(10),
     department varchar(10),
-    PRIMARY KEY(department)
-    FOREIGN KEY(id) references graduate(student_id) ON DELETE CASCADE
+    PRIMARY KEY(department),
+    FOREIGN KEY(student_id) references graduate(student_id) ON DELETE CASCADE,
     FOREIGN KEY(department) references faculty(faculty_name) ON DELETE CASCADE
 );
 
 CREATE TABLE course_enrollment
 (
-    student_id varchar(5),
+    student_id int,
     section_id serial PRIMARY KEY,
     class_name varchar(5),
     units int,
     grade varchar(5),
     year int,
-    quarter int
-    FOREIGN KEY(student_id) references students(student_id) ON DELETE CASCADE
+    quarter int,
+    FOREIGN KEY(student_id) references students(student_id) ON DELETE CASCADE,
     FOREIGN KEY(section_id) references classes(section_id) ON DELETE CASCADE
 );
+
+// add table: advisor, teaching
+
+// course_enrollment
+
