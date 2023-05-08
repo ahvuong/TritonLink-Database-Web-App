@@ -12,13 +12,13 @@ DROP TABLE IF EXISTS BS_MS CASCADE;
 
 DROP TABLE IF EXISTS graduate CASCADE;
 
-DROP TABLE IF EXISTS MS CASCADE;
+DROP TABLE IF EXISTS ms_student CASCADE;
 
 DROP TABLE IF EXISTS PhD_candidates CASCADE;
 
 DROP TABLE IF EXISTS degree CASCADE;
 
-DROP TABLE IF EXISTS MS_degree CASCADE;
+DROP TABLE IF EXISTS ms_degree CASCADE;
 
 DROP TABLE IF EXISTS faculty CASCADE; 
 
@@ -103,7 +103,7 @@ CREATE TABLE graduate
     FOREIGN KEY(student_id) references students(student_id) ON DELETE CASCADE
 );
 
-CREATE TABLE MS
+CREATE TABLE ms_student
 (
     student_id int PRIMARY KEY,
     department varchar(10),
@@ -130,7 +130,7 @@ CREATE TABLE degree
     min_grade varchar(5)
 );
 
-CREATE TABLE MS_degree
+CREATE TABLE ms_degree
 (
     degree_id int PRIMARY KEY,
     concentration_min_grade varchar(5),
