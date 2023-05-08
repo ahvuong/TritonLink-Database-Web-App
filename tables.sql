@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS student CASCADE;
 
-DROP TABLE IF EXISTS period CASCADE; 
+DROP TABLE IF EXISTS attendance_period  CASCADE; 
 
 DROP TABLE IF EXISTS degree_earned CASCADE; 
 
@@ -51,7 +51,7 @@ CREATE TABLE student
     enrollment boolean
 );
 
-CREATE TABLE period
+CREATE TABLE attendance_period
 (
     student_id int PRIMARY KEY,
     begin varchar(10),
