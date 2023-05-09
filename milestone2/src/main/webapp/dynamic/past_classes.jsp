@@ -64,7 +64,7 @@
 					pstmt.setInt(2, Integer.parseInt(request.getParameter("year")));
 					pstmt.setString(3, request.getParameter("quarter"));
 					pstmt.setString(4, request.getParameter("instructor_name"));
-					pstmt.setString(4, request.getParameter("grade"));
+					pstmt.setString(5, request.getParameter("grade"));
 					pstmt.setInt(6,Integer.parseInt(request.getParameter("section_id")));
 	                  
 	                pstmt.executeUpdate();
