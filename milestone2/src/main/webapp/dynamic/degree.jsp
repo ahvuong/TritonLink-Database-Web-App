@@ -84,10 +84,18 @@
 					
 					pstmt.setInt(1,Integer.parseInt(request.getParameter("degree_id")));
 	                  
-	                pstmt.executeUpdate();
+	                pstmt.executeUpdate();%>
 	                
-	              	//connection.commit();
-					connection.setAutoCommit(false);
+	                <%-- DELETE the entries related to courses. --%>
+	                <%
+	                PreparedStatement ms_degree = connection.prepareStatement(
+							"DELETE FROM ms_degree WHERE degree_id = ?");
+					
+	                ms_degree.setInt(1,Integer.parseInt(request.getParameter("degree_id")));
+	                
+	                ms_degree.executeUpdate();
+	                
+	              	connection.commit();
 					connection.setAutoCommit(true);
 					}
 				%>

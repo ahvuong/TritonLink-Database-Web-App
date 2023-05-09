@@ -108,7 +108,7 @@ CREATE TABLE weekly
 
 CREATE TABLE review
 (
-    section_id int UNIQUE,
+    section_id int ,
     new_number varchar(20),
     date_time Date,
     begin_time Time,
