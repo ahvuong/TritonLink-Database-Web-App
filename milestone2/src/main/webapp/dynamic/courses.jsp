@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Course home page</title>
+<title>Course Home Page</title>
 </head>
 <body>
 <%-- Set the scripting language to Java and --%>
@@ -87,11 +87,34 @@
 							"DELETE FROM courses WHERE new_number = ?");
 					
 					pstmt.setString(1,request.getParameter("new_number"));
-	                  
-	                pstmt.executeUpdate();
 	                
-	              	//connection.commit();
-					connection.setAutoCommit(false);
+	                pstmt.executeUpdate();%>
+	                
+	                <%-- DELETE the entries related to courses. --%>
+	                <%
+	                PreparedStatement class_del = connection.prepareStatement(
+							"DELETE FROM classes WHERE new_number = ?");
+					
+					PreparedStatement meeting = connection.prepareStatement(
+							"DELETE FROM meeting_sections WHERE new_number = ?");
+					
+					PreparedStatement weekly = connection.prepareStatement(
+							"DELETE FROM weekly WHERE new_number = ?");
+					
+					PreparedStatement review = connection.prepareStatement(
+							"DELETE FROM review WHERE new_number = ?");
+					
+					class_del.setString(1,request.getParameter("new_number"));
+					meeting.setString(1,request.getParameter("new_number"));
+					weekly.setString(1,request.getParameter("new_number"));
+					review.setString(1,request.getParameter("new_number"));
+	                
+					class_del.executeUpdate();
+					meeting.executeUpdate();
+					weekly.executeUpdate();
+					review.executeUpdate();
+	                
+	              	connection.commit();
 					connection.setAutoCommit(true);
 					}
 				%>

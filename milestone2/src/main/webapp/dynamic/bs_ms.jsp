@@ -5,7 +5,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>BS_MS home page</title>
+	<title>BS_MS Home Page</title>
 </head>
 
 <body>

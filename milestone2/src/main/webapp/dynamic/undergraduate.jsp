@@ -5,7 +5,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Undergraduate home page</title>
+	<title>Undergraduate Home Page</title>
 </head>
 
 <body>

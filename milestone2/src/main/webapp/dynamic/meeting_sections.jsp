@@ -29,14 +29,15 @@
 					<%-- INSERT the meeting_sections attrs INTO the meeting_sections table. --%>
 					<% 
 					PreparedStatement pstmt = connection.prepareStatement(
-							("INSERT INTO meeting_sections VALUES (?, ?, ?, ?, ?, ?)"));
+							("INSERT INTO meeting_sections VALUES (?, ?, ?, ?, ?, ?, ?)"));
 					
 					pstmt.setInt(1,Integer.parseInt(request.getParameter("section_id")));
-					pstmt.setDate(2, java.sql.Date.valueOf(request.getParameter("date_time")));
-					pstmt.setTime(3, java.sql.Time.valueOf(request.getParameter("begin_time")));
-					pstmt.setTime(4, java.sql.Time.valueOf(request.getParameter("end_time")));
-					pstmt.setString(5, request.getParameter("room"));
-					pstmt.setString(6, request.getParameter("building"));
+					pstmt.setString(2,request.getParameter("new_number"));
+					pstmt.setDate(3, java.sql.Date.valueOf(request.getParameter("date_time")));
+					pstmt.setTime(4, java.sql.Time.valueOf(request.getParameter("begin_time")));
+					pstmt.setTime(5, java.sql.Time.valueOf(request.getParameter("end_time")));
+					pstmt.setString(6, request.getParameter("room"));
+					pstmt.setString(7, request.getParameter("building"));
 
 					
 					pstmt.executeUpdate();
@@ -55,16 +56,17 @@
 					<% 
 					
 					PreparedStatement pstmt = connection.prepareStatement(
-							"UPDATE meeting_sections SET date_time = ?, begin_time = ?, " +
+							"UPDATE meeting_sections SET new_number = ?, date_time = ?, begin_time = ?, " +
 		                      "end_time = ?, room = ?, " +
 								"building = ? WHERE section_id = ?");
 					
-					pstmt.setDate(1,java.sql.Date.valueOf(request.getParameter("date_time")));
-					pstmt.setTime(2, java.sql.Time.valueOf(request.getParameter("begin_time")));
-					pstmt.setTime(3, java.sql.Time.valueOf(request.getParameter("end_time")));
-					pstmt.setString(4, request.getParameter("room"));
-					pstmt.setString(5, request.getParameter("building"));
-					pstmt.setInt(6,Integer.parseInt(request.getParameter("section_id")));
+					pstmt.setString(1,request.getParameter("new_number"));
+					pstmt.setDate(2,java.sql.Date.valueOf(request.getParameter("date_time")));
+					pstmt.setTime(3, java.sql.Time.valueOf(request.getParameter("begin_time")));
+					pstmt.setTime(4, java.sql.Time.valueOf(request.getParameter("end_time")));
+					pstmt.setString(5, request.getParameter("room"));
+					pstmt.setString(6, request.getParameter("building"));
+					pstmt.setInt(7,Integer.parseInt(request.getParameter("section_id")));
 	                  
 	                pstmt.executeUpdate();
 	                
@@ -108,6 +110,7 @@
 				<table>
 					<tr>
 						<th>section_id</th>
+						<th>new_number</th>
                       	<th>date_time</th>
                       	<th>begin_time</th>
                       	<th>end_time</th>
@@ -121,6 +124,7 @@
 							<input type="hidden" value="insert" name="action">
 							
 							<th><input value="" name="section_id" size="15"></th>
+							<th><input value="" name="new_number" size="15"></th>
 							<th><input value="" name="date_time" placeholder="yyyy-mm-dd" size="15" required></th>
 							<th><input value="" name="begin_time" placeholder="hh:mm:ss" size="15" required></th>
 							<th><input value="" name="end_time" placeholder="hh:mm:ss" size="15" required></th>
@@ -141,6 +145,7 @@
 					<form action="meeting_sections.jsp" method="get">
 				        <input type="hidden" value="update" name="action">
 				        <td><input value="<%= rs.getInt("section_id")%>" name="section_id"></td>
+				        <td><input value="<%= rs.getInt("new_number")%>" name="new_number"></td>
 				        <td><input value="<%= rs.getString("date_time")%>" name="date_time" placeholder="yyyy-mm-dd" required></td>
 				        <td><input value="<%= rs.getString("begin_time")%>" name="begin_time" placeholder="hh:mm:ss" required></td>
 				        <td><input value="<%= rs.getString("end_time")%>" name="end_time" placeholder="hh:mm:ss" required></td>

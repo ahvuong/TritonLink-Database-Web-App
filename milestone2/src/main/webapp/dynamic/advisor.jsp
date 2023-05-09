@@ -5,7 +5,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Advisor home page</title>
+	<title>Advisor Home Page</title>
 </head>
 
 <body>

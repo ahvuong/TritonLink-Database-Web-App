@@ -5,7 +5,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Graduate home page</title>
+	<title>Graduate Home Page</title>
 </head>
 
 <body>

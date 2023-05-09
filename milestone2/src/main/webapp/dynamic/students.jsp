@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Student home page</title>
+<title>Student Home Page</title>
 </head>
 <body>
 <%-- Set the scripting language to Java and --%>

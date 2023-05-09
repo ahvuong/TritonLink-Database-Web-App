@@ -5,7 +5,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Thesis_committee home page</title>
+	<title>Thesis Committee Home Page</title>
 </head>
 
 <body>

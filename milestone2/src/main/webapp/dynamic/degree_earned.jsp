@@ -5,7 +5,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Degree_earned home page</title>
+	<title>Degree Earned Home Page</title>
 </head>
 
 <body>

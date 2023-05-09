@@ -5,7 +5,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Course_enrollment home page</title>
+	<title>Course Enrollment Home Page</title>
 </head>
 
 <body>

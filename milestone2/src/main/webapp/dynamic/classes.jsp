@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Class home page</title>
+<title>Class Home Page</title>
 </head>
 <body>
 <%-- Set the scripting language to Java and --%>
@@ -29,14 +29,15 @@
 					<%-- INSERT the classes attrs INTO the classes table. --%>
 					<% 
 					PreparedStatement pstmt = connection.prepareStatement(
-							("INSERT INTO classes VALUES (?, ?, ?, ?, ?, ?)"));
+							("INSERT INTO classes VALUES (?, ?, ?, ?, ?, ?, ?)"));
 					
 					pstmt.setInt(1,Integer.parseInt(request.getParameter("section_id")));
-					pstmt.setString(2,request.getParameter("title"));
-					pstmt.setInt(3, Integer.parseInt(request.getParameter("year")));
-					pstmt.setString(4, request.getParameter("quarter"));
-					pstmt.setString(5, request.getParameter("instructor_name"));
-					pstmt.setInt(6, Integer.parseInt(request.getParameter("enrollment_limit")));
+					pstmt.setString(2,request.getParameter("new_number"));
+					pstmt.setString(3,request.getParameter("title"));
+					pstmt.setInt(4, Integer.parseInt(request.getParameter("year")));
+					pstmt.setString(5, request.getParameter("quarter"));
+					pstmt.setString(6, request.getParameter("instructor_name"));
+					pstmt.setInt(7, Integer.parseInt(request.getParameter("enrollment_limit")));
 					
 					pstmt.executeUpdate();
 					//connection.commit();
@@ -56,7 +57,7 @@
 					PreparedStatement pstmt = connection.prepareStatement(
 							"UPDATE classes SET title = ?, year = ?, " +
 		                      "quarter = ?, instructor_name = ?, " +
-								"enrollment_limit = ? WHERE section_id = ?");
+								"enrollment_limit = ? WHERE section_id = ? AND new_number = ?");
 					
 					pstmt.setString(1,request.getParameter("title"));
 					pstmt.setInt(2, Integer.parseInt(request.getParameter("year")));
@@ -64,6 +65,7 @@
 					pstmt.setString(4, request.getParameter("instructor_name"));
 					pstmt.setInt(5, Integer.parseInt(request.getParameter("enrollment_limit")));
 					pstmt.setInt(6,Integer.parseInt(request.getParameter("section_id")));
+					pstmt.setString(7,request.getParameter("new_number"));
 	                  
 	                pstmt.executeUpdate();
 	                
@@ -86,7 +88,29 @@
 					
 					pstmt.setInt(1,Integer.parseInt(request.getParameter("section_id")));
 	                  
-	                pstmt.executeUpdate();
+	                pstmt.executeUpdate();%>
+	                
+	                <%-- DELETE the entries related to classes. --%>
+	                <%					
+					PreparedStatement meeting = connection.prepareStatement(
+							"DELETE FROM meeting_sections WHERE section_id = ? AND new_number = ?");
+					
+					PreparedStatement weekly = connection.prepareStatement(
+							"DELETE FROM weekly WHERE section_id = ? AND new_number = ?");
+					
+					PreparedStatement review = connection.prepareStatement(
+							"DELETE FROM review WHERE section_id = ? AND new_number = ?");
+					
+					meeting.setInt(1,Integer.parseInt(request.getParameter("section_id")));
+					meeting.setString(2,request.getParameter("new_number"));
+					weekly.setInt(1,Integer.parseInt(request.getParameter("section_id")));
+					weekly.setString(2,request.getParameter("new_number"));
+					review.setInt(1,Integer.parseInt(request.getParameter("section_id")));
+					review.setString(2,request.getParameter("new_number"));
+	                
+					meeting.executeUpdate();
+					weekly.executeUpdate();
+					review.executeUpdate();
 	                
 	              	//connection.commit();
 					connection.setAutoCommit(false);
@@ -107,6 +131,7 @@
 				<table>
 					<tr>
 						<th>section_id</th>
+						<th>new_number</th>
 						<th>title</th>
                       	<th>year</th>
                       	<th>quarter</th>
@@ -120,6 +145,7 @@
 							<input type="hidden" value="insert" name="action">
 							
 							<th><input value="" name="section_id" size="15"></th>
+							<th><input value="" name="new_number" size="15"></th>
 							<th><input value="" name="title" size="10"></th>
 							<th><input value="" name="year" size="10"></th>
 							<th><input value="" name="quarter" size="3"></th>
@@ -131,16 +157,16 @@
 					</tr>
 				
 				<%
-				//System.out.print("hello1\n");
+				
 				// Iterate over the ResultSet
 				while ( rs.next() ) {
-					//System.out.print("hello\n");
 				%>
 				<%-- Update Form Code --%>
 				<tr>
 					<form action="classes.jsp" method="get">
 				        <input type="hidden" value="update" name="action">
 				        <td><input value="<%= rs.getInt("section_id")%>" name="section_id"></td>
+				        <td><input value="<%= rs.getInt("new_number")%>" name="new_number"></td>
 				        <td><input value="<%= rs.getString("title")%>" name="title"></td>
 				        <td><input value="<%= rs.getInt("year")%>" name="year"></td>
 				        <td><input value="<%= rs.getString("quarter")%>" name="quarter"></td>

@@ -67,13 +67,56 @@ CREATE TABLE courses
 
 CREATE TABLE classes
 (
-    section_id serial PRIMARY KEY,
+    section_id serial UNIQUE,
+    new_number varchar(20),
     title varchar(20),
     year int,
     quarter varchar(20),
     instructor_name varchar(20),
-    enrollment_limit int,  
+    enrollment_limit int,
+    PRIMARY KEY(section_id, new_number),
     FOREIGN KEY(title) references courses(new_number) ON DELETE CASCADE
+);
+
+CREATE TABLE meeting_sections
+(
+    section_id int UNIQUE,
+    new_number varchar(20),
+    date_time Date,
+    begin_time Time,
+    end_time Time,
+    room varchar(20),
+    building varchar(10),
+    PRIMARY KEY(section_id, new_number),
+    FOREIGN KEY(section_id) references classes(section_id) ON DELETE CASCADE
+);
+
+CREATE TABLE weekly
+(
+    section_id int UNIQUE,
+    new_number varchar(20),
+    mandatory boolean,
+    session_type varchar(10),
+    date_time Date,
+    begin_time Time,
+    end_time Time,
+    room varchar(20),
+    building varchar(10),
+    PRIMARY KEY(section_id, new_number),
+    FOREIGN KEY(section_id) references classes(section_id) ON DELETE CASCADE
+);
+
+CREATE TABLE review
+(
+    section_id int UNIQUE,
+    new_number varchar(20),
+    date_time Date,
+    begin_time Time,
+    end_time Time,
+    room varchar(20),
+    building varchar(10),
+    PRIMARY KEY(section_id, new_number),
+    FOREIGN KEY(section_id) references classes(section_id) ON DELETE CASCADE
 );
 
 CREATE TABLE faculty
@@ -196,41 +239,6 @@ CREATE TABLE past_classes
     instructor_name varchar(20),
     grade varchar(20),
     FOREIGN KEY(title) references courses(new_number) ON DELETE CASCADE
-);
-
-CREATE TABLE meeting_sections
-(
-    section_id int PRIMARY KEY,
-    date_time Date,
-    begin_time Time,
-    end_time Time,
-    room varchar(20),
-    building varchar(10),
-    FOREIGN KEY(section_id) references classes(section_id) ON DELETE CASCADE
-);
-
-CREATE TABLE weekly
-(
-    section_id int PRIMARY KEY,
-    mandatory boolean,
-    session_type varchar(10),
-    date_time Date,
-    begin_time Time,
-    end_time Time,
-    room varchar(20),
-    building varchar(10),
-    FOREIGN KEY(section_id) references classes(section_id) ON DELETE CASCADE
-);
-
-CREATE TABLE review
-(
-    section_id int PRIMARY KEY,
-    date_time Date,
-    begin_time Time,
-    end_time Time,
-    room varchar(20),
-    building varchar(10),
-    FOREIGN KEY(section_id) references classes(section_id) ON DELETE CASCADE
 );
 
 CREATE TABLE thesis_committee

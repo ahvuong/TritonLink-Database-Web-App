@@ -29,16 +29,17 @@
 					<%-- INSERT the weekly attrs INTO the weekly table. --%>
 					<% 
 					PreparedStatement pstmt = connection.prepareStatement(
-							("INSERT INTO weekly VALUES (?, ?, ?, ?, ?, ?, ?, ?)"));
+							("INSERT INTO weekly VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"));
 					
 					pstmt.setInt(1,Integer.parseInt(request.getParameter("section_id")));
-					pstmt.setBoolean(2, Boolean.parseBoolean(request.getParameter("mandatory")));
-					pstmt.setString(3, request.getParameter("session_type"));
-					pstmt.setDate(4, java.sql.Date.valueOf(request.getParameter("date_time")));
-					pstmt.setTime(5, java.sql.Time.valueOf(request.getParameter("begin_time")));
-					pstmt.setTime(6, java.sql.Time.valueOf(request.getParameter("end_time")));
-					pstmt.setString(7, request.getParameter("room"));
-					pstmt.setString(8, request.getParameter("building"));
+					pstmt.setString(2,request.getParameter("new_number"));
+					pstmt.setBoolean(3, Boolean.parseBoolean(request.getParameter("mandatory")));
+					pstmt.setString(4, request.getParameter("session_type"));
+					pstmt.setDate(5, java.sql.Date.valueOf(request.getParameter("date_time")));
+					pstmt.setTime(6, java.sql.Time.valueOf(request.getParameter("begin_time")));
+					pstmt.setTime(7, java.sql.Time.valueOf(request.getParameter("end_time")));
+					pstmt.setString(8, request.getParameter("room"));
+					pstmt.setString(9, request.getParameter("building"));
 
 					
 					pstmt.executeUpdate();
@@ -57,19 +58,20 @@
 					<% 
 					
 					PreparedStatement pstmt = connection.prepareStatement(
-							"UPDATE weekly SET mandatory = ?, session_type = ?, " +
+							"UPDATE weekly SET new_number = ?, mandatory = ?, session_type = ?, " +
 								"date_time = ?, begin_time = ?, " +
 		                      		"end_time = ?, room = ?, " +
 										"building = ? WHERE section_id = ?");
 					
-					pstmt.setBoolean(1, Boolean.parseBoolean(request.getParameter("mandatory")));
-					pstmt.setString(2, request.getParameter("session_type"));
-					pstmt.setDate(3, java.sql.Date.valueOf(request.getParameter("date_time")));
-					pstmt.setTime(4, java.sql.Time.valueOf(request.getParameter("begin_time")));
-					pstmt.setTime(5, java.sql.Time.valueOf(request.getParameter("end_time")));
-					pstmt.setString(6, request.getParameter("room"));
-					pstmt.setString(7, request.getParameter("building"));
-					pstmt.setInt(8,Integer.parseInt(request.getParameter("section_id")));
+					pstmt.setString(1,request.getParameter("new_number"));
+					pstmt.setBoolean(2, Boolean.parseBoolean(request.getParameter("mandatory")));
+					pstmt.setString(3, request.getParameter("session_type"));
+					pstmt.setDate(4, java.sql.Date.valueOf(request.getParameter("date_time")));
+					pstmt.setTime(5, java.sql.Time.valueOf(request.getParameter("begin_time")));
+					pstmt.setTime(6, java.sql.Time.valueOf(request.getParameter("end_time")));
+					pstmt.setString(7, request.getParameter("room"));
+					pstmt.setString(8, request.getParameter("building"));
+					pstmt.setInt(9,Integer.parseInt(request.getParameter("section_id")));
 	                  
 	                pstmt.executeUpdate();
 	                
@@ -113,6 +115,7 @@
 				<table>
 					<tr>
 						<th>section_id</th>
+						<th>new_number</th>
 						<th>mandatory</th>
 						<th>session_type</th>
                       	<th>date_time</th>
@@ -128,6 +131,7 @@
 							<input type="hidden" value="insert" name="action">
 							
 							<th><input value="" name="section_id" size="15"></th>
+							<th><input value="" name="new_number" size="15"></th>
 							<th>
 								<select name="mandatory">
 									<option value="True">
@@ -163,6 +167,7 @@
 					<form action="weekly.jsp" method="get">
 				        <input type="hidden" value="update" name="action">
 				        <td><input value="<%= rs.getInt("section_id")%>" name="section_id"></td>
+				        <td><input value="<%= rs.getInt("new_number")%>" name="new_number"></td>
 				        <td>
 				            <select name="mandatory">
 				                <option value="true" <%= rs.getBoolean("mandatory") ? "selected" : "" %>>Yes</option>
