@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Student home page</title>
+<title>Course home page</title>
 </head>
 <body>
 <%-- Set the scripting language to Java and --%>
@@ -12,29 +12,173 @@
 			
 			<%-- -------- Open Connection Code -------- --%>
 			<%
-			
+			try {
 				// Load Oracle Driver class file
 				DriverManager.registerDriver (new org.postgresql.Driver());
-				String GET_STUDENT_QUERY = "Select * from student";
+				String GET_COURSE_QUERY = "Select * from courses";
 				
 				// Make a connection to the Oracle datasource
 				Connection connection = DriverManager.getConnection
-				("jdbc:postgresql:milestone2?user=postgres&password=ahvuong");
+				("jdbc:postgresql:tables?user=postgres&password=ahvuong");
+				%>
+				<%-- Check if an insertion is requested --%> 
+				<% String action = request.getParameter("action");
+				if (action != null && action.equals("insert")) {
+					connection.setAutoCommit(false); %>
+					<%-- Create the prepared statement and use it to --%>
+					<%-- INSERT the courses attrs INTO the courses table. --%>
+					<% 
+					PreparedStatement pstmt = connection.prepareStatement(
+							("INSERT INTO courses VALUES (?, ?, ?, ?, ?, ?, ?)"));
+					
+					pstmt.setString(1,request.getParameter("new_number"));
+					pstmt.setString(2,request.getParameter("old_number"));
+					pstmt.setString(3, request.getParameter("grade"));
+					pstmt.setInt(4, Integer.parseInt(request.getParameter("units")));
+					pstmt.setString(5, request.getParameter("department"));
+					pstmt.setString(6, request.getParameter("prerequisites"));
+					pstmt.setString(7, request.getParameter("lab_requirements"));
+					
+					pstmt.executeUpdate();
+					//connection.commit();
+					connection.setAutoCommit(false);
+					connection.setAutoCommit(true);
+					}
+				%>
+				
+				<%-- Update Info --%> 
+				<% 
+				if (action != null && action.equals("update")) {
+					connection.setAutoCommit(false);%>
+					<%-- Create the prepared statement and use it to --%>
+					<%-- UPDATE the courses attributes in the courses table. --%>
+					<% 
+					
+					PreparedStatement pstmt = connection.prepareStatement(
+							"UPDATE courses SET old_number = ?, grade = ?, " +
+		                      "units = ?, department = ?, prerequisites = ?, " +
+								"lab_requirements = ? WHERE new_number = ?");
+					
+					pstmt.setString(1,request.getParameter("old_number"));
+					pstmt.setString(2, request.getParameter("grade"));
+					pstmt.setInt(3, Integer.parseInt(request.getParameter("units")));
+					pstmt.setString(4, request.getParameter("department"));
+					pstmt.setString(5, request.getParameter("prerequisites"));
+					pstmt.setString(6, request.getParameter("lab_requirements"));
+					pstmt.setString(7,request.getParameter("new_number"));
+	                  
+	                pstmt.executeUpdate();
+	                
+	              	//connection.commit();
+					connection.setAutoCommit(false);
+					connection.setAutoCommit(true);
+					}
+				%>
+				
+				<%-- Delete --%> 
+				<% 
+				if (action != null && action.equals("delete")) {
+					connection.setAutoCommit(false);%>
+					<%-- Create the prepared statement and use it to --%>
+					<%-- DELETE the courses FROM the courses table. --%>
+					<% 
+					
+					PreparedStatement pstmt = connection.prepareStatement(
+							"DELETE FROM courses WHERE new_number = ?");
+					
+					pstmt.setString(1,request.getParameter("new_number"));
+	                  
+	                pstmt.executeUpdate();
+	                
+	              	//connection.commit();
+					connection.setAutoCommit(false);
+					connection.setAutoCommit(true);
+					}
+				%>
+				
+				<%
 				// Create the statement
 				Statement stmt = connection.createStatement();
 				
-				// Use the statement to SELECT the student attributes
-				// FROM the Student table.
-				ResultSet rs = stmt.executeQuery(GET_STUDENT_QUERY);
-				while (rs.next()) {
+				// Use the statement to SELECT the courses attributes
+				// FROM the courses table.
+				ResultSet rs = stmt.executeQuery(GET_COURSE_QUERY);
 				
 				%>
-				<span>Student id is <%= rs.getInt(1) %></span><br/>
-				<span>Age is <%= rs.getInt(2) %></span><br/>
-				<span>Email is <%= rs.getString(3) %></span><br/>
-				<span>Name is <%= rs.getString(4) %></span><br/>
-				<br/><br/><br/>
+				<%-- Entry Form --%>
+				<table>
+					<tr>
+						<th>new_number</th>
+						<th>old_number</th>
+                      	<th>grade</th>
+                      	<th>units</th>
+                      	<th>department</th>
+                      	<th>prerequisites</th>
+                      	<th>lab_requirements</th>
+					</tr>
+					
+					<%-- Insert Form Code --%>
+					<tr>
+						<form action="courses.jsp" method="get">
+							<input type="hidden" value="insert" name="action">
+							<th><input value="" name="new_number" size="10"></th>
+							<th><input value="" name="old_number" size="10"></th>
+							<th><input value="" name="grade" size="3"></th>
+							<th><input value="" name="units" size="15"></th>
+							<th><input value="" name="department" size="15"></th>
+							<th><input value="" name="prerequisites" size="15"></th>
+							<th><input value="" name="lab_requirements" size="15"></th>
+							
+							<th><input type="submit" value="Insert"></th>
+						</form>
+					</tr>
 				
-			<% } %>
+				<%
+				//System.out.print("hello1\n");
+				// Iterate over the ResultSet
+				while ( rs.next() ) {
+					//System.out.print("hello\n");
+				%>
+				<%-- Update Form Code --%>
+				<tr>
+					<form action="courses.jsp" method="get">
+				        <input type="hidden" value="update" name="action">
+				        <td><input value="<%= rs.getString("new_number")%>" name="new_number"></td>
+				        <td><input value="<%= rs.getString("old_number")%>" name="old_number"></td>
+				        <td><input value="<%= rs.getString("grade")%>" name="grade"></td>
+				        <td><input value="<%= rs.getInt("units")%>" name="units"></td>
+				        <td><input value="<%= rs.getString("department")%>" name="department"></td>
+				        <td><input value="<%= rs.getString("prerequisites")%>" name="prerequisites"></td>
+				        <td><input value="<%= rs.getString("lab_requirements")%>" name="lab_requirements"></td>
+				        
+				        <td>
+				            <input type="submit" value="Update">
+				        </td>
+			    	</form>
+					
+					<form action="courses.jsp" method="get">
+						<input type="hidden" value="delete" name="action">
+						<input type="hidden" value="<%= rs.getString("new_number") %>" name="new_number">
+                    	<td><input type="submit" value="Delete"></td>
+					</form>
+				</tr>
+				<%
+				}
+				%>
+				</table>
+				
+			<%
+				// Close the ResultSet
+				rs.close();
+				// Close the Statement
+				stmt.close();
+				// Close the Connection
+				connection.close();
+			} catch (SQLException sqle) {
+				out.println(sqle.getMessage());
+			} catch (Exception e) {
+				out.println(e.getMessage());
+			}
+			%>
 </body>
 </html>
