@@ -85,13 +85,8 @@ CREATE TABLE faculty
 
 CREATE TABLE teaching
 (
-<<<<<<< HEAD
     section_id serial,
     faculty_name varchar(20),
-=======
-    faculty_name varchar(20),
-    section_id serial,
->>>>>>> 2f72b291d7174161ea0293e4bd40485763fb083f
     PRIMARY KEY(section_id),
     FOREIGN KEY(faculty_name) references faculty(faculty_name) ON DELETE CASCADE,
     FOREIGN KEY(section_id) references classes(section_id) ON DELETE CASCADE
@@ -178,7 +173,7 @@ CREATE TABLE degree
 (
     degree_id serial PRIMARY KEY,
     upper_units int,
-    lower_unit int,
+    lower_units int,
     total_units int,
     min_grade varchar(20)
 );
