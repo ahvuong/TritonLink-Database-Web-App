@@ -88,10 +88,62 @@
 					
 					pstmt.setInt(1,Integer.parseInt(request.getParameter("student_id")));
 	                  
-	                pstmt.executeUpdate();
+	                pstmt.executeUpdate();%>
 	                
-	              	//connection.commit();
-					connection.setAutoCommit(false);
+	                <%-- DELETE the entries related to courses. --%>
+	                <%
+	                PreparedStatement attendance_period = connection.prepareStatement(
+							"DELETE FROM attendance_period WHERE student_id = ?");
+					PreparedStatement degree_earned = connection.prepareStatement(
+							"DELETE FROM degree_earned WHERE student_id = ?");
+					PreparedStatement probation_status = connection.prepareStatement(
+							"DELETE FROM probation_status WHERE student_id = ?");
+					PreparedStatement undergraduate = connection.prepareStatement(
+							"DELETE FROM undergraduate WHERE student_id = ?");
+					PreparedStatement bs_ms = connection.prepareStatement(
+							"DELETE FROM BS_MS WHERE student_id = ?");
+					PreparedStatement graduate = connection.prepareStatement(
+							"DELETE FROM graduate WHERE student_id = ?");
+					PreparedStatement ms_student = connection.prepareStatement(
+							"DELETE FROM ms_student WHERE student_id = ?");
+					PreparedStatement PhD_candidates = connection.prepareStatement(
+							"DELETE FROM PhD_candidates WHERE student_id = ?");
+					PreparedStatement advisor = connection.prepareStatement(
+							"DELETE FROM advisor WHERE student_id = ?");
+					PreparedStatement course_enrollment = connection.prepareStatement(
+							"DELETE FROM course_enrollment WHERE student_id = ?");
+					PreparedStatement past_classes = connection.prepareStatement(
+							"DELETE FROM past_classes WHERE student_id = ?");
+					PreparedStatement thesis_committee = connection.prepareStatement(
+							"DELETE FROM thesis_committee WHERE student_id = ?");
+					
+					attendance_period.setInt(1,Integer.parseInt(request.getParameter("student_id")));
+					degree_earned.setInt(1,Integer.parseInt(request.getParameter("student_id")));
+					probation_status.setInt(1,Integer.parseInt(request.getParameter("student_id")));
+					undergraduate.setInt(1,Integer.parseInt(request.getParameter("student_id")));
+					bs_ms.setInt(1,Integer.parseInt(request.getParameter("student_id")));
+					graduate.setInt(1,Integer.parseInt(request.getParameter("student_id")));
+					ms_student.setInt(1,Integer.parseInt(request.getParameter("student_id")));
+					PhD_candidates.setInt(1,Integer.parseInt(request.getParameter("student_id")));
+					advisor.setInt(1,Integer.parseInt(request.getParameter("student_id")));
+					course_enrollment.setInt(1,Integer.parseInt(request.getParameter("student_id")));
+					past_classes.setInt(1,Integer.parseInt(request.getParameter("student_id")));
+					thesis_committee.setInt(1,Integer.parseInt(request.getParameter("student_id")));
+	                
+					attendance_period.executeUpdate();
+					degree_earned.executeUpdate();
+					probation_status.executeUpdate();
+					undergraduate.executeUpdate();
+					bs_ms.executeUpdate();
+					graduate.executeUpdate();
+					ms_student.executeUpdate();
+					PhD_candidates.executeUpdate();
+					undergraduate.executeUpdate();
+					course_enrollment.executeUpdate();
+					past_classes.executeUpdate();
+					thesis_committee.executeUpdate();
+	                
+	              	connection.commit();
 					connection.setAutoCommit(true);
 					}
 				%>

@@ -21,7 +21,7 @@
 				
 				// Make a connection to the Oracle datasource
 				Connection connection = DriverManager.getConnection
-				("jdbc:postgresql:tables?user=postgres&password=trungtinvo");
+				("jdbc:postgresql:tables?user=postgres&password=ahvuong");
 				%>
 	<%-- Check if an insertion is requested --%>
 	<% String action = request.getParameter("action");
@@ -31,14 +31,15 @@
 	<%-- INSERT the past_classes attrs INTO the past_classes table. --%>
 	<% 
 					PreparedStatement pstmt = connection.prepareStatement(
-							("INSERT INTO past_classes VALUES (?, ?, ?, ?, ?, ?)"));
+							("INSERT INTO past_classes VALUES (?, ?, ?, ?, ?, ?, ?)"));
 					
-					pstmt.setInt(1,Integer.parseInt(request.getParameter("section_id")));
-					pstmt.setString(2,request.getParameter("title"));
-					pstmt.setInt(3, Integer.parseInt(request.getParameter("year")));
-					pstmt.setString(4, request.getParameter("quarter"));
-					pstmt.setString(5, request.getParameter("instructor_name"));
-					pstmt.setString(6, request.getParameter("grade"));
+					pstmt.setInt(1,Integer.parseInt(request.getParameter("student_id")));
+					pstmt.setInt(2,Integer.parseInt(request.getParameter("section_id")));
+					pstmt.setString(3,request.getParameter("title"));
+					pstmt.setInt(4, Integer.parseInt(request.getParameter("year")));
+					pstmt.setString(5, request.getParameter("quarter"));
+					pstmt.setString(6, request.getParameter("instructor_name"));
+					pstmt.setString(7, request.getParameter("grade"));
 					
 					pstmt.executeUpdate();
 					//connection.commit();
@@ -56,16 +57,17 @@
 	<% 
 					
 					PreparedStatement pstmt = connection.prepareStatement(
-							"UPDATE past_classes SET title = ?, year = ?, " +
-		                      "quarter = ?, instructor_name = ?, " +
+							"UPDATE past_classes SET section_id = ?, title = ?, " +
+		                      "year = ?, quarter = ?, instructor_name = ?, " +
 								"grade = ? WHERE section_id = ?");
 					
-					pstmt.setString(1,request.getParameter("title"));
-					pstmt.setInt(2, Integer.parseInt(request.getParameter("year")));
-					pstmt.setString(3, request.getParameter("quarter"));
-					pstmt.setString(4, request.getParameter("instructor_name"));
-					pstmt.setString(5, request.getParameter("grade"));
-					pstmt.setInt(6,Integer.parseInt(request.getParameter("section_id")));
+					pstmt.setInt(1,Integer.parseInt(request.getParameter("section_id")));
+					pstmt.setString(2,request.getParameter("title"));
+					pstmt.setInt(3, Integer.parseInt(request.getParameter("year")));
+					pstmt.setString(4, request.getParameter("quarter"));
+					pstmt.setString(5, request.getParameter("instructor_name"));
+					pstmt.setString(6, request.getParameter("grade"));
+					pstmt.setInt(7,Integer.parseInt(request.getParameter("student_id")));
 	                  
 	                pstmt.executeUpdate();
 	                
@@ -108,6 +110,7 @@
 	<%-- Entry Form --%>
 	<table>
 		<tr>
+			<th>student_id</th>
 			<th>section_id</th>
 			<th>title</th>
 			<th>year</th>
@@ -120,7 +123,8 @@
 		<tr>
 			<form action="past_classes.jsp" method="get">
 				<input type="hidden" value="insert" name="action">
-
+	
+				<th><input value="" name="student_id" size="15"></th>
 				<th><input value="" name="section_id" size="15"></th>
 				<th><input value="" name="title" size="10"></th>
 				<th><input value="" name="year" size="10"></th>
@@ -142,6 +146,7 @@
 		<tr>
 			<form action="past_classes.jsp" method="get">
 				<input type="hidden" value="update" name="action">
+				<td><input value="<%= rs.getInt("student_id")%>" name="student_id"></td>
 				<td><input value="<%= rs.getInt("section_id")%>" name="section_id"></td>
 				<td><input value="<%= rs.getString("title")%>" name="title"></td>
 				<td><input value="<%= rs.getInt("year")%>" name="year"></td>

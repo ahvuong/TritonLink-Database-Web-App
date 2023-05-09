@@ -211,7 +211,6 @@ CREATE TABLE advisor
     FOREIGN KEY(student_id) references students(student_id) ON DELETE CASCADE
 );
 
-
 CREATE TABLE degree
 (
     degree_id serial PRIMARY KEY,
@@ -232,34 +231,40 @@ CREATE TABLE ms_degree
 
 CREATE TABLE past_classes
 (
-    section_id serial PRIMARY KEY,
+    student_id serial UNIQUE,
+    section_id serial,
     title varchar(20),
     year int,
     quarter varchar(20),
     instructor_name varchar(20),
     grade varchar(20),
+    PRIMARY KEY(student_id, section_id),
+    FOREIGN KEY(section_id) references classes(section_id) ON DELETE CASCADE,
+    FOREIGN KEY(student_id) references students(student_id) ON DELETE CASCADE,
     FOREIGN KEY(title) references courses(new_number) ON DELETE CASCADE
 );
 
 CREATE TABLE thesis_committee
 (
-    department varchar(10),
-    student_id int,
+    student_id int UNIQUE,
     instructor_name varchar(10),
-    PRIMARY KEY(department),
+    department varchar(10),
+    PRIMARY KEY(student_id, instructor_name),
     FOREIGN KEY(student_id) references graduate(student_id) ON DELETE CASCADE,
     FOREIGN KEY(department) references faculty(faculty_name) ON DELETE CASCADE
 );
 
 CREATE TABLE course_enrollment
 (
-    section_id serial PRIMARY KEY,
-    student_id int,
+    student_id int UNIQUE,
+    section_id serial,
     class_name varchar(20),
+    year int,
+    quarter varchar(20),
     units int,
     grade varchar(20),
-    year int,
-    quarter int,
+    PRIMARY KEY(student_id, section_id),
     FOREIGN KEY(student_id) references students(student_id) ON DELETE CASCADE,
-    FOREIGN KEY(section_id) references classes(section_id) ON DELETE CASCADE
+    FOREIGN KEY(section_id) references classes(section_id) ON DELETE CASCADE,
+    FOREIGN KEY(class_name) references courses(new_number) ON DELETE CASCADE
 );

@@ -21,7 +21,7 @@
 				
 				// Make a connection to the Oracle datasource
 				Connection connection = DriverManager.getConnection
-				("jdbc:postgresql:tables?user=postgres&password=trungtinvo");
+				("jdbc:postgresql:tables?user=postgres&password=ahvuong");
 				%>
 	<%-- Check if an insertion is requested --%>
 	<% String action = request.getParameter("action");
@@ -32,10 +32,10 @@
 	<% 
 					PreparedStatement pstmt = connection.prepareStatement(
 							("INSERT INTO thesis_committee VALUES (?, ?, ?)"));
-					
-					pstmt.setString(1,request.getParameter("department"));
-					pstmt.setInt(2, Integer.parseInt(request.getParameter("student_id")));
-					pstmt.setString(3,request.getParameter("instructor_name"));
+
+					pstmt.setInt(1, Integer.parseInt(request.getParameter("student_id")));
+					pstmt.setString(2,request.getParameter("instructor_name"));
+					pstmt.setString(3,request.getParameter("department"));
 					
 					pstmt.executeUpdate();
 					//connection.commit();
@@ -53,12 +53,12 @@
 	<% 
 					
 					PreparedStatement pstmt = connection.prepareStatement(
-							"UPDATE thesis_committee SET student_id = ?, instructor_name = ? " +
-		                      "WHERE department = ?");
-					
-					pstmt.setInt(1, Integer.parseInt(request.getParameter("student_id")));
-					pstmt.setString(2, request.getParameter("instructor_name"));
-					pstmt.setString(3, request.getParameter("department"));
+							"UPDATE thesis_committee SET instructor_name = ?, department = ? " +
+		                      "WHERE student_id = ?");
+	
+					pstmt.setString(1, request.getParameter("instructor_name"));
+					pstmt.setString(2, request.getParameter("department"));
+					pstmt.setInt(3, Integer.parseInt(request.getParameter("student_id")));
 	                  
 	                pstmt.executeUpdate();
 	                
@@ -101,18 +101,18 @@
 	<%-- Entry Form --%>
 	<table>
 		<tr>
-			<th>department</th>
 			<th>student_id</th>
 			<th>instructor_name</th>
+			<th>department</th>
 		</tr>
 
 		<%-- Insert Form Code --%>
 		<tr>
 			<form action="thesis_committee.jsp" method="get">
 				<input type="hidden" value="insert" name="action">
-				<th><input value="" name="department" size="10"></th>
 				<th><input value="" name="student_id" size="10"></th>
 				<th><input value="" name="instructor_name" size="10"></th>
+				<th><input value="" name="department" size="10"></th>
 
 				<th><input type="submit" value="Insert"></th>
 			</form>
@@ -128,10 +128,9 @@
 		<tr>
 			<form action="thesis_committee.jsp" method="get">
 				<input type="hidden" value="update" name="action">
-				<td><input value="<%= rs.getString("department")%>" name="department"></td>
 				<td><input value="<%= rs.getInt("student_id")%>" name="student_id"></td>
 				<td><input value="<%= rs.getString("instructor_name")%>" name="instructor_name"></td>
-
+				<td><input value="<%= rs.getString("department")%>" name="department"></td>
 				<td>
 					<input type="submit" value="Update">
 				</td>

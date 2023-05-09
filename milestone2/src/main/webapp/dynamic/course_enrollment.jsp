@@ -21,7 +21,7 @@
 				
 				// Make a connection to the Oracle datasource
 				Connection connection = DriverManager.getConnection
-				("jdbc:postgresql:tables?user=postgres&password=trungtinvo");
+				("jdbc:postgresql:tables?user=postgres&password=ahvuong");
 				%>
 	<%-- Check if an insertion is requested --%>
 	<% String action = request.getParameter("action");
@@ -33,13 +33,13 @@
 					PreparedStatement pstmt = connection.prepareStatement(
 							("INSERT INTO course_enrollment VALUES (?, ?, ?, ?, ?, ?, ?)"));
 					
-					pstmt.setInt(1,Integer.parseInt(request.getParameter("section_id")));
-					pstmt.setInt(2,Integer.parseInt(request.getParameter("student_id")));
-					pstmt.setString(3, request.getParameter("class_name"));
-					pstmt.setInt(4,Integer.parseInt(request.getParameter("units")));
-					pstmt.setString(5, request.getParameter("grade"));
-					pstmt.setInt(6,Integer.parseInt(request.getParameter("year")));
-					pstmt.setInt(7,Integer.parseInt(request.getParameter("quarter")));
+					pstmt.setInt(1,Integer.parseInt(request.getParameter("student_id")));
+					pstmt.setInt(2,Integer.parseInt(request.getParameter("section_id")));
+					pstmt.setString(3,request.getParameter("class_name"));
+					pstmt.setInt(4, Integer.parseInt(request.getParameter("year")));
+					pstmt.setString(5, request.getParameter("quarter"));
+					pstmt.setInt(6, Integer.parseInt(request.getParameter("units")));
+					pstmt.setString(7, request.getParameter("grade"));
 					
 					pstmt.executeUpdate();
 					//connection.commit();
@@ -57,17 +57,17 @@
 	<% 
 					
 					PreparedStatement pstmt = connection.prepareStatement(
-							"UPDATE course_enrollment SET student_id = ?, class_name = ?, " +
-		                      "units = ?, grade = ?, year = ?, " +
-								"quarter = ? WHERE section_id = ?");
+							"UPDATE course_enrollment SET section_id = ?, class_name = ?, " +
+		                      "year = ?, quarter = ?, units = ?, " +
+								"grade = ? WHERE student_id = ?");
 					
-					pstmt.setInt(1,Integer.parseInt(request.getParameter("student_id")));
-					pstmt.setString(2, request.getParameter("class_name"));
-					pstmt.setInt(3,Integer.parseInt(request.getParameter("units")));
-					pstmt.setString(4, request.getParameter("grade"));
-					pstmt.setInt(5,Integer.parseInt(request.getParameter("year")));
-					pstmt.setInt(6,Integer.parseInt(request.getParameter("quarter")));
-					pstmt.setInt(7,Integer.parseInt(request.getParameter("section_id")));
+					pstmt.setInt(1,Integer.parseInt(request.getParameter("section_id")));
+					pstmt.setString(2,request.getParameter("class_name"));
+					pstmt.setInt(3, Integer.parseInt(request.getParameter("year")));
+					pstmt.setString(4, request.getParameter("quarter"));
+					pstmt.setInt(5, Integer.parseInt(request.getParameter("units")));
+					pstmt.setString(6, request.getParameter("grade"));
+					pstmt.setInt(7,Integer.parseInt(request.getParameter("student_id")));
 	                  
 	                pstmt.executeUpdate();
 	                
@@ -110,26 +110,26 @@
 	<%-- Entry Form --%>
 	<table>
 		<tr>
-			<th>section_id</th>
 			<th>student_id</th>
+			<th>section_id</th>
 			<th>class_name</th>
-			<th>units</th>
-			<th>grade</th>
 			<th>year</th>
 			<th>quarter</th>
+			<th>units</th>
+			<th>grade</th>
 		</tr>
 
 		<%-- Insert Form Code --%>
 		<tr>
 			<form action="course_enrollment.jsp" method="get">
 				<input type="hidden" value="insert" name="action">
-				<th><input value="" name="section_id" size="10"></th>
 				<th><input value="" name="student_id" size="9"></th>
+				<th><input value="" name="section_id" size="10"></th>
 				<th><input value="" name="class_name" size="10"></th>
-				<th><input value="" name="units" size="10"></th>
-				<th><input value="" name="grade" size="10"></th>
 				<th><input value="" name="year" size="10"></th>
 				<th><input value="" name="quarter" size="10"></th>
+				<th><input value="" name="units" size="10"></th>
+				<th><input value="" name="grade" size="10"></th>
 		<tr>
 			<th><input type="submit" value="Insert"></th>
 		</tr>
@@ -146,13 +146,13 @@
 		<tr>
 			<form action="course_enrollment.jsp" method="get">
 				<input type="hidden" value="update" name="action">
-				<td><input value="<%= rs.getInt("section_id")%>" name="section_id"></td>
 				<td><input value="<%= rs.getInt("student_id")%>" name="student_id"></td>
+				<td><input value="<%= rs.getInt("section_id")%>" name="section_id"></td>
 				<td><input value="<%= rs.getString("class_name")%>" name="class_name"></td>
+				<td><input value="<%= rs.getInt("year")%>" name="year"></td>
+				<td><input value="<%= rs.getString("quarter")%>" name="quarter"></td>
 				<td><input value="<%= rs.getInt("units")%>" name="units"></td>
 				<td><input value="<%= rs.getString("grade")%>" name="grade"></td>
-				<td><input value="<%= rs.getInt("year")%>" name="year"></td>
-				<td><input value="<%= rs.getInt("quarter")%>" name="quarter"></td>
 		<tr>
 			<th><input type="submit" value="Update"></th>
 		</tr>
