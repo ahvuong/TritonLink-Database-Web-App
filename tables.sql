@@ -232,9 +232,9 @@ CREATE TABLE review
 
 CREATE TABLE thesis_committee
 (
+    department varchar(10),
     student_id int,
     instructor_name varchar(10),
-    department varchar(10),
     PRIMARY KEY(department),
     FOREIGN KEY(student_id) references graduate(student_id) ON DELETE CASCADE,
     FOREIGN KEY(department) references faculty(faculty_name) ON DELETE CASCADE
