@@ -85,8 +85,13 @@ CREATE TABLE faculty
 
 CREATE TABLE teaching
 (
+<<<<<<< HEAD
+    section_id serial,
+    faculty_name varchar(20),
+=======
     faculty_name varchar(20),
     section_id serial,
+>>>>>>> 2f72b291d7174161ea0293e4bd40485763fb083f
     PRIMARY KEY(section_id),
     FOREIGN KEY(faculty_name) references faculty(faculty_name) ON DELETE CASCADE,
     FOREIGN KEY(section_id) references classes(section_id) ON DELETE CASCADE
@@ -95,7 +100,7 @@ CREATE TABLE teaching
 CREATE TABLE attendance_period
 (
     student_id int PRIMARY KEY,
-    begin varchar(10),
+    begin varchar(20),
     complete varchar(20),
     FOREIGN KEY(student_id) references students(student_id) ON DELETE CASCADE
 );
@@ -112,8 +117,8 @@ CREATE TABLE degree_earned
 CREATE TABLE probation_status
 (
     student_id int PRIMARY KEY,
-    start varchar(10),
-    finish varchar(10),
+    start varchar(20),
+    finish varchar(20),
     reason varchar(20),
     FOREIGN KEY(student_id) references students(student_id) ON DELETE CASCADE
 );
@@ -121,9 +126,9 @@ CREATE TABLE probation_status
 CREATE TABLE undergraduate
 (
     student_id int PRIMARY KEY,
-    major varchar(10),
-    minor varchar(10),
-    college varchar(10),
+    major varchar(20),
+    minor varchar(20),
+    college varchar(20),
     FOREIGN KEY(student_id) references students(student_id) ON DELETE CASCADE
 );
 
@@ -252,4 +257,3 @@ CREATE TABLE course_enrollment
     FOREIGN KEY(student_id) references students(student_id) ON DELETE CASCADE,
     FOREIGN KEY(section_id) references classes(section_id) ON DELETE CASCADE
 );
-
