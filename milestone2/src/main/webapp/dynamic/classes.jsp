@@ -101,16 +101,21 @@
 					PreparedStatement review = connection.prepareStatement(
 							"DELETE FROM review WHERE section_id = ? AND new_number = ?");
 					
+					PreparedStatement teaching = connection.prepareStatement(
+							"DELETE FROM teaching WHERE section_id = ?");
+					
 					meeting.setInt(1,Integer.parseInt(request.getParameter("section_id")));
 					meeting.setString(2,request.getParameter("new_number"));
 					weekly.setInt(1,Integer.parseInt(request.getParameter("section_id")));
 					weekly.setString(2,request.getParameter("new_number"));
 					review.setInt(1,Integer.parseInt(request.getParameter("section_id")));
 					review.setString(2,request.getParameter("new_number"));
+					teaching.setInt(1,Integer.parseInt(request.getParameter("section_id")));
 	                
 					meeting.executeUpdate();
 					weekly.executeUpdate();
 					review.executeUpdate();
+					teaching.executeUpdate();
 	                
 	              	//connection.commit();
 					connection.setAutoCommit(false);
