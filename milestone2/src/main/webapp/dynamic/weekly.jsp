@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Student home page</title>
+<title>Weekly Sections Home Page</title>
 </head>
 <body>
 <%-- Set the scripting language to Java and --%>
@@ -12,29 +12,204 @@
 			
 			<%-- -------- Open Connection Code -------- --%>
 			<%
-			
-				// Load Oracle Driver class file
+			try {
+				// Load Oracle Driver weekly file
 				DriverManager.registerDriver (new org.postgresql.Driver());
-				String GET_STUDENT_QUERY = "Select * from student";
+				String GET_WEEKLY_QUERY = "Select * from weekly";
 				
 				// Make a connection to the Oracle datasource
 				Connection connection = DriverManager.getConnection
-				("jdbc:postgresql:milestone2?user=postgres&password=ahvuong");
+				("jdbc:postgresql:tables?user=postgres&password=ahvuong");
+				%>
+				<%-- Check if an insertion is requested --%> 
+				<% String action = request.getParameter("action");
+				if (action != null && action.equals("insert")) {
+					connection.setAutoCommit(false); %>
+					<%-- Create the prepared statement and use it to --%>
+					<%-- INSERT the weekly attrs INTO the weekly table. --%>
+					<% 
+					PreparedStatement pstmt = connection.prepareStatement(
+							("INSERT INTO weekly VALUES (?, ?, ?, ?, ?, ?, ?, ?)"));
+					
+					pstmt.setInt(1,Integer.parseInt(request.getParameter("section_id")));
+					pstmt.setBoolean(2, Boolean.parseBoolean(request.getParameter("mandatory")));
+					pstmt.setString(3, request.getParameter("session_type"));
+					pstmt.setDate(4, java.sql.Date.valueOf(request.getParameter("date_time")));
+					pstmt.setTime(5, java.sql.Time.valueOf(request.getParameter("begin_time")));
+					pstmt.setTime(6, java.sql.Time.valueOf(request.getParameter("end_time")));
+					pstmt.setString(7, request.getParameter("room"));
+					pstmt.setString(8, request.getParameter("building"));
+
+					
+					pstmt.executeUpdate();
+					//connection.commit();
+					connection.setAutoCommit(false);
+					connection.setAutoCommit(true);
+					}
+				%>
+				
+				<%-- Update Info --%> 
+				<% 
+				if (action != null && action.equals("update")) {
+					connection.setAutoCommit(false);%>
+					<%-- Create the prepared statement and use it to --%>
+					<%-- UPDATE the weekly attributes in the weekly table. --%>
+					<% 
+					
+					PreparedStatement pstmt = connection.prepareStatement(
+							"UPDATE weekly SET mandatory = ?, session_type = ?, " +
+								"date_time = ?, begin_time = ?, " +
+		                      		"end_time = ?, room = ?, " +
+										"building = ? WHERE section_id = ?");
+					
+					pstmt.setBoolean(1, Boolean.parseBoolean(request.getParameter("mandatory")));
+					pstmt.setString(2, request.getParameter("session_type"));
+					pstmt.setDate(3, java.sql.Date.valueOf(request.getParameter("date_time")));
+					pstmt.setTime(4, java.sql.Time.valueOf(request.getParameter("begin_time")));
+					pstmt.setTime(5, java.sql.Time.valueOf(request.getParameter("end_time")));
+					pstmt.setString(6, request.getParameter("room"));
+					pstmt.setString(7, request.getParameter("building"));
+					pstmt.setInt(8,Integer.parseInt(request.getParameter("section_id")));
+	                  
+	                pstmt.executeUpdate();
+	                
+	              	//connection.commit();
+					connection.setAutoCommit(false);
+					connection.setAutoCommit(true);
+					}
+				%>
+				
+				<%-- Delete --%> 
+				<% 
+				if (action != null && action.equals("delete")) {
+					connection.setAutoCommit(false);%>
+					<%-- Create the prepared statement and use it to --%>
+					<%-- DELETE the weekly FROM the weekly table. --%>
+					<% 
+					
+					PreparedStatement pstmt = connection.prepareStatement(
+							"DELETE FROM weekly WHERE section_id = ?");
+					
+					pstmt.setInt(1,Integer.parseInt(request.getParameter("section_id")));
+	                  
+	                pstmt.executeUpdate();
+	                
+	              	//connection.commit();
+					connection.setAutoCommit(false);
+					connection.setAutoCommit(true);
+					}
+				%>
+				
+				<%
 				// Create the statement
 				Statement stmt = connection.createStatement();
 				
-				// Use the statement to SELECT the student attributes
-				// FROM the Student table.
-				ResultSet rs = stmt.executeQuery(GET_STUDENT_QUERY);
-				while (rs.next()) {
+				// Use the statement to SELECT the weekly attributes
+				// FROM the weekly table.
+				ResultSet rs = stmt.executeQuery(GET_WEEKLY_QUERY);
 				
 				%>
-				<span>Student id is <%= rs.getInt(1) %></span><br/>
-				<span>Age is <%= rs.getInt(2) %></span><br/>
-				<span>Email is <%= rs.getString(3) %></span><br/>
-				<span>Name is <%= rs.getString(4) %></span><br/>
-				<br/><br/><br/>
+				<%-- Entry Form --%>
+				<table>
+					<tr>
+						<th>section_id</th>
+						<th>mandatory</th>
+						<th>session_type</th>
+                      	<th>date_time</th>
+                      	<th>begin_time</th>
+                      	<th>end_time</th>
+                      	<th>room</th>
+                      	<th>building</th>
+					</tr>
+					
+					<%-- Insert Form Code --%>
+					<tr>
+						<form action="weekly.jsp" method="get">
+							<input type="hidden" value="insert" name="action">
+							
+							<th><input value="" name="section_id" size="15"></th>
+							<th>
+								<select name="mandatory">
+									<option value="True">
+										Yes</option>
+									<option value="False" >
+										No</option>
+								</select>
+							</th>
+							<th>
+								<select name="session_type">
+									<option value="Lecture">Lecture</option>
+									<option value="Discussion">Discussion</option>
+									<option value="Lab" >Lab</option>
+								</select>
+							</th>
+							<th><input value="" name="date_time" placeholder="yyyy-mm-dd" size="15" required></th>
+							<th><input value="" name="begin_time" placeholder="hh:mm:ss" size="15" required></th>
+							<th><input value="" name="end_time" placeholder="hh:mm:ss" size="15" required></th>
+							<th><input value="" name="room" size="15"></th>
+							<th><input value="" name="building" size="15"></th>
+							
+							<th><input type="submit" value="Insert"></th>
+						</form>
+					</tr>
 				
-			<% } %>
+				<%
+				
+				// Iterate over the ResultSet
+				while ( rs.next() ) {
+				%>
+				<%-- Update Form Code --%>
+				<tr>
+					<form action="weekly.jsp" method="get">
+				        <input type="hidden" value="update" name="action">
+				        <td><input value="<%= rs.getInt("section_id")%>" name="section_id"></td>
+				        <td>
+				            <select name="mandatory">
+				                <option value="true" <%= rs.getBoolean("mandatory") ? "selected" : "" %>>Yes</option>
+				                <option value="false" <%= !rs.getBoolean("mandatory") ? "selected" : "" %>>No</option>
+				            </select>
+				        </td>
+				        <td>
+				        	<select name="session_type" required>
+                                  <option value="Lecture" <%= rs.getString("session_type").equals("Lecture") ? "selected":"" %>>Lecture</option>
+                                  <option value="Discussion" <%= rs.getString("session_type").equals("Discussion") ? "selected":"" %>>Discussion</option>
+                                  <option value="Lab" <%= rs.getString("session_type").equals("Lab") ? "selected":"" %>>Lab</option>
+                            </select>
+                        </td>				        
+				        <td><input value="<%= rs.getString("date_time")%>" name="date_time" placeholder="yyyy-mm-dd" required></td>
+				        <td><input value="<%= rs.getString("begin_time")%>" name="begin_time" placeholder="hh:mm:ss" required></td>
+				        <td><input value="<%= rs.getString("end_time")%>" name="end_time" placeholder="hh:mm:ss" required></td>
+				        <td><input value="<%= rs.getString("room")%>" name="room"></td>
+				        <td><input value="<%= rs.getString("building")%>" name="building"></td>
+				        
+				        <td>
+				            <input type="submit" value="Update">
+				        </td>
+			    	</form>
+					
+					<form action="weekly.jsp" method="get">
+						<input type="hidden" value="delete" name="action">
+						<input type="hidden" value="<%= rs.getInt("section_id") %>" name="section_id">
+                    	<td><input type="submit" value="Delete"></td>
+					</form>
+				</tr>
+				<%
+				}
+				%>
+				</table>
+				
+			<%
+				// Close the ResultSet
+				rs.close();
+				// Close the Statement
+				stmt.close();
+				// Close the Connection
+				connection.close();
+			} catch (SQLException sqle) {
+				out.println(sqle.getMessage());
+			} catch (Exception e) {
+				out.println(e.getMessage());
+			}
+			%>
 </body>
 </html>
