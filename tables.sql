@@ -201,8 +201,9 @@ CREATE TABLE past_classes
 CREATE TABLE meeting_sections
 (
     section_id int PRIMARY KEY,
-    date varchar(20),
-    time timestamp,
+    date_time Date,
+    begin_time Time,
+    end_time Time,
     room varchar(20),
     building varchar(10),
     FOREIGN KEY(section_id) references classes(section_id) ON DELETE CASCADE
@@ -213,8 +214,9 @@ CREATE TABLE weekly
     section_id int PRIMARY KEY,
     mandatory boolean,
     session_type varchar(10),
-    date varchar(20),
-    time timestamp,
+    date_time Date,
+    begin_time Time,
+    end_time Time,
     room varchar(20),
     building varchar(10),
     FOREIGN KEY(section_id) references classes(section_id) ON DELETE CASCADE
@@ -223,8 +225,9 @@ CREATE TABLE weekly
 CREATE TABLE review
 (
     section_id int PRIMARY KEY,
-    date varchar(20),
-    time timestamp,
+    date_time Date,
+    begin_time Time,
+    end_time Time,
     room varchar(20),
     building varchar(10),
     FOREIGN KEY(section_id) references classes(section_id) ON DELETE CASCADE
@@ -232,9 +235,9 @@ CREATE TABLE review
 
 CREATE TABLE thesis_committee
 (
+    department varchar(10),
     student_id int,
     instructor_name varchar(10),
-    department varchar(10),
     PRIMARY KEY(department),
     FOREIGN KEY(student_id) references graduate(student_id) ON DELETE CASCADE,
     FOREIGN KEY(department) references faculty(faculty_name) ON DELETE CASCADE
