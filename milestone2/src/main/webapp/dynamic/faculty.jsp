@@ -5,7 +5,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Faculty home page</title>
+	<title>Faculty Home Page</title>
 </head>
 
 <body>
@@ -21,7 +21,7 @@
 				
 				// Make a connection to the Oracle datasource
 				Connection connection = DriverManager.getConnection
-				("jdbc:postgresql:tables?user=postgres&password=trungtinvo");
+				("jdbc:postgresql:tables?user=postgres&password=ahvuong");
 				%>
 	<%-- Check if an insertion is requested --%>
 	<% String action = request.getParameter("action");
@@ -38,8 +38,8 @@
 					pstmt.setString(3, request.getParameter("member_title"));
 					
 					pstmt.executeUpdate();
-					//connection.commit();
-					connection.setAutoCommit(false);
+					
+					connection.commit();
 					connection.setAutoCommit(true);
 					}
 				%>
@@ -81,10 +81,18 @@
 					
 					pstmt.setString(1,request.getParameter("faculty_name"));
 	                  
-	                pstmt.executeUpdate();
+	                pstmt.executeUpdate();%>
 	                
-	              	//connection.commit();
-					connection.setAutoCommit(false);
+	                <%-- DELETE the entries related to courses. --%>
+	                <%
+	                PreparedStatement teaching = connection.prepareStatement(
+							"DELETE FROM teaching WHERE faculty_name = ?");
+					
+	                teaching.setString(1,request.getParameter("faculty_name"));
+	                
+	                teaching.executeUpdate();
+	                
+	              	connection.commit();
 					connection.setAutoCommit(true);
 					}
 				%>
