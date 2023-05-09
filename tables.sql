@@ -32,7 +32,7 @@ DROP TABLE IF EXISTS review CASCADE;
 
 DROP TABLE IF EXISTS courses CASCADE;
 
-DROP TABLE IF EXISTS courses_enrollment CASCADE;
+DROP TABLE IF EXISTS course_enrollment CASCADE;
 
 DROP TABLE IF EXISTS past_classes CASCADE;
 
@@ -50,8 +50,7 @@ CREATE TABLE students
     first_name varchar(256),
     middle_name varchar(256),
     last_name varchar(256),
-    residency varchar(256),
-    current_units int,
+    resident_status varchar(256),
     enrollment boolean
 );
 
@@ -253,8 +252,4 @@ CREATE TABLE course_enrollment
     FOREIGN KEY(student_id) references students(student_id) ON DELETE CASCADE,
     FOREIGN KEY(section_id) references classes(section_id) ON DELETE CASCADE
 );
-
-// add table: advisor, teaching
-
-// course_enrollment
 
