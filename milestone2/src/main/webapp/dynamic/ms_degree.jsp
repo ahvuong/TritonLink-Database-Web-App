@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Student home page</title>
+<title>MS Degree Home Page</title>
 </head>
 <body>
 <%-- Set the scripting language to Java and --%>
@@ -12,29 +12,158 @@
 			
 			<%-- -------- Open Connection Code -------- --%>
 			<%
-			
-				// Load Oracle Driver class file
+			try {
+				// Load Oracle Driver ms_degree file
 				DriverManager.registerDriver (new org.postgresql.Driver());
-				String GET_STUDENT_QUERY = "Select * from student";
+				String GET_MS_DEGREE_QUERY = "Select * from ms_degree";
 				
 				// Make a connection to the Oracle datasource
 				Connection connection = DriverManager.getConnection
-				("jdbc:postgresql:milestone2?user=postgres&password=ahvuong");
+				("jdbc:postgresql:tables?user=postgres&password=ahvuong");
+				%>
+				<%-- Check if an insertion is requested --%> 
+				<% String action = request.getParameter("action");
+				if (action != null && action.equals("insert")) {
+					connection.setAutoCommit(false); %>
+					<%-- Create the prepared statement and use it to --%>
+					<%-- INSERT the ms_degree attrs INTO the ms_degree table. --%>
+					<% 
+					PreparedStatement pstmt = connection.prepareStatement(
+							("INSERT INTO ms_degree VALUES (?, ?, ?, ?)"));
+					
+					pstmt.setInt(1,Integer.parseInt(request.getParameter("degree_id")));
+					pstmt.setString(2,request.getParameter("concentration_min_grade"));
+					pstmt.setString(3,request.getParameter("concentration_courses"));
+					pstmt.setInt(4,Integer.parseInt(request.getParameter("concentration_total_units")));
+					
+					pstmt.executeUpdate();
+					//connection.commit();
+					connection.setAutoCommit(false);
+					connection.setAutoCommit(true);
+					}
+				%>
+				
+				<%-- Update Info --%> 
+				<% 
+				if (action != null && action.equals("update")) {
+					connection.setAutoCommit(false);%>
+					<%-- Create the prepared statement and use it to --%>
+					<%-- UPDATE the ms_degree attributes in the ms_degree table. --%>
+					<% 
+					
+					PreparedStatement pstmt = connection.prepareStatement(
+							"UPDATE ms_degree SET concentration_min_grade = ?, " +
+		                      "concentration_courses = ?, concentration_total_units = ? " +
+								"WHERE degree_id = ?");
+					
+					pstmt.setString(1,request.getParameter("concentration_min_grade"));
+					pstmt.setString(2,request.getParameter("concentration_courses"));
+					pstmt.setInt(3,Integer.parseInt(request.getParameter("concentration_total_units")));
+					pstmt.setInt(4,Integer.parseInt(request.getParameter("degree_id")));
+	                  
+	                pstmt.executeUpdate();
+	                
+	              	//connection.commit();
+					connection.setAutoCommit(false);
+					connection.setAutoCommit(true);
+					}
+				%>
+				
+				<%-- Delete --%> 
+				<% 
+				if (action != null && action.equals("delete")) {
+					connection.setAutoCommit(false);%>
+					<%-- Create the prepared statement and use it to --%>
+					<%-- DELETE the ms_degree FROM the ms_degree table. --%>
+					<% 
+					
+					PreparedStatement pstmt = connection.prepareStatement(
+							"DELETE FROM ms_degree WHERE degree_id = ?");
+					
+					pstmt.setInt(1,Integer.parseInt(request.getParameter("degree_id")));
+	                  
+	                pstmt.executeUpdate();
+	                
+	              	//connection.commit();
+					connection.setAutoCommit(false);
+					connection.setAutoCommit(true);
+					}
+				%>
+				
+				<%
 				// Create the statement
 				Statement stmt = connection.createStatement();
 				
-				// Use the statement to SELECT the student attributes
-				// FROM the Student table.
-				ResultSet rs = stmt.executeQuery(GET_STUDENT_QUERY);
-				while (rs.next()) {
+				// Use the statement to SELECT the ms_degree attributes
+				// FROM the ms_degree table.
+				ResultSet rs = stmt.executeQuery(GET_MS_DEGREE_QUERY);
 				
 				%>
-				<span>Student id is <%= rs.getInt(1) %></span><br/>
-				<span>Age is <%= rs.getInt(2) %></span><br/>
-				<span>Email is <%= rs.getString(3) %></span><br/>
-				<span>Name is <%= rs.getString(4) %></span><br/>
-				<br/><br/><br/>
+				<%-- Entry Form --%>
+				<table>
+					<tr>
+						<th>degree_id</th>
+						<th>concentration_min_grade</th>
+                      	<th>concentration_courses</th>
+                      	<th>concentration_total_units</th>
+					</tr>
+					
+					<%-- Insert Form Code --%>
+					<tr>
+						<form action="ms_degree.jsp" method="get">
+							<input type="hidden" value="insert" name="action">
+							
+							<th><input value="" name="degree_id" size="15"></th>
+							<th><input value="" name="concentration_min_grade" size="15"></th>
+							<th><input value="" name="concentration_courses" size="15"></th>
+							<th><input value="" name="concentration_total_units" size="15"></th>
+							
+							<th><input type="submit" value="Insert"></th>
+						</form>
+					</tr>
 				
-			<% } %>
+				<%
+				
+				// Iterate over the ResultSet
+				while ( rs.next() ) {
+				%>
+				<%-- Update Form Code --%>
+				<tr>
+					<form action="ms_degree.jsp" method="get">
+				        <input type="hidden" value="update" name="action">
+				        <td><input value="<%= rs.getInt("degree_id")%>" name="degree_id"></td>
+				        <td><input value="<%= rs.getString("concentration_min_grade")%>" name="concentration_min_grade"></td>
+				        <td><input value="<%= rs.getString("concentration_courses")%>" name="concentration_courses"></td>
+				        <td><input value="<%= rs.getInt("concentration_total_units")%>" name="concentration_total_units"></td>
+				        
+				        <td>
+				            <input type="submit" value="Update">
+				        </td>
+			    	</form>
+					
+					<form action="ms_degree.jsp" method="get">
+						<input type="hidden" value="delete" name="action">
+						<input type="hidden" value="<%= rs.getInt("degree_id") %>" name="degree_id">
+                    	<td><input type="submit" value="Delete"></td>
+					</form>
+				</tr>
+				<%
+				}
+				%>
+				</table>
+				
+			<%
+				// Close the ResultSet
+				rs.close();
+				// Close the Statement
+				stmt.close();
+				// Close the Connection
+				connection.close();
+			} catch (SQLException sqle) {
+				out.println(sqle.getMessage());
+			} catch (Exception e) {
+				out.println(e.getMessage());
+			}
+			%>
 </body>
 </html>
