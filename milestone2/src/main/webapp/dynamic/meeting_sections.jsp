@@ -130,10 +130,24 @@
 					
 					pstmt.setInt(1,Integer.parseInt(request.getParameter("section_id")));
 	                  
-	                pstmt.executeUpdate();
+	                pstmt.executeUpdate();%>
 	                
-	              	//connection.commit();
-					connection.setAutoCommit(false);
+	                <%-- DELETE the entries related to courses. --%>
+	                <%
+	                PreparedStatement weekly = connection.prepareStatement(
+							"DELETE FROM weekly WHERE section_id = ?");
+					
+					PreparedStatement review = connection.prepareStatement(
+							"DELETE FROM review WHERE section_id = ?");
+					
+					weekly.setInt(1,Integer.parseInt(request.getParameter("section_id")));
+					review.setInt(1,Integer.parseInt(request.getParameter("section_id")));
+	                
+					weekly.executeUpdate();
+					review.executeUpdate();
+	                
+	                
+	              	connection.commit();
 					connection.setAutoCommit(true);
 					}
 				%>
