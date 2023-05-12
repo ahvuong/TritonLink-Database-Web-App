@@ -33,11 +33,11 @@
 					
 					pstmt.setString(1,request.getParameter("new_number"));
 					pstmt.setString(2,request.getParameter("old_number"));
-					pstmt.setString(3, request.getParameter("grade"));
-					pstmt.setInt(4, Integer.parseInt(request.getParameter("units")));
-					pstmt.setString(5, request.getParameter("department"));
-					pstmt.setString(6, request.getParameter("prerequisites"));
-					pstmt.setString(7, request.getParameter("lab_requirements"));
+					pstmt.setInt(3, Integer.parseInt(request.getParameter("units")));
+					pstmt.setString(4, request.getParameter("department"));
+					pstmt.setString(5, request.getParameter("prerequisites"));
+					pstmt.setString(6, request.getParameter("lab_requirements"));
+					pstmt.setString(7, request.getParameter("grade"));
 					
 					pstmt.executeUpdate();
 					//connection.commit();
@@ -55,16 +55,16 @@
 					<% 
 					
 					PreparedStatement pstmt = connection.prepareStatement(
-							"UPDATE courses SET old_number = ?, grade = ?, " +
-		                      "units = ?, department = ?, prerequisites = ?, " +
-								"lab_requirements = ? WHERE new_number = ?");
+							"UPDATE courses SET old_number = ?, units = ?, " +
+		                      "department = ?, prerequisites = ?, lab_requirements = ?, " +
+								"grade = ?, WHERE new_number = ?");
 					
 					pstmt.setString(1,request.getParameter("old_number"));
-					pstmt.setString(2, request.getParameter("grade"));
-					pstmt.setInt(3, Integer.parseInt(request.getParameter("units")));
-					pstmt.setString(4, request.getParameter("department"));
-					pstmt.setString(5, request.getParameter("prerequisites"));
-					pstmt.setString(6, request.getParameter("lab_requirements"));
+					pstmt.setInt(2, Integer.parseInt(request.getParameter("units")));
+					pstmt.setString(3, request.getParameter("department"));
+					pstmt.setString(4, request.getParameter("prerequisites"));
+					pstmt.setString(5, request.getParameter("lab_requirements"));
+					pstmt.setString(6, request.getParameter("grade"));
 					pstmt.setString(7,request.getParameter("new_number"));
 	                  
 	                pstmt.executeUpdate();
@@ -133,11 +133,11 @@
 					<tr>
 						<th>new_number</th>
 						<th>old_number</th>
-                      	<th>grade</th>
                       	<th>units</th>
                       	<th>department</th>
                       	<th>prerequisites</th>
                       	<th>lab_requirements</th>
+                      	<th>grade</th>
 					</tr>
 					
 					<%-- Insert Form Code --%>
@@ -146,6 +146,10 @@
 							<input type="hidden" value="insert" name="action">
 							<th><input value="" name="new_number" size="10"></th>
 							<th><input value="" name="old_number" size="10"></th>
+							<th><input value="" name="units" size="15"></th>
+							<th><input value="" name="department" size="15"></th>
+							<th><input value="" name="prerequisites" size="15"></th>
+							<th><input value="" name="lab_requirements" size="15"></th>
 							<th>
 								<select name="grade">
 									<option value="LETTER">LETTER</option>
@@ -153,10 +157,6 @@
 									<option value="LETTER  & S/U">LETTER  & S/U</option>
 								</select>
 							</th>
-							<th><input value="" name="units" size="15"></th>
-							<th><input value="" name="department" size="15"></th>
-							<th><input value="" name="prerequisites" size="15"></th>
-							<th><input value="" name="lab_requirements" size="15"></th>
 							
 							<th><input type="submit" value="Insert"></th>
 						</form>
@@ -174,6 +174,10 @@
 				        <input type="hidden" value="update" name="action">
 				        <td><input value="<%= rs.getString("new_number")%>" name="new_number"></td>
 				        <td><input value="<%= rs.getString("old_number")%>" name="old_number"></td>
+				        <td><input value="<%= rs.getInt("units")%>" name="units"></td>
+				        <td><input value="<%= rs.getString("department")%>" name="department"></td>
+				        <td><input value="<%= rs.getString("prerequisites")%>" name="prerequisites"></td>
+				        <td><input value="<%= rs.getString("lab_requirements")%>" name="lab_requirements"></td>
 				        <td>
 							<select name="grade" required>
 			                    <% String s = rs.getString("grade"); %>
@@ -182,10 +186,6 @@
 			                    <option value="LETTER  & S/U" <%= s.equals("LETTER  & S/U") ? "selected":"" %>>LETTER  & S/U</option>
 		                	</select></td>
 						<td>
-				        <td><input value="<%= rs.getInt("units")%>" name="units"></td>
-				        <td><input value="<%= rs.getString("department")%>" name="department"></td>
-				        <td><input value="<%= rs.getString("prerequisites")%>" name="prerequisites"></td>
-				        <td><input value="<%= rs.getString("lab_requirements")%>" name="lab_requirements"></td>
 				        
 				        <td>
 				            <input type="submit" value="Update">
