@@ -146,7 +146,13 @@
 							<input type="hidden" value="insert" name="action">
 							<th><input value="" name="new_number" size="10"></th>
 							<th><input value="" name="old_number" size="10"></th>
-							<th><input value="" name="grade" size="3"></th>
+							<th>
+								<select name="grade">
+									<option value="LETTER">LETTER</option>
+									<option value="S/U" >S/U</option>
+									<option value="LETTER  & S/U">LETTER  & S/U</option>
+								</select>
+							</th>
 							<th><input value="" name="units" size="15"></th>
 							<th><input value="" name="department" size="15"></th>
 							<th><input value="" name="prerequisites" size="15"></th>
@@ -168,7 +174,14 @@
 				        <input type="hidden" value="update" name="action">
 				        <td><input value="<%= rs.getString("new_number")%>" name="new_number"></td>
 				        <td><input value="<%= rs.getString("old_number")%>" name="old_number"></td>
-				        <td><input value="<%= rs.getString("grade")%>" name="grade"></td>
+				        <td>
+							<select name="grade" required>
+			                    <% String s = rs.getString("grade"); %>
+			                    <option value="LETTER" <%= s.equals("LETTER") ? "selected":"" %>>LETTER</option>
+			                    <option value="S/U" <%= s.equals("S/U") ? "selected":"" %>>S/U</option>
+			                    <option value="LETTER  & S/U" <%= s.equals("LETTER  & S/U") ? "selected":"" %>>LETTER  & S/U</option>
+		                	</select></td>
+						<td>
 				        <td><input value="<%= rs.getInt("units")%>" name="units"></td>
 				        <td><input value="<%= rs.getString("department")%>" name="department"></td>
 				        <td><input value="<%= rs.getString("prerequisites")%>" name="prerequisites"></td>

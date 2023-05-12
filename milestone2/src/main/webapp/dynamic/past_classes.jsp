@@ -130,7 +130,13 @@
 				<th><input value="" name="year" size="10"></th>
 				<th><input value="" name="quarter" size="3"></th>
 				<th><input value="" name="instructor_name" size="15"></th>
-				<th><input value="" name="grade" size="15"></th>
+				<th>
+					<select name="grade">
+						<option value="LETTER">LETTER</option>
+						<option value="S/U" >S/U</option>
+						<option value="LETTER  & S/U">LETTER  & S/U</option>
+					</select>
+				</th>
 
 				<th><input type="submit" value="Insert"></th>
 			</form>
@@ -152,7 +158,14 @@
 				<td><input value="<%= rs.getInt("year")%>" name="year"></td>
 				<td><input value="<%= rs.getString("quarter")%>" name="quarter"></td>
 				<td><input value="<%= rs.getString("instructor_name")%>" name="instructor_name"></td>
-				<td><input value="<%= rs.getString("grade")%>" name="grade"></td>
+				<td>
+					<select name="grade" required>
+	                    <% String s = rs.getString("grade"); %>
+	                    <option value="LETTER" <%= s.equals("LETTER") ? "selected":"" %>>LETTER</option>
+	                    <option value="S/U" <%= s.equals("S/U") ? "selected":"" %>>S/U</option>
+	                    <option value="LETTER  & S/U" <%= s.equals("LETTER  & S/U") ? "selected":"" %>>LETTER  & S/U</option>
+                	</select></td>
+				<td>
 
 				<td>
 					<input type="submit" value="Update">
