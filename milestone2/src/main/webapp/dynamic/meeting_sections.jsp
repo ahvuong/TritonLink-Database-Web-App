@@ -75,25 +75,23 @@
 	                pstmt.executeUpdate();%>
 	                
 	                <%-- Update related tables --%><%
-	                System.out.println("test " + sectionType);
-	                if(sectionType.equals("weekly")){	 
-	                	System.out.println("Hello");
-	                PreparedStatement weekly = connection.prepareStatement(
-							"UPDATE weekly SET new_number = ?, date_time = ?, " +
-								"begin_time = ?, end_time = ?, room = ?, " +
-		                      		"building = ?, mandatory = ? " +
-										"WHERE section_id = ?");
-					
-	                weekly.setString(1,request.getParameter("new_number"));
-	                weekly.setDate(2, java.sql.Date.valueOf(request.getParameter("date_time")));
-	                weekly.setTime(3, java.sql.Time.valueOf(request.getParameter("begin_time")));
-	                weekly.setTime(4, java.sql.Time.valueOf(request.getParameter("end_time")));
-	                weekly.setString(5, request.getParameter("room"));
-	                weekly.setString(6, request.getParameter("building"));
-	                weekly.setBoolean(7, Boolean.parseBoolean(request.getParameter("mandatory")));
-	                weekly.setInt(8,Integer.parseInt(request.getParameter("section_id")));
-	                
-	                weekly.executeUpdate();
+	                if(sectionType.equals("weekly")){	
+		                PreparedStatement weekly = connection.prepareStatement(
+								"UPDATE weekly SET new_number = ?, date_time = ?, " +
+									"begin_time = ?, end_time = ?, room = ?, " +
+			                      		"building = ?, mandatory = ? " +
+											"WHERE section_id = ?");
+						
+		                weekly.setString(1,request.getParameter("new_number"));
+		                weekly.setDate(2, java.sql.Date.valueOf(request.getParameter("date_time")));
+		                weekly.setTime(3, java.sql.Time.valueOf(request.getParameter("begin_time")));
+		                weekly.setTime(4, java.sql.Time.valueOf(request.getParameter("end_time")));
+		                weekly.setString(5, request.getParameter("room"));
+		                weekly.setString(6, request.getParameter("building"));
+		                weekly.setBoolean(7, Boolean.parseBoolean(request.getParameter("mandatory")));
+		                weekly.setInt(8,Integer.parseInt(request.getParameter("section_id")));
+		                
+		                weekly.executeUpdate();
 	                }
 	                else if (sectionType.equals("review")){
 	                	PreparedStatement reviews = connection.prepareStatement(
