@@ -58,11 +58,11 @@ CREATE TABLE courses
 (
     new_number varchar(20) PRIMARY KEY,
     old_number varchar(20),
-    grade varchar(20),
     units int,
     department varchar(20), 
     prerequisites varchar(20), 
-    lab_requirements varchar(20)
+    lab_requirements varchar(20),
+    grade varchar(20)
 );
 
 CREATE TABLE classes
@@ -87,6 +87,7 @@ CREATE TABLE meeting_sections
     end_time Time,
     room varchar(20),
     building varchar(10),
+    section_type varchar(10),
     PRIMARY KEY(section_id, new_number),
     FOREIGN KEY(section_id) references classes(section_id) ON DELETE CASCADE
 );
@@ -95,13 +96,13 @@ CREATE TABLE weekly
 (
     section_id int UNIQUE,
     new_number varchar(20),
-    mandatory boolean,
-    session_type varchar(10),
     date_time Date,
     begin_time Time,
     end_time Time,
     room varchar(20),
     building varchar(10),
+    mandatory boolean,
+    session_type varchar(10),
     PRIMARY KEY(section_id, new_number),
     FOREIGN KEY(section_id) references classes(section_id) ON DELETE CASCADE
 );
