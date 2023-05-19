@@ -170,7 +170,7 @@
 	                    <option value="LETTER  & S/U" <%= s.equals("LETTER  & S/U") ? "selected":"" %>>LETTER  & S/U</option>
                 	</select></td>
 				<td>
-				<td><input value="" name="units" size="10"></td>
+				<td><input value="<%= rs.getInt("units")%>"  name="units" size="10"></td>
 
 				<td>
 					<input type="submit" value="Update">
