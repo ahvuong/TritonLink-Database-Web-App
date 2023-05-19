@@ -8,6 +8,12 @@
 	<title>Class Roster Report</title>
 </head>
 
+<style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
+
 <body>
 	<%-- Set the scripting language to Java and --%>
 	<%@ page language="java" import="java.sql.*" %>
@@ -163,21 +169,39 @@
 	</form>
 	
 	<h3>Students Enrolled In</h3>
-	<p><%=request.getParameter("class_information") %></p>
-	
-	<%-- Table --%>
-	<table>
+	<%
+	String[] info = request.getParameter("class_information").split(" ");
+	%>
+	<table style="width:100%">
 		<tr>
-			<th>student_id</th>
-			<th>ssn</th>
-            <th>first_name</th>
-            <th>middle_name</th>
-            <th>last_name</th>
-            <th>resident_status</th>
-            <th>units</th>
-			<th>grade</th>
+			<th>Course</th>
+            <th>Section ID</th>
+            <th>Class Title</th>
+			<th>Year</th>
+            <th>Quarter</th>
 		</tr>
+		<%
+		if(info.length != 0)
+		{	
+		%>	
+			<tr>
+				<td><%=info[0] %></td>
+				<td><%=info[3] %></td>
+				<td><%=info[4] %></td>
+				<td><%=info[1] %></td>
+				<td><%=info[2] %></td>
+			</tr>
+		<%
+		}
+		%>
+		<form>
 		
+		</form>
+	</table>
+	
+	<h3>Student Information</h3>
+	<%-- Table --%>
+	
 		<%
 		if(student_info != null)
 		{	
@@ -190,6 +214,19 @@
 				{
 					//System.out.println("Hello");
 				%>	
+				<table style="width:100%">
+		<tr>
+			<th>student_id</th>
+			<th>ssn</th>
+            <th>first_name</th>
+            <th>middle_name</th>
+            <th>last_name</th>
+            <th>resident_status</th>
+            <th>units</th>
+			<th>grade</th>
+		</tr>
+		
+		<form>
 					<tr>
 						<td><%=student_info.getString("student_id") %></td>
 						<td><%=student_info.getString("ssn") %></td>
@@ -201,7 +238,7 @@
 						<%
 							String grade = student_info.getString("grade");
 							
-							if(grade.equals("S/U") || grade.equals("S") || grade.equals("U"))
+							if(grade.equals("S/U"))
 							{
 								grade = "S/U";
 							}
@@ -210,12 +247,20 @@
 						%>
 						<td><%=grade %></td>
 					</tr>
+					</form>
+	</table>
 				<%
 				}
 			}
+			else
+			{
+			%>
+			<p>No Student Information</p>
+			<%
+			}
 		}
 		%>
-	</table>
+		
 
 	<%-- Close --%>
 	<%
