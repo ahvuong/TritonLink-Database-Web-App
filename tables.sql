@@ -69,13 +69,12 @@ CREATE TABLE classes
 (
     section_id serial UNIQUE,
     new_number varchar(20),
-    title varchar(20),
     year int,
     quarter varchar(20),
     instructor_name varchar(20),
     enrollment_limit int,
     PRIMARY KEY(section_id, new_number),
-    FOREIGN KEY(title) references courses(new_number) ON DELETE CASCADE
+    FOREIGN KEY(new_number) references courses(new_number) ON DELETE CASCADE
 );
 
 CREATE TABLE meeting_sections
@@ -232,8 +231,8 @@ CREATE TABLE ms_degree
 
 CREATE TABLE past_classes
 (
-    student_id serial UNIQUE,
-    section_id serial,
+    student_id serial,
+    section_id serial UNIQUE,
     title varchar(20),
     year int,
     quarter varchar(20),
