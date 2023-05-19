@@ -31,7 +31,7 @@
 	<%-- INSERT the past_classes attrs INTO the past_classes table. --%>
 	<% 
 					PreparedStatement pstmt = connection.prepareStatement(
-							("INSERT INTO past_classes VALUES (?, ?, ?, ?, ?, ?, ?, ?)"));
+							("INSERT INTO past_classes VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"));
 					
 					pstmt.setInt(1,Integer.parseInt(request.getParameter("student_id")));
 					pstmt.setInt(2,Integer.parseInt(request.getParameter("section_id")));
@@ -41,6 +41,7 @@
 					pstmt.setString(6, request.getParameter("instructor_name"));
 					pstmt.setString(7, request.getParameter("grade"));
 					pstmt.setInt(8, Integer.parseInt(request.getParameter("units")));
+					pstmt.setInt(9, Integer.parseInt(request.getParameter("grade_conversion")));
 					
 					pstmt.executeUpdate();
 					//connection.commit();
@@ -59,8 +60,8 @@
 					
 					PreparedStatement pstmt = connection.prepareStatement(
 							"UPDATE past_classes SET section_id = ?, title = ?, " +
-		                      "year = ?, quarter = ?, instructor_name = ?, " +
-								"grade = ? , units = ? WHERE section_id = ?");
+		                      "year = ?, quarter = ?, instructor_name = ?, grade = ? , " +
+								"units = ?, grade_conversion = ? WHERE section_id = ?");
 					
 					pstmt.setInt(1,Integer.parseInt(request.getParameter("section_id")));
 					pstmt.setString(2,request.getParameter("title"));
@@ -69,7 +70,8 @@
 					pstmt.setString(5, request.getParameter("instructor_name"));
 					pstmt.setString(6, request.getParameter("grade"));
 					pstmt.setInt(7, Integer.parseInt(request.getParameter("units")));
-					pstmt.setInt(8,Integer.parseInt(request.getParameter("student_id")));
+					pstmt.setInt(8, Integer.parseInt(request.getParameter("grade_conversion")));
+					pstmt.setInt(9,Integer.parseInt(request.getParameter("student_id")));
 	                  
 	                pstmt.executeUpdate();
 	                
@@ -120,6 +122,7 @@
 			<th>instructor_name</th>
 			<th>grade</th>
 			<th>units</th>
+			<th>grade_conversion</th>
 		</tr>
 
 		<%-- Insert Form Code --%>
@@ -135,12 +138,24 @@
 				<th><input value="" name="instructor_name" size="15"></th>
 				<th>
 					<select name="grade">
-						<option value="LETTER">LETTER</option>
-						<option value="S/U" >S/U</option>
-						<option value="LETTER  & S/U">LETTER  & S/U</option>
+						<option value="A+">A+</option>
+						<option value="A">A</option>
+						<option value="A-">A-</option>
+						<option value="B+">B+</option>
+						<option value="B">B</option>
+						<option value="B-">B-</option>
+						<option value="C+">C+</option>
+						<option value="C">C</option>
+						<option value="C-">C-</option>
+						<option value="D">D</option>
+						<option value="F">F</option>
+						<option value="S" >S</option>
+						<option value="U" >U</option>
 					</select>
 				</th>
-				<th><input value="" name="units" size="10"></th>
+				<th><input value="" name="units" ></th>
+				
+				<th><input value="Do Not Fill" name="grade_conversion" ></th>
 
 				<th><input type="submit" value="Insert"></th>
 			</form>
@@ -165,13 +180,67 @@
 				<td>
 					<select name="grade" required>
 	                    <% String s = rs.getString("grade"); %>
-	                    <option value="LETTER" <%= s.equals("LETTER") ? "selected":"" %>>LETTER</option>
-	                    <option value="S/U" <%= s.equals("S/U") ? "selected":"" %>>S/U</option>
-	                    <option value="LETTER  & S/U" <%= s.equals("LETTER  & S/U") ? "selected":"" %>>LETTER  & S/U</option>
+	                    <option value="A+" <%= s.equals("A+") ? "selected":"" %>>A+</option>
+	                    <option value="A" <%= s.equals("A") ? "selected":"" %>>A</option>
+	                    <option value="A-" <%= s.equals("A-") ? "selected":"" %>>A-</option>
+	                    <option value="B+" <%= s.equals("B+") ? "selected":"" %>>B+</option>
+	                    <option value="B" <%= s.equals("B") ? "selected":"" %>>B</option>
+	                    <option value="B-" <%= s.equals("B-") ? "selected":"" %>>B-</option>
+	                    <option value="C+" <%= s.equals("C+") ? "selected":"" %>>C+</option>
+	                    <option value="C" <%= s.equals("C") ? "selected":"" %>>C</option>
+	                    <option value="C-" <%= s.equals("C-") ? "selected":"" %>>C-</option>
+	                    <option value="D" <%= s.equals("D") ? "selected":"" %>>D</option>
+	                    <option value="F" <%= s.equals("F") ? "selected":"" %>>F</option>
+	                    <option value="S" <%= s.equals("S") ? "selected":"" %>>S</option>
+	                    <option value="U" <%= s.equals("U") ? "selected":"" %>>U</option>
                 	</select></td>
 				<td>
-				<td><input value="<%= rs.getInt("units")%>"  name="units" size="10"></td>
-
+				<td><input value="<%= rs.getInt("units")%>"  name="units"></td>
+				
+				<%
+				double grade = 0;
+				String gradeSU = "";
+				if(s.equals("S") || s.equals("U"))
+				{
+					gradeSU = s;
+				%>
+				<td><input value="<%=gradeSU %>" name="grade_conversion"></td>
+				<%
+				}
+				else 
+				{
+					if (s.equals("A+"))
+						grade = 4.0;
+					else if (s.equals("A"))
+						grade = 4.0;
+					else if (s.equals("A-"))
+						grade = 3.7;
+					else if (s.equals("B+"))
+						grade = 3.3;
+					else if (s.equals("B"))
+						grade = 3.0;
+					else if (s.equals("B-"))
+						grade = 2.7;
+					else if (s.equals("C+"))
+						grade = 2.3;
+					else if (s.equals("C"))
+						grade = 2.0;
+					else if (s.equals("C-"))
+						grade = 1.7;
+					else if (s.equals("D"))
+						grade = 1.0;
+					else
+						grade = 0.0;
+					
+					System.out.println(s);
+					System.out.println(grade);
+					System.out.println(gradeSU);
+					%>
+					<td><input value="<%=grade %>" name="grade_conversion" size="10"></td>
+					<%
+				}
+				%>
+				
 				<td>
 					<input type="submit" value="Update">
 				</td>

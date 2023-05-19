@@ -6,9 +6,19 @@ INSERT INTO undergraduate(student_id, major, minor, college)
 VALUES ('1', 'DSC', 'Math', 'Muir');
 
 INSERT INTO students(student_id, ssn, first_name, middle_name, last_name, resident_status, enrollment) 
+VALUES ('2', '2', 'Alex', 'Al', 'T', 'California Resident', 'Yes');
+INSERT INTO undergraduate(student_id, major, minor, college) 
+VALUES ('2', 'DSC', 'Math', 'Muir');
+
+INSERT INTO students(student_id, ssn, first_name, middle_name, last_name, resident_status, enrollment) 
 VALUES ('3', '3', 'Daniel', 'Dan', 'F', 'California Resident', 'Yes');
 INSERT INTO undergraduate(student_id, college, major, minor) 
 VALUES ('3', 'CSE', 'Math', 'Marshall');
+
+INSERT INTO students(student_id, ssn, first_name, middle_name, last_name, resident_status, enrollment) 
+VALUES ('4', '4', 'Helen', 'He', 'V', 'California Resident', 'Yes');
+INSERT INTO undergraduate(student_id, major, minor, college) 
+VALUES ('4', 'DSC', 'Math', 'Muir');
 
 INSERT INTO students(student_id, ssn, first_name, middle_name, last_name, resident_status, enrollment) 
 VALUES ('5', '5', 'Julie', '', 'C', 'Non-California Resident', 'No');
@@ -211,25 +221,25 @@ VALUES('8', '18', 'DSC104', '2022', 'SP', '4', 'LETTER');
 
 -----------------Classes Taken In The Past Info-----------------
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units) 
-VALUES('1', '2', 'CSE132A', '2020', 'WI', 'Flo_Rence', 'LETTER', '4');
+VALUES('1', '2', 'CSE132A', '2020', 'WI', 'Flo_Rence', 'A', '4');
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units) 
-VALUES('2', '3', 'CSE142', '2021', 'FA', 'Flo_Rence', 'S/U', '4');
+VALUES('2', '3', 'CSE142', '2021', 'FA', 'Flo_Rence', 'A-', '4');
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units) 
-VALUES('3', '4', 'CSE142', '2022', 'FA', 'Flo_Rence', 'S/U', '4');
+VALUES('3', '4', 'CSE142', '2022', 'FA', 'Flo_Rence', 'B+', '4');
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units) 
-VALUES('4', '6', 'DSC120', '2021', 'SP', 'Robert_Clarkson', 'LETTER', '4');
+VALUES('4', '6', 'DSC120', '2021', 'SP', 'Robert_Clarkson', 'B', '4');
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units) 
-VALUES('5', '7', 'ECE108', '2021', 'WI', 'Taylor_Swan', 'S/U', '4');
+VALUES('5', '7', 'ECE108', '2021', 'WI', 'Taylor_Swan', 'S', '4');
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units) 
-VALUES('6', '9', 'MAE180A', '2021', 'FA', 'Ada_Riz', 'S/U', '4');
+VALUES('6', '9', 'MAE180A', '2021', 'FA', 'Ada_Riz', 'U', '4');
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units) 
-VALUES('7', '10', 'MAE180A', '2020', 'SP', 'Ada_Riz', 'S/U', '4');
+VALUES('7', '10', 'MAE180A', '2020', 'SP', 'Ada_Riz', 'S', '4');
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units) 
-VALUES('8', '12', 'SE110B', '2021', 'WI', 'Tim_Asreal', 'LETTER', '4');
+VALUES('8', '12', 'SE110B', '2021', 'WI', 'Tim_Asreal', 'A+', '4');
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units) 
-VALUES('9', '14', 'COGS101A', '2020', 'FA', 'Justin_Smith', 'LETTER', '4');
+VALUES('9', '14', 'COGS101A', '2020', 'FA', 'Justin_Smith', 'C', '4');
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units) 
-VALUES('10', '15', 'DSC104', '2022', 'FA', 'Robert_Clarkson', 'LETTER', '4');
+VALUES('10', '15', 'DSC104', '2022', 'FA', 'Robert_Clarkson', 'B-', '4');
 
 -----------------Weekly Meeting Info-----------------
 DO
