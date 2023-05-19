@@ -240,6 +240,7 @@ CREATE TABLE past_classes
     instructor_name varchar(20),
     grade varchar(20),
     units int,
+    grade_conversion int,
     PRIMARY KEY(student_id, section_id),
     FOREIGN KEY(section_id) references classes(section_id) ON DELETE CASCADE,
     FOREIGN KEY(student_id) references students(student_id) ON DELETE CASCADE,
