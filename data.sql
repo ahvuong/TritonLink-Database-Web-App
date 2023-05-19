@@ -205,7 +205,9 @@ VALUES('18', 'DSC104', 'Data_Management', '2022', 'SP', 'Robert_Clarkson', '100'
 INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
 VALUES('1', '1', 'CSE132B', '2022', 'SP', '4', 'LETTER');
 INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
-VALUES('2', '5', 'DSC120', '2022', 'SP', '4', 'LETTER');
+VALUES('2', '1', 'CSE132B', '2022', 'SP', '4', 'LETTER');
+INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
+VALUES('1', '5', 'DSC120', '2022', 'SP', '4', 'LETTER');
 INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
 VALUES('3', '8', 'DSC120', '2022', 'SP', '4', 'S/U');
 INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 

@@ -210,24 +210,24 @@ table, th, td {
 			
 			if(student_info.isBeforeFirst())
 			{
+				
 				//System.out.println("Test1");
 				while(student_info.next())
 				{
 					//System.out.println("Hello");
 				%>	
-				<table style="width:100%">
-		<tr>
-			<th>student_id</th>
-			<th>ssn</th>
-            <th>first_name</th>
-            <th>middle_name</th>
-            <th>last_name</th>
-            <th>resident_status</th>
-            <th>units</th>
-			<th>grade</th>
-		</tr>
-		
-		<form>
+	<table style="width:100%">
+			<tr>
+				<th>student_id</th>
+				<th>ssn</th>
+	            <th>first_name</th>
+	            <th>middle_name</th>
+	            <th>last_name</th>
+	            <th>resident_status</th>
+	            <th>units</th>
+				<th>grade</th>
+			</tr>
+			<form>
 					<tr>
 						<td><%=student_info.getString("student_id") %></td>
 						<td><%=student_info.getString("ssn") %></td>
@@ -248,7 +248,7 @@ table, th, td {
 						%>
 						<td><%=grade %></td>
 					</tr>
-					</form>
+			</form>
 	</table>
 				<%
 				}
