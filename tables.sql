@@ -69,6 +69,7 @@ CREATE TABLE classes
 (
     section_id serial UNIQUE,
     new_number varchar(20),
+    title varchar(20),
     year int,
     quarter varchar(20),
     instructor_name varchar(20),

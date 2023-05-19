@@ -171,7 +171,7 @@
 					<form action="classes.jsp" method="get">
 				        <input type="hidden" value="update" name="action">
 				        <td><input value="<%= rs.getInt("section_id")%>" name="section_id"></td>
-				        <td><input value="<%= rs.getInt("new_number")%>" name="new_number"></td>
+				        <td><input value="<%= rs.getString("new_number")%>" name="new_number"></td>
 				        <td><input value="<%= rs.getString("title")%>" name="title"></td>
 				        <td><input value="<%= rs.getInt("year")%>" name="year"></td>
 				        <td><input value="<%= rs.getString("quarter")%>" name="quarter"></td>
