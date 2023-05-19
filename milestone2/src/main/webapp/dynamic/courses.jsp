@@ -183,7 +183,7 @@
 			                    <% String s = rs.getString("grade"); %>
 			                    <option value="LETTER" <%= s.equals("LETTER") ? "selected":"" %>>LETTER</option>
 			                    <option value="S/U" <%= s.equals("S/U") ? "selected":"" %>>S/U</option>
-			                    <option value="LETTER  & S/U" <%= s.equals("LETTER  & S/U") ? "selected":"" %>>LETTER  & S/U</option>
+			                    <option value="LETTER & S/U" <%= s.equals("LETTER & S/U") ? "selected":"" %>>LETTER & S/U</option>
 		                	</select></td>
 						<td>
 				        
