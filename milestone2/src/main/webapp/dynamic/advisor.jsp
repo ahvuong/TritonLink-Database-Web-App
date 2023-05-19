@@ -5,7 +5,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Advisor Home Page</title>
+	<title>Advisor home page</title>
 </head>
 
 <body>
@@ -21,7 +21,7 @@
 				
 				// Make a connection to the Oracle datasource
 				Connection connection = DriverManager.getConnection
-				("jdbc:postgresql:tables?user=postgres&password=trungtinvo");
+				("jdbc:postgresql:tables?user=postgres&password=ahvuong");
 				%>
 	<%-- Check if an insertion is requested --%>
 	<% String action = request.getParameter("action");
@@ -156,5 +156,5 @@
 			}
 			%>
 </body>
-
+<a href="../index.html">Go to Home Page</a>
 </html>

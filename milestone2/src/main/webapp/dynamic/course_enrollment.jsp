@@ -200,5 +200,5 @@
 			}
 			%>
 </body>
-
+<a href="../index.html">Go to Home Page</a>
 </html>
