@@ -239,7 +239,7 @@ table, th, td {
 						<%
 							String grade = student_info.getString("grade");
 							
-							if(grade.equals("S/U"))
+							if(grade.equals("S/U") || grade.equals("U") || grade.equals("S"))
 							{
 								grade = "S/U";
 							}

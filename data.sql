@@ -3,67 +3,57 @@
 INSERT INTO students(student_id, ssn, first_name, middle_name, last_name, resident_status, enrollment) 
 VALUES ('1', '1', 'Benjamin', 'Ben', 'B', 'California Resident', 'Yes');
 INSERT INTO undergraduate(student_id, major, minor, college) 
-VALUES ('1', 'DS', '', 'Marshall');
-
-INSERT INTO students(student_id, ssn, first_name, middle_name, last_name, resident_status, enrollment) 
-VALUES ('2', '2', 'Kristen', 'Ris', 'W', 'Non-California Resident', 'No');
-INSERT INTO undergraduate(student_id, college, major, minor) 
-VALUES ('2', 'DS', 'Math', 'Muir');
+VALUES ('1', 'DSC', 'Math', 'Muir');
 
 INSERT INTO students(student_id, ssn, first_name, middle_name, last_name, resident_status, enrollment) 
 VALUES ('3', '3', 'Daniel', 'Dan', 'F', 'California Resident', 'Yes');
 INSERT INTO undergraduate(student_id, college, major, minor) 
-VALUES ('3', 'CS', 'Math', 'Warren');
-
-INSERT INTO students(student_id, ssn, first_name, middle_name, last_name, resident_status, enrollment) 
-VALUES ('4', '4', 'Claire', 'Cla', 'J', 'International Student', 'Yes');
-INSERT INTO undergraduate(student_id, college, major, minor) 
-VALUES ('4', 'CS', 'Math', 'Marshall');
+VALUES ('3', 'CSE', 'Math', 'Marshall');
 
 INSERT INTO students(student_id, ssn, first_name, middle_name, last_name, resident_status, enrollment) 
 VALUES ('5', '5', 'Julie', '', 'C', 'Non-California Resident', 'No');
 INSERT INTO undergraduate(student_id, college, major, minor) 
-VALUES ('5', 'CS', '', 'Revell');
+VALUES ('5', 'CSE', '', 'Revell');
 
 INSERT INTO students(student_id, ssn, first_name, middle_name, last_name, resident_status, enrollment) 
 VALUES ('6', '6', 'Kevin', '', 'L', 'California Resident', 'Yes');
 INSERT INTO undergraduate(student_id, college, major, minor) 
-VALUES ('6', 'ME', '', 'Revell');
+VALUES ('6', 'MAE', '', 'Revell');
 
 INSERT INTO students(student_id, ssn, first_name, middle_name, last_name, resident_status, enrollment) 
 VALUES ('7', '7', 'Michael', '', 'B', 'Non-California Resident', 'Yes');
 INSERT INTO undergraduate(student_id, college, major, minor) 
-VALUES ('7', 'ME', '', 'Warren');
+VALUES ('7', 'SE', '', 'Warren');
 
 INSERT INTO students(student_id, ssn, first_name, middle_name, last_name, resident_status, enrollment) 
 VALUES ('8', '8', 'Joseph', 'Jo', 'J', 'California Resident', 'Yes');
 INSERT INTO undergraduate(student_id, college, major, minor) 
-VALUES ('8', 'ME', 'COGS', 'Marshall');
+VALUES ('8', 'MAE', 'COGS', 'Marshall');
 
 INSERT INTO students(student_id, ssn, first_name, middle_name, last_name, resident_status, enrollment)
 VALUES ('9', '9', 'Devin', 'De', 'P', 'International Student', 'No');
 INSERT INTO undergraduate(student_id, college, major, minor) 
-VALUES ('9', 'ME', '', 'Warren');
+VALUES ('9', 'MAE', '', 'Warren');
 
 INSERT INTO students(student_id, ssn, first_name, middle_name, last_name, resident_status, enrollment) 
 VALUES ('10', '10', 'Logan', '', 'F', 'Non-California Resident', 'Yes');
 INSERT INTO undergraduate(student_id, college, major, minor) 
-VALUES ('10', 'ME', '', 'Muir');
+VALUES ('10', 'DSC', '', 'Muir');
 
 INSERT INTO students(student_id, ssn, first_name, middle_name, last_name, resident_status, enrollment) 
 VALUES ('11', '11', 'Vikram', 'Vi', 'N', 'California Resident', 'No');
 INSERT INTO undergraduate(student_id, college, major, minor) 
-VALUES ('11', 'CE', '', 'Warren');
+VALUES ('11', 'ECE', '', 'Warren');
 
 INSERT INTO students(student_id, ssn, first_name, middle_name, last_name, resident_status, enrollment) 
 VALUES ('12', '12', 'Rachel', 'Ra', 'Z', 'International Student', 'Yes');
 INSERT INTO undergraduate(student_id, college, major, minor) 
-VALUES ('12', 'CE', 'Math', 'Marshall');
+VALUES ('12', 'ECE', 'Math', 'Marshall');
 
 INSERT INTO students(student_id, ssn, first_name, middle_name, last_name, resident_status, enrollment) 
 VALUES ('13', '13', 'Zach', 'Za', 'M', 'Non-California Resident', 'Yes');
 INSERT INTO undergraduate(student_id, college, major, minor) 
-VALUES ('13', 'CE', 'COGS', 'Warren');
+VALUES ('13', 'ECE', 'COGS', 'Warren');
 
 INSERT INTO students(student_id, ssn, first_name, middle_name, last_name, resident_status, enrollment) 
 VALUES ('14', '14', 'Justin', 'Ju', 'H', 'California Resident', 'Yes');
@@ -85,25 +75,25 @@ INSERT INTO ms_student(student_id, department) VALUES ('16', 'CE');
 INSERT INTO students(student_id, ssn, first_name, middle_name, last_name, resident_status, enrollment) 
 VALUES ('17', '17', 'Nelson', 'Ne', 'H', 'California Resident', 'Yes');
 INSERT INTO graduate(student_id, department) 
-VALUES ('17', 'CSE');
+VALUES ('17', 'MAE');
 INSERT INTO ms_student(student_id, department) VALUES ('17', 'CSE');
 
 INSERT INTO students(student_id, ssn, first_name, middle_name, last_name, resident_status, enrollment) 
 VALUES ('18', '18', 'Andrew', 'An', 'P', 'Non-California Resident', 'Yes');
 INSERT INTO graduate(student_id, department) 
-VALUES ('18', 'CSE');
+VALUES ('18', 'ECE');
 INSERT INTO ms_student(student_id, department) VALUES ('18', 'ME');
 
 INSERT INTO students(student_id, ssn, first_name, middle_name, last_name, resident_status, enrollment) 
 VALUES ('19', '19', 'Nathan', '', 'S', 'California Resident', 'Yes');
 INSERT INTO graduate(student_id, department) 
-VALUES ('19', 'CSE');
+VALUES ('19', 'SE');
 INSERT INTO ms_student(student_id, department) VALUES ('19', 'CE');
 
 INSERT INTO students(student_id, ssn, first_name, middle_name, last_name, resident_status, enrollment) 
 VALUES ('20', '20', 'John', 'Jo', 'H', 'International Student', 'No');
 INSERT INTO graduate(student_id, department) 
-VALUES ('20', 'CSE');
+VALUES ('20', 'SE');
 INSERT INTO ms_student(student_id, department) VALUES ('20', 'DS');
 
 INSERT INTO students(student_id, ssn, first_name, middle_name, last_name, resident_status, enrollment) 
@@ -115,7 +105,7 @@ INSERT INTO ms_student(student_id, department) VALUES ('21', 'DS');
 INSERT INTO students(student_id, ssn, first_name, middle_name, last_name, resident_status, enrollment) 
 VALUES ('22', '22', 'Tim', 'Ti', 'K', 'International Student', 'Yes');
 INSERT INTO graduate(student_id, department) 
-VALUES ('22', 'CSE');
+VALUES ('22', 'ECE');
 INSERT INTO ms_student(student_id, department) VALUES ('22', 'COGS');
 
 
@@ -123,275 +113,123 @@ INSERT INTO ms_student(student_id, department) VALUES ('22', 'COGS');
 INSERT INTO faculty(faculty_name, member_name, member_title) 
 VALUES ('COGS', 'Justin_Smith', 'Associate Professor');
 INSERT INTO faculty(faculty_name, member_name, member_title)
-VALUES ('CS', 'Flo_Rence', 'Professor');
+VALUES ('CSE', 'Flo_Rence', 'Professor');
 INSERT INTO faculty(faculty_name, member_name, member_title)
-VALUES ('ME', 'Ada_Riz', 'Professor');
+VALUES ('MAE', 'Ada_Riz', 'Professor');
 INSERT INTO faculty(faculty_name, member_name, member_title)
-VALUES ('CE', 'Taylor_Swan', 'Professor');
+VALUES ('ECE', 'Taylor_Swan', 'Professor');
 INSERT INTO faculty(faculty_name, member_name, member_title)
-VALUES ('DS', 'Robert_Clarkson', 'Professor');
+VALUES ('DSC', 'Robert_Clarkson', 'Professor');
 INSERT INTO faculty(faculty_name, member_name, member_title)
-VALUES ('EE', 'Adam_Cao', 'Professor');
+VALUES ('NANO', 'Adam_Cao', 'Professor');
 INSERT INTO faculty(faculty_name, member_name, member_title)
-VALUES ('CEE', 'Tim_Asreal', 'Professor');
+VALUES ('SE', 'Tim_Asreal', 'Professor');
 
 -----------------Course Info-----------------
 INSERT INTO courses(new_number, old_number, units, department, prerequisites, lab_requirements, grade) 
 VALUES('CSE132A', 'CSE132', 4, 'CSE', 'BOTH', 'Not_Required', 'LETTER');
+INSERT INTO courses(new_number, old_number, units, department, prerequisites, lab_requirements, grade) 
+VALUES('CSE132B', 'CSE132', 4, 'CSE', 'BOTH', 'Not_Required', 'LETTER');
 INSERT INTO courses(new_number, old_number, units, department, prerequisites, lab_requirements, grade)  
 VALUES('CSE142', 'CSE143', 4, 'CSE', 'BOTH', 'Required', 'S/U');
 INSERT INTO courses(new_number, old_number, units, department, prerequisites, lab_requirements, grade)  
-VALUES('CE132A', 'CE132', 4, 'CE', 'BOTH', 'Not_Required', 'LETTER');
+VALUES('DSC120', 'DS120A', 4, 'DSC', 'BOTH', 'Required', 'LETTER');
 INSERT INTO courses(new_number, old_number, units, department, prerequisites, lab_requirements, grade)  
-VALUES('DS130', 'DS130A', 4, 'DS', 'BOTH', 'Required', 'S/U');
+VALUES('ECE108', 'ECE108A', 4, 'ECE', 'BOTH', 'Not_Required', 'S/U');
 INSERT INTO courses(new_number, old_number, units, department, prerequisites, lab_requirements, grade)  
-VALUES('CE108A', 'CE108', 4, 'CE', 'BOTH', 'Not_Required', 'S/U');
+VALUES('COGS101A', 'COGS101', 2, 'COGS', 'BOTH', 'Required', 'LETTER');
 INSERT INTO courses(new_number, old_number, units, department, prerequisites, lab_requirements, grade)  
-VALUES('COGS101', 'COGS103', 2, 'COGS', 'BOTH', 'Required', 'LETTER');
+VALUES('DSC104', 'DS105', 4, 'DSC', 'BOTH', 'Required', 'LETTER');
 INSERT INTO courses(new_number, old_number, units, department, prerequisites, lab_requirements, grade)  
-VALUES('DS120', 'DS125', 4, 'DS', 'BOTH', 'Not_Required', 'LETTER');
+VALUES('MAE180A', 'MAE180', 4, 'MAE', 'BOTH', 'Required', 'S/U');
 INSERT INTO courses(new_number, old_number, units, department, prerequisites, lab_requirements, grade)  
-VALUES('MAE180A', 'MAE180', 4, 'ME', 'BOTH', 'Required', 'S/U');
+VALUES('SE110B', 'SE110', 4, 'SE', 'BOTH', 'Required', 'LETTER');
 INSERT INTO courses(new_number, old_number, units, department, prerequisites, lab_requirements, grade)  
-VALUES('MAE190', 'MAE189', 4, 'ME', 'BOTH', 'Not_Required', 'LETTER');
+VALUES('NANO119', 'NANO119A', 1, 'NANO', 'BOTH', 'Not_Required', 'LETTER');
 
 -----------------Class Info-----------------
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('1', 'CSE132A', 'Database', '2022', 'FA', 'Robert_Clarkson', '1');
+VALUES('1', 'CSE132B', 'Database', '2022', 'SP', 'Flo_Rence', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('2', 'CSE132A', 'Database', '2022', 'WI', 'Robert_Clarkson', '1');
+VALUES('2', 'CSE132A', 'Database', '2020', 'WI', 'Flo_Rence', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('3', 'CSE142', 'Database', '2014', 'SP', 'Robert_Clarkson', '1');
+VALUES('3', 'CSE142', 'CompArch', '2021', 'FA', 'Flo_Rence', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('4', 'CSE142', 'Database', '2014', 'SP', 'Robert_Clarkson', '1');
+VALUES('4', 'CSE142', 'CompArch', '2022', 'FA', 'Flo_Rence', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('5', 'CSE132A', 'Database', '2014', 'SP', 'Robert_Clarkson', '1');
-
+VALUES('5', 'DSC120', 'Data_Analysis', '2022', 'SP', 'Robert_Clarkson', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('6', 'CSE132A', 'Database', '2014', 'SP', 'Robert_Clarkson', '1');
+VALUES('6', 'DSC120', 'Data_Analysis', '2021', 'SP', 'Robert_Clarkson', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('7', 'CSE132A', 'Database', '2014', 'SP', 'Robert_Clarkson', '1');
+VALUES('7', 'ECE108', 'DigCir', '2021', 'WI', 'Taylor_Swan', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('8', 'CSE132A', 'Database', '2014', 'SP', 'Robert_Clarkson', '1');
-
-INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('8', 'CSE132A', 'Database', '2014', 'SP', 'Robert_Clarkson', '1');
-INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('9', 'CSE132A', 'Database', '2014', 'SP', 'Robert_Clarkson', '1');
-INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('10', 'CSE132A', 'Database', '2014', 'SP', 'Robert_Clarkson', '1');
+VALUES('8', 'ECE108', 'DigCir', '2022', 'WI', 'Taylor_Swan', '100');
 
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('11', 'CSE132A', 'Database', '2014', 'SP', 'Robert_Clarkson', '1');
+VALUES('8', 'MAE180A', 'Spacecraft', '2022', 'SP', 'Ada_Riz', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('12', 'CSE132A', 'Database', '2014', 'SP', 'Robert_Clarkson', '1');
-
+VALUES('9', 'MAE180A', 'Spacecraft', '2021', 'FA', 'Ada_Riz', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('13', 'CSE132A', 'Database', '2014', 'SP', 'Robert_Clarkson', '1');
-INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('14', 'CSE132A', 'Database', '2014', 'SP', 'Robert_Clarkson', '1');
-INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('15', 'CSE132A', 'Database', '2014', 'SP', 'Robert_Clarkson', '1');
+VALUES('10', 'MAE180A', 'Spacecraft', '2020', 'SP', 'Ada_Riz', '100');
 
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('16', 'CSE132A', 'Database', '2014', 'SP', 'Robert_Clarkson', '1');
+VALUES('11', 'SE110B', 'SolidMech', '2022', 'SP', 'Tim_Asreal', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('17', 'CSE132A', 'Database', '2014', 'SP', 'Robert_Clarkson', '1');
+VALUES('12', 'SE110B', 'SolidMech', '2021', 'WI', 'Tim_Asreal', '100');
 
------------------Current Quarter Section Info-----------------
-INSERT INTO Section(section_num, class_id, section_limit) VALUES('1', 26, 100);
-INSERT INTO Section(section_num, class_id, section_limit) VALUES('2', 20, 100);
-INSERT INTO Section(section_num, class_id, section_limit) VALUES('3', 15, 100);
-INSERT INTO Section(section_num, class_id, section_limit) VALUES('4', 30, 100);
-INSERT INTO Section(section_num, class_id, section_limit) VALUES('5', 20, 100);
-INSERT INTO Section(section_num, class_id, section_limit) VALUES('6', 7, 100);
-INSERT INTO Section(section_num, class_id, section_limit) VALUES('7', 34, 100);
-INSERT INTO Section(section_num, class_id, section_limit) VALUES('8', 26, 100);
-INSERT INTO Section(section_num, class_id, section_limit) VALUES('9', 20, 100);
-INSERT INTO Section(section_num, class_id, section_limit) VALUES('10', 4, 100);
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('13', 'COGS101A', 'SenNPer', '2022', 'SP', 'Justin_Smith', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('14', 'COGS101A', 'SenNPer', '2020', 'FA', 'Justin_Smith', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('15', 'DSC104', 'Data_Management', '2021', 'FA', 'Robert_Clarkson', '100');
 
------------------Current Quarter Enrollment Info-----------------
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES('16', 2, 4, 'LETTER');
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES('17', 9, 4, 'S/U');
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES('18', 5, 4, 'LETTER');
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES('19', 2, 4, 'LETTER');
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES('20', 9, 4, 'LETTER');
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES('21', 5, 4, 'S/U');
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES('22', 3, 4, 'LETTER');
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES('16', 3, 4, 'LETTER');
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES('17', 3, 4, 'LETTER');
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES('1', 10, 4, 'S/U');
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES('5', 10, 4, 'LETTER');
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES('3', 10, 4, 'LETTER');
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES('7', 1, 4, 'LETTER');
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES('8', 1, 4, 'LETTER');
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES('9', 8, 4, 'LETTER');
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES('4', 6, 4, 'LETTER');
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES('12', 4, 4, 'LETTER');
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES('13', 7, 4, 'S/U');
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES('14', 4, 4, 'LETTER');
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES('15', 7, 4, 'LETTER');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('16', 'NANO119', 'SysDesign', '2022', 'SP', 'Adam_Cao', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('17', 'NANO119', 'SysDesign', '2022', 'SP', 'Adam_Cao', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('18', 'DSC104', 'Data_Management', '2022', 'SP', 'Robert_Clarkson', '100');
 
------------------Past Classes Info-----------------
-INSERT INTO Section(section_num, class_id, section_limit) VALUES('CSE8A_FA14_SECTION_1', 1, 100); -- section.id = 11
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES ('1', 11, 4, 'LETTER');  -- sectionenrollment.id = 21
-INSERT INTO ClassesTaken(student_id, sectionenrollment_id, grade_received) VALUES ('1', 21, 'A-');
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES ('3', 11, 4, 'LETTER');  -- sectionenrollment.id = 22
-INSERT INTO ClassesTaken(student_id, sectionenrollment_id, grade_received) VALUES ('3', 22, 'B+');
+-----------------Course Enrollment Info-----------------
+INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
+VALUES('1', '1', 'CSE132B', '2022', 'SP', '4', 'LETTER');
+INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
+VALUES('2', '5', 'DSC120', '2022', 'SP', '4', 'LETTER');
+INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
+VALUES('3', '8', 'DSC120', '2022', 'SP', '4', 'S/U');
+INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
+VALUES('4', '11', 'SE110B', '2022', 'SP', '4', 'LETTER');
+INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
+VALUES('5', '13', 'COGS101A', '2022', 'SP', '4', 'LETTER');
+INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
+VALUES('6', '16', 'NANO119', '2022', 'SP', '1', 'LETTER');
+INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
+VALUES('7', '17', 'NANO119', '2022', 'SP', '1', 'LETTER');
+INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
+VALUES('8', '18', 'DSC104', '2022', 'SP', '4', 'LETTER');
 
-INSERT INTO Section(section_num, class_id, section_limit) VALUES('CSE8A_SP15_SECTION_1', 2, 100); -- section.id = 12
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES ('2', 12, 4, 'LETTER');  -- sectionenrollment.id = 23
-INSERT INTO ClassesTaken(student_id, sectionenrollment_id, grade_received) VALUES ('2', 23, 'C-');
-
-INSERT INTO Section(section_num, class_id, section_limit) VALUES('CSE8A_FA15_SECTION_1', 3, 100); -- section.id = 13
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES ('4', 13, 4, 'LETTER');  -- sectionenrollment.id = 24
-INSERT INTO ClassesTaken(student_id, sectionenrollment_id, grade_received) VALUES ('4', 24, 'A-');
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES ('5', 13, 4, 'LETTER');  -- sectionenrollment.id = 25
-INSERT INTO ClassesTaken(student_id, sectionenrollment_id, grade_received) VALUES ('5', 25, 'B');
-
-INSERT INTO Section(section_num, class_id, section_limit) VALUES('CSE105_WI15_SECTION_1', 6, 100); -- section.id = 14
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES ('1', 14, 4, 'LETTER');  -- sectionenrollment.id = 26
-INSERT INTO ClassesTaken(student_id, sectionenrollment_id, grade_received) VALUES ('1', 26, 'A-');
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES ('5', 14, 4, 'LETTER');  -- sectionenrollment.id = 27
-INSERT INTO ClassesTaken(student_id, sectionenrollment_id, grade_received) VALUES ('5', 27, 'B+');
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES ('4', 14, 4, 'LETTER');  -- sectionenrollment.id = 28
-INSERT INTO ClassesTaken(student_id, sectionenrollment_id, grade_received) VALUES ('4', 28, 'C');
-
-INSERT INTO Section(section_num, class_id, section_limit) VALUES('CSE250A_FA14_SECTION_1', 9, 100); -- section.id = 15
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES ('16', 15, 4, 'LETTER');  -- sectionenrollment.id = 29
-INSERT INTO ClassesTaken(student_id, sectionenrollment_id, grade_received) VALUES ('16', 29, 'C');
-
-INSERT INTO Section(section_num, class_id, section_limit) VALUES('CSE250A_FA15_SECTION_1', 10, 100); -- section.id = 16
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES ('22', 16, 4, 'LETTER');  -- sectionenrollment.id = 30
-INSERT INTO ClassesTaken(student_id, sectionenrollment_id, grade_received) VALUES ('2', 30, 'B+');
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES ('18', 16, 4, 'LETTER');  -- sectionenrollment.id = 31
-INSERT INTO ClassesTaken(student_id, sectionenrollment_id, grade_received) VALUES ('18', 31, 'D');
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES ('19', 16, 4, 'LETTER');  -- sectionenrollment.id = 32
-INSERT INTO ClassesTaken(student_id, sectionenrollment_id, grade_received) VALUES ('19', 32, 'F');
-
-INSERT INTO Section(section_num, class_id, section_limit) VALUES('CSE250B_WI15_SECTION_1', 12, 100); -- section.id = 17
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES ('17', 17, 4, 'LETTER');  -- sectionenrollment.id = 33
-INSERT INTO ClassesTaken(student_id, sectionenrollment_id, grade_received) VALUES ('17', 33, 'A');
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES ('19', 17, 4, 'LETTER');  -- sectionenrollment.id = 34
-INSERT INTO ClassesTaken(student_id, sectionenrollment_id, grade_received) VALUES ('19', 34, 'A');
-
-INSERT INTO Section(section_num, class_id, section_limit) VALUES('CSE255_FA15_SECTION_1', 14, 100); -- section.id = 18
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES ('20', 18, 4, 'LETTER');  -- sectionenrollment.id = 35
-INSERT INTO ClassesTaken(student_id, sectionenrollment_id, grade_received) VALUES ('20', 35, 'B-');
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES ('18', 18, 4, 'LETTER');  -- sectionenrollment.id = 36
-INSERT INTO ClassesTaken(student_id, sectionenrollment_id, grade_received) VALUES ('18', 36, 'B');
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES ('21', 18, 4, 'LETTER');  -- sectionenrollment.id = 37
-INSERT INTO ClassesTaken(student_id, sectionenrollment_id, grade_received) VALUES ('21', 37, 'F');
-
-INSERT INTO Section(section_num, class_id, section_limit) VALUES('CSE232A_FA15_SECTION_1', 17, 100); -- section.id = 19
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES ('17', 19, 4, 'LETTER');  -- sectionenrollment.id = 38
-INSERT INTO ClassesTaken(student_id, sectionenrollment_id, grade_received) VALUES ('17', 38, 'A-');
-
-INSERT INTO Section(section_num, class_id, section_limit) VALUES('CSE221_SP15_SECTION_1', 19, 100); -- section.id = 20
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES ('22', 20, 4, 'LETTER');  -- sectionenrollment.id = 39
-INSERT INTO ClassesTaken(student_id, sectionenrollment_id, grade_received) VALUES ('22', 39, 'A');
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES ('20', 20, 4, 'LETTER');  -- sectionenrollment.id = 40
-INSERT INTO ClassesTaken(student_id, sectionenrollment_id, grade_received) VALUES ('20', 40, 'A');
-
-INSERT INTO Section(section_num, class_id, section_limit) VALUES('MAE107_SP15_SECTION_1', 22, 100); -- section.id = 21
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES ('10', 21, 4, 'LETTER');  -- sectionenrollment.id = 41
-INSERT INTO ClassesTaken(student_id, sectionenrollment_id, grade_received) VALUES ('10', 41, 'B+');
-
-INSERT INTO Section(section_num, class_id, section_limit) VALUES('MAE108_FA14_SECTION_1', 24, 100); -- section.id = 22
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES ('8', 22, 2, 'LETTER');  -- sectionenrollment.id = 42
-INSERT INTO ClassesTaken(student_id, sectionenrollment_id, grade_received) VALUES ('8', 42, 'B-');
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES ('7', 22, 2, 'LETTER');  -- sectionenrollment.id = 43
-INSERT INTO ClassesTaken(student_id, sectionenrollment_id, grade_received) VALUES ('7', 43, 'A-');
-
-INSERT INTO Section(section_num, class_id, section_limit) VALUES('MAE108_WI15_SECTION_1', 25, 100); -- section.id = 23
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES ('6', 23, 2, 'LETTER');  -- sectionenrollment.id = 44
-INSERT INTO ClassesTaken(student_id, sectionenrollment_id, grade_received) VALUES ('6', 44, 'B');
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES ('10', 23, 2, 'LETTER');  -- sectionenrollment.id = 45
-INSERT INTO ClassesTaken(student_id, sectionenrollment_id, grade_received) VALUES ('10', 45, 'B+');
-
-INSERT INTO Section(section_num, class_id, section_limit) VALUES('PHIL10_FA15_SECTION_1', 28, 100); -- section.id = 24
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES ('11', 24, 4, 'LETTER');  -- sectionenrollment.id = 46
-INSERT INTO ClassesTaken(student_id, sectionenrollment_id, grade_received) VALUES ('11', 46, 'A');
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES ('12', 24, 4, 'LETTER');  -- sectionenrollment.id = 47
-INSERT INTO ClassesTaken(student_id, sectionenrollment_id, grade_received) VALUES ('12', 47, 'A');
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES ('13', 24, 4, 'LETTER');  -- sectionenrollment.id = 48
-INSERT INTO ClassesTaken(student_id, sectionenrollment_id, grade_received) VALUES ('13', 48, 'C-');
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES ('14', 24, 4, 'LETTER');  -- sectionenrollment.id = 49
-INSERT INTO ClassesTaken(student_id, sectionenrollment_id, grade_received) VALUES ('14', 49, 'C+');
-
-INSERT INTO Section(section_num, class_id, section_limit) VALUES('PHIL165_SP15_SECTION_1', 32, 100); -- section.id = 25
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES ('15', 25, 2, 'LETTER');  -- sectionenrollment.id = 50
-INSERT INTO ClassesTaken(student_id, sectionenrollment_id, grade_received) VALUES ('15', 50, 'F');
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES ('12', 25, 2, 'LETTER');  -- sectionenrollment.id = 51
-INSERT INTO ClassesTaken(student_id, sectionenrollment_id, grade_received) VALUES ('12', 51, 'D');
-
-INSERT INTO Section(section_num, class_id, section_limit) VALUES('PHIL165_FA15_SECTION_1', 33, 100); -- section.id = 26
-INSERT INTO SectionEnrollment(student_id, section_id, units_taking, grade_option) VALUES ('11', 26, 2, 'LETTER');  -- sectionenrollment.id = 52
-INSERT INTO ClassesTaken(student_id, sectionenrollment_id, grade_received) VALUES ('11', 52, 'A-');
-
------------------Teaching Info-----------------
-INSERT INTO TeachingHistory(faculty_name, class_id) VALUES('Justin Bieber', 1);
-INSERT INTO TeachingHistory(faculty_name, class_id) VALUES('Flo Rida', 32);
-INSERT INTO TeachingHistory(faculty_name, class_id) VALUES('Selena Gomez', 3);
-INSERT INTO TeachingHistory(faculty_name, class_id) VALUES('Adele', 24);
-INSERT INTO CurrentlyTeaching(section_id, faculty_name) VALUES(6, 'Taylor Swift');
-INSERT INTO TeachingHistory(faculty_name, class_id) VALUES('Kelly Clarkson', 2);
-INSERT INTO TeachingHistory(faculty_name, class_id) VALUES('Bjork', 9);
-INSERT INTO TeachingHistory(faculty_name, class_id) VALUES('Bjork', 28);
-INSERT INTO TeachingHistory(faculty_name, class_id) VALUES('Justin Bieber', 12);
-INSERT INTO TeachingHistory(faculty_name, class_id) VALUES('Flo Rida', 14);
-INSERT INTO TeachingHistory(faculty_name, class_id) VALUES('Selena Gomez', 25);
-INSERT INTO CurrentlyTeaching(section_id, faculty_name) VALUES(10, 'Adele');
-INSERT INTO TeachingHistory(faculty_name, class_id) VALUES('Taylor Swift', 6);
-INSERT INTO TeachingHistory(faculty_name, class_id) VALUES('Kelly Clarkson', 17);
-INSERT INTO TeachingHistory(faculty_name, class_id) VALUES('Adam Levine', 33);
-INSERT INTO TeachingHistory(faculty_name, class_id) VALUES('Bjork', 22);
-INSERT INTO CurrentlyTeaching(section_id, faculty_name) VALUES(3, 'Justin Bieber');
-INSERT INTO CurrentlyTeaching(section_id, faculty_name) VALUES(1, 'Selena Gomez');
-INSERT INTO CurrentlyTeaching(section_id, faculty_name) VALUES(8, 'Selena Gomez');
-INSERT INTO CurrentlyTeaching(section_id, faculty_name) VALUES(4, 'Adam Levine');
-INSERT INTO TeachingHistory(faculty_name, class_id) VALUES('Bjork', 10);
-INSERT INTO CurrentlyTeaching(section_id, faculty_name) VALUES(7, 'Taylor Swift');
-INSERT INTO TeachingHistory(faculty_name, class_id) VALUES('Kelly Clarkson', 19);
-INSERT INTO CurrentlyTeaching(section_id, faculty_name) VALUES(2, 'Kelly Clarkson');
-INSERT INTO CurrentlyTeaching(section_id, faculty_name) VALUES(5, 'Kelly Clarkson');
-INSERT INTO CurrentlyTeaching(section_id, faculty_name) VALUES(9, 'Kelly Clarkson');
-
------------------Degree Info-----------------
-INSERT INTO Degree(degree_name, degree_type, required_units) VALUES('Computer Science', 'BS', 40);
-INSERT INTO Degree(degree_name, degree_type, required_units) VALUES('Philosophy', 'BA', 35);
-INSERT INTO Degree(degree_name, degree_type, required_units) VALUES('Mechanical Engineering', 'BS', 50);
-INSERT INTO Degree(degree_name, degree_type, required_units) VALUES('Computer Science', 'MS', 45);
-
-INSERT INTO CourseCategory(course_id, degree_id, category_name, required_units, min_gpa) VALUES(1, 1, 'Lower Division', 10, 0.0);
-INSERT INTO CourseCategory(course_id, degree_id, category_name, required_units, min_gpa) VALUES(2, 1, 'Upper Division', 15, 0.0);
-INSERT INTO CourseCategory(course_id, degree_id, category_name, required_units, min_gpa) VALUES(3, 1, 'Upper Division', 15, 0.0);
-INSERT INTO CourseCategory(course_id, degree_id, category_name, required_units, min_gpa) VALUES(2, 1, 'Technical Elective', 15, 0.0);
-INSERT INTO CourseCategory(course_id, degree_id, category_name, required_units, min_gpa) VALUES(4, 1, 'Technical Elective', 15, 0.0);
-INSERT INTO CourseCategory(course_id, degree_id, category_name, required_units, min_gpa) VALUES(8, 1, 'Technical Elective', 15, 0.0);
-
-INSERT INTO CourseCategory(course_id, degree_id, category_name, required_units, min_gpa) VALUES(4, 4, 'Graduate Division', 45, 0.0);
-INSERT INTO CourseCategory(course_id, degree_id, category_name, required_units, min_gpa) VALUES(5, 4, 'Graduate Division', 45, 0.0);
-INSERT INTO CourseCategory(course_id, degree_id, category_name, required_units, min_gpa) VALUES(6, 4, 'Graduate Division', 45, 0.0);
-INSERT INTO CourseCategory(course_id, degree_id, category_name, required_units, min_gpa) VALUES(7, 4, 'Graduate Division', 45, 0.0);
-INSERT INTO CourseCategory(course_id, degree_id, category_name, required_units, min_gpa) VALUES(8, 4, 'Graduate Division', 45, 0.0);
-
-
-INSERT INTO CourseCategory(course_id, degree_id, category_name, required_units, min_gpa) VALUES(9, 3, 'Lower Division', 20, 0.0);
-INSERT INTO CourseCategory(course_id, degree_id, category_name, required_units, min_gpa) VALUES(10, 3, 'Upper Division', 20, 0.0);
-INSERT INTO CourseCategory(course_id, degree_id, category_name, required_units, min_gpa) VALUES(11, 3, 'Upper Division', 20, 0.0);
-INSERT INTO CourseCategory(course_id, degree_id, category_name, required_units, min_gpa) VALUES(9, 3, 'Technical Elective', 10, 0.0);
-INSERT INTO CourseCategory(course_id, degree_id, category_name, required_units, min_gpa) VALUES(10, 3, 'Technical Elective', 10, 0.0);
-
-INSERT INTO CourseCategory(course_id, degree_id, category_name, required_units, min_gpa) VALUES(12, 2, 'Lower Division', 15, 0.0);
-INSERT INTO CourseCategory(course_id, degree_id, category_name, required_units, min_gpa) VALUES(13, 2, 'Lower Division', 15, 0.0);
-INSERT INTO CourseCategory(course_id, degree_id, category_name, required_units, min_gpa) VALUES(14, 2, 'Upper Division', 20, 0.0);
-INSERT INTO CourseCategory(course_id, degree_id, category_name, required_units, min_gpa) VALUES(15, 2, 'Upper Division', 20, 0.0);
-
-INSERT INTO CourseConcentration(course_id, degree_id, concentration_name, required_units, min_gpa) VALUES(7, 4,'Databases', 4, 3.0);
-INSERT INTO CourseConcentration(course_id, degree_id, concentration_name, required_units, min_gpa) VALUES(6, 4,'AI', 8, 3.1);
-INSERT INTO CourseConcentration(course_id, degree_id, concentration_name, required_units, min_gpa) VALUES(4, 4,'AI', 8, 3.1);
-INSERT INTO CourseConcentration(course_id, degree_id, concentration_name, required_units, min_gpa) VALUES(8, 4,'Systems', 4, 3.3);
+-----------------Classes Taken In The Past Info-----------------
+INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units) 
+VALUES('1', '2', 'CSE132A', '2020', 'WI', 'Flo_Rence', 'LETTER', '4');
+INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units) 
+VALUES('2', '3', 'CSE142', '2021', 'FA', 'Flo_Rence', 'S/U', '4');
+INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units) 
+VALUES('3', '4', 'CSE142', '2022', 'FA', 'Flo_Rence', 'S/U', '4');
+INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units) 
+VALUES('4', '6', 'DSC120', '2021', 'SP', 'Robert_Clarkson', 'LETTER', '4');
+INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units) 
+VALUES('5', '7', 'ECE108', '2021', 'WI', 'Taylor_Swan', 'S/U', '4');
+INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units) 
+VALUES('6', '9', 'MAE180A', '2021', 'FA', 'Ada_Riz', 'S/U', '4');
+INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units) 
+VALUES('7', '10', 'MAE180A', '2020', 'SP', 'Ada_Riz', 'S/U', '4');
+INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units) 
+VALUES('8', '12', 'SE110B', '2021', 'WI', 'Tim_Asreal', 'LETTER', '4');
+INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units) 
+VALUES('9', '14', 'COGS101A', '2020', 'FA', 'Justin_Smith', 'LETTER', '4');
+INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units) 
+VALUES('10', '15', 'DSC104', '2022', 'FA', 'Robert_Clarkson', 'LETTER', '4');
 
 -----------------Weekly Meeting Info-----------------
 DO
