@@ -47,7 +47,23 @@
 			PreparedStatement pstmt = null;
 	
 			String[] info = request.getParameter("class_information").split(" ");
-			System.out.print("info" + info);
+			
+			/*if (info != null && info.length >= 4) {
+			    String className = info[0];
+			    int year = Integer.parseInt(info[1]);
+			    String quarter = info[2];
+			    int sectionId = Integer.parseInt(info[3]);
+
+			    // Print or process the values in the info array
+			    System.out.println("Class Name: " + className);
+			    System.out.println("Year: " + year);
+			    System.out.println("Quarter: " + quarter);
+			    System.out.println("Section ID: " + sectionId);
+			} else {
+			    // Handle the case when the info array is not populated correctly
+			    System.out.println("Invalid or incomplete class information provided.");
+			}*/
+			
 			int year = Integer.parseInt(info[1]);
 			String quarter = info[2];
 			
@@ -80,6 +96,32 @@
 			}
 			
 			student_info = pstmt.executeQuery();
+			
+			/*System.out.println("pstmt " + (pstmt != null));
+			System.out.println("student_info " + (student_info != null));
+			// Test pstmt and student_info
+	        if (pstmt != null && student_info != null) {
+	            // Print some information from the student_info result set
+	            System.out.println("student_info.next() " + (student_info.next()));
+	            do {
+	            	String student_information = student_info.getString("student_id") 
+							+ " " +
+							student_info.getString("ssn")
+							+ " " +
+							student_info.getString("first_name")
+							+ " " +
+							student_info.getString("middle_name")
+							+ " " +
+							student_info.getString("last_name")
+							+ " " +
+							student_info.getString("resident_status")
+							+ " " +
+							student_info.getString("units")
+							+ " " +
+							student_info.getString("grade");
+                    System.out.println(student_information);
+                } while (student_info.next());
+	        }*/
 			
 			connection.commit();
 			connection.setAutoCommit(true);
@@ -139,23 +181,23 @@
 		<%
 		if(student_info != null)
 		{	
-			System.out.println("Test0: " + student_info.isBeforeFirst());
+			//System.out.println("Test0: " + student_info.isBeforeFirst());
 			
 			if(student_info.isBeforeFirst())
 			{
-				System.out.println("Test1");
+				//System.out.println("Test1");
 				while(student_info.next())
 				{
-					System.out.println("Hello");
+					//System.out.println("Hello");
 				%>	
 					<tr>
-						<td><%=student_info.getString("student_id") %>></td>
-						<td><%=student_info.getString("ssn") %>></td>
-						<td><%=student_info.getString("first_name") %>></td>
-						<td><%=student_info.getString("middle_name") %>></td>
-						<td><%=student_info.getString("last_name") %>></td>
-						<td><%=student_info.getString("resident_status") %>></td>
-						<td><%=student_info.getString("units") %>></td>
+						<td><%=student_info.getString("student_id") %></td>
+						<td><%=student_info.getString("ssn") %></td>
+						<td><%=student_info.getString("first_name") %></td>
+						<td><%=student_info.getString("middle_name") %></td>
+						<td><%=student_info.getString("last_name") %></td>
+						<td><%=student_info.getString("resident_status") %></td>
+						<td><%=student_info.getString("units") %></td>
 						<%
 							String grade = student_info.getString("grade");
 							
@@ -166,7 +208,7 @@
 							else
 								grade = "Letter";
 						%>
-						<td><%=grade %>></td>
+						<td><%=grade %></td>
 					</tr>
 				<%
 				}

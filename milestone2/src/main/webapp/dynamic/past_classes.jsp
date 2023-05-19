@@ -31,7 +31,7 @@
 	<%-- INSERT the past_classes attrs INTO the past_classes table. --%>
 	<% 
 					PreparedStatement pstmt = connection.prepareStatement(
-							("INSERT INTO past_classes VALUES (?, ?, ?, ?, ?, ?, ?)"));
+							("INSERT INTO past_classes VALUES (?, ?, ?, ?, ?, ?, ?, ?)"));
 					
 					pstmt.setInt(1,Integer.parseInt(request.getParameter("student_id")));
 					pstmt.setInt(2,Integer.parseInt(request.getParameter("section_id")));
@@ -40,6 +40,7 @@
 					pstmt.setString(5, request.getParameter("quarter"));
 					pstmt.setString(6, request.getParameter("instructor_name"));
 					pstmt.setString(7, request.getParameter("grade"));
+					pstmt.setInt(8, Integer.parseInt(request.getParameter("units")));
 					
 					pstmt.executeUpdate();
 					//connection.commit();
@@ -59,7 +60,7 @@
 					PreparedStatement pstmt = connection.prepareStatement(
 							"UPDATE past_classes SET section_id = ?, title = ?, " +
 		                      "year = ?, quarter = ?, instructor_name = ?, " +
-								"grade = ? WHERE section_id = ?");
+								"grade = ? , units = ? WHERE section_id = ?");
 					
 					pstmt.setInt(1,Integer.parseInt(request.getParameter("section_id")));
 					pstmt.setString(2,request.getParameter("title"));
@@ -67,7 +68,8 @@
 					pstmt.setString(4, request.getParameter("quarter"));
 					pstmt.setString(5, request.getParameter("instructor_name"));
 					pstmt.setString(6, request.getParameter("grade"));
-					pstmt.setInt(7,Integer.parseInt(request.getParameter("student_id")));
+					pstmt.setInt(7, Integer.parseInt(request.getParameter("units")));
+					pstmt.setInt(8,Integer.parseInt(request.getParameter("student_id")));
 	                  
 	                pstmt.executeUpdate();
 	                
@@ -117,6 +119,7 @@
 			<th>quarter</th>
 			<th>instructor_name</th>
 			<th>grade</th>
+			<th>units</th>
 		</tr>
 
 		<%-- Insert Form Code --%>
@@ -137,6 +140,7 @@
 						<option value="LETTER  & S/U">LETTER  & S/U</option>
 					</select>
 				</th>
+				<th><input value="" name="units" size="10"></th>
 
 				<th><input type="submit" value="Insert"></th>
 			</form>
@@ -166,6 +170,7 @@
 	                    <option value="LETTER  & S/U" <%= s.equals("LETTER  & S/U") ? "selected":"" %>>LETTER  & S/U</option>
                 	</select></td>
 				<td>
+				<td><input value="" name="units" size="10"></td>
 
 				<td>
 					<input type="submit" value="Update">
