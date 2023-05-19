@@ -8,6 +8,12 @@
 	<title>Past Class Home Page</title>
 </head>
 
+<style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
+
 <body>
 	<%-- Set the scripting language to Java and --%>
 	<%@ page language="java" import="java.sql.*" %>
@@ -112,7 +118,7 @@
 				
 				%>
 	<%-- Entry Form --%>
-	<table>
+	<table style="width:100%">
 		<tr>
 			<th>student_id</th>
 			<th>section_id</th>
@@ -130,12 +136,12 @@
 			<form action="past_classes.jsp" method="get">
 				<input type="hidden" value="insert" name="action">
 	
-				<th><input value="" name="student_id" size="15"></th>
-				<th><input value="" name="section_id" size="15"></th>
-				<th><input value="" name="title" size="10"></th>
-				<th><input value="" name="year" size="10"></th>
-				<th><input value="" name="quarter" size="3"></th>
-				<th><input value="" name="instructor_name" size="15"></th>
+				<th><input value="" name="student_id"></th>
+				<th><input value="" name="section_id"></th>
+				<th><input value="" name="title"></th>
+				<th><input value="" name="year"></th>
+				<th><input value="" name="quarter" ></th>
+				<th><input value="" name="instructor_name" ></th>
 				<th>
 					<select name="grade">
 						<option value="A+">A+</option>
