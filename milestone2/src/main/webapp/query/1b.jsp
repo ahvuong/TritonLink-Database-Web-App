@@ -70,8 +70,8 @@ table, th, td {
 			    System.out.println("Invalid or incomplete class information provided.");
 			}*/
 			
-			int year = Integer.parseInt(info[1]);
-			String quarter = info[2];
+			int year = Integer.parseInt(info[7]);
+			String quarter = info[9];
 			
 			if(year == 2022 && quarter.equals("SP"))
 			{
@@ -81,9 +81,8 @@ table, th, td {
 						"NATURAL JOIN course_enrollment c " +
 						"WHERE c.section_id = ? AND c.class_name = ?"
 						);
-			
 				pstmt.setInt(1, Integer.parseInt(info[3]));
-				pstmt.setString(2, info[0]);
+				pstmt.setString(2, info[1]);
 			}
 			else
 			{
@@ -98,7 +97,7 @@ table, th, td {
 				pstmt.setInt(1, year);
 				pstmt.setString(2, quarter);
 				pstmt.setInt(3, Integer.parseInt(info[3]));
-				pstmt.setString(4, info[0]);
+				pstmt.setString(4, info[1]);
 			}
 			
 			student_info = pstmt.executeQuery();
@@ -145,15 +144,17 @@ table, th, td {
 				{
 					while(class_info.next())
 					{
-						String class_information = class_info.getString("new_number") 
-								+ " " +
-								class_info.getString("year")
-								+ " " +
-								class_info.getString("quarter")
-								+ " " +
-								class_info.getString("section_id")
-								+ " " +
-								class_info.getString("title");
+						String num = class_info.getString("new_number");
+						String year = class_info.getString("year");
+						String quarter = class_info.getString("quarter");
+						String id = class_info.getString("section_id");
+						String title = class_info.getString("title");
+						String class_information =  "Course: " + num + " " + 
+													"Section: " + id + " " + 
+													"Class: " + title + " " + 
+													"Year: " + year + " " + 
+													"Quarter: " + quarter + " ";
+								
 						
 						
 						%>
@@ -170,7 +171,7 @@ table, th, td {
 	
 	<h3>Students Enrolled In</h3>
 	<%
-	String[] info = request.getParameter("class_information").split(" ");
+	String[] info1 = request.getParameter("class_information").split(" ");
 	%>
 	<table style="width:100%">
 		<tr>
@@ -181,15 +182,15 @@ table, th, td {
             <th>Quarter</th>
 		</tr>
 		<%
-		if(info.length != 0)
+		if(info1.length != 0)
 		{	
 		%>	
 			<tr>
-				<td><%=info[0] %></td>
-				<td><%=info[3] %></td>
-				<td><%=info[4] %></td>
-				<td><%=info[1] %></td>
-				<td><%=info[2] %></td>
+				<td><%=info1[1] %></td>
+				<td><%=info1[3] %></td>
+				<td><%=info1[5] %></td>
+				<td><%=info1[7] %></td>
+				<td><%=info1[9] %></td>
 			</tr>
 		<%
 		}
@@ -273,7 +274,7 @@ table, th, td {
 	} catch (SQLException sqle) {
 		out.println(sqle.getMessage());
 	} catch (Exception e) {
-		out.println(e.getMessage());
+		out.println("Select Class Above First");
 	}
 	%>
 </body>

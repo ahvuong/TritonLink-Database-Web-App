@@ -5,8 +5,14 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Advisor home page</title>
+	<title>Current Class Report</title>
 </head>
+
+<style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
 
 <body>
 	<%-- Set the scripting language to Java and --%>
@@ -14,130 +20,192 @@
 
 	<%-- -------- Open Connection Code -------- --%>
 	<%
-	String student_num = request.getParameter("student_num");
-    final String CURRENT_QUARTER = "WINTER";  // default per project requirements
-    final String CURRENT_YEAR = "2016";       // default per project requirements
-    
 	try {
-				// Load Oracle Driver class file
-				DriverManager.registerDriver (new org.postgresql.Driver());
-				String GET_QUERY = "SELECT DISTINCT st.student_num AS st_num, first_name, middle_name, last_name " +
-                        "FROM Student st " +
-                        "JOIN SectionEnrollment se ON st.student_num = se.student_num " +
-                        "JOIN Section s ON se.section_id = s.id " +
-                        "JOIN Class c ON s.class_id = c.id " +
-                        "WHERE c.quarter = '" + CURRENT_QUARTER + "' " +
-                        "AND c.class_year = '" + CURRENT_YEAR + "' " +
-                        "ORDER BY st.student_num ASC";
+		// Load Oracle Driver class file
+		DriverManager.registerDriver (new org.postgresql.Driver());
+		//String GET_ADVISOR_QUERY = "Select * from advisor";
 				
-				// Make a connection to the Oracle datasource
-				Connection connection = DriverManager.getConnection
-				("jdbc:postgresql:tables?user=postgres&password=ahvuong");
-				%>
+		// Make a connection to the Oracle datasource
+		Connection connection = DriverManager.getConnection
+		("jdbc:postgresql:tables?user=postgres&password=ahvuong");
+	%>
+	<%-- Check if an insertion is requested --%>
+	<% 
+		String action = request.getParameter("action");
+		String GET_STUDENT_QUERY = "SELECT * FROM students";
+		String ssn = "";
+		String first = "";
+		String middle = "";
+		String last = "";
+		ResultSet class_info = null;
+    	ResultSet student_info = null;
+    
+    	// Select all class's information
+    	connection.setAutoCommit(false);
+		PreparedStatement stmt = connection.prepareStatement(GET_STUDENT_QUERY);
+	
+		student_info = stmt.executeQuery();
+		connection.commit();
+		connection.setAutoCommit(true);
+	
+		
+		if (action != null && action.equals("submit")) 
+		{
+			connection.setAutoCommit(false); %>
+	<%-- Create the prepared statement and use it to --%>
+	<%-- INSERT the advisor attrs INTO the advisor table. --%>
+	<% 
+			PreparedStatement stmt1 = connection.prepareStatement(
+						"SELECT * " +
+						"FROM course_enrollment c " +
+						"WHERE c.student_id = " +
+						"(SELECT student_id FROM students " +
+						"WHERE ssn = ?)"
+						);
+			
+				stmt1.setInt(1, Integer.parseInt(request.getParameter("ssn")));
+				System.out.println("Test3");
+			
+			class_info = stmt1.executeQuery();
+			
+			connection.commit();
+			connection.setAutoCommit(true);
+		}
+	%>
 
-	<%
-				// Create the statement
-				Statement stmt = connection.createStatement();
+	<%-- Form --%>
+	<h2>Student Information</h2>
+	<form action="1a.jsp" method="POST">
+		<div>
+			Student:
+			<select name="ssn">
+				<%
+				if (student_info.isBeforeFirst())
+				{
+					while(student_info.next())
+					{
+						ssn = student_info.getString("ssn");
+						first = student_info.getString("first_name");
+						middle = student_info.getString("middle_name");
+						last = student_info.getString("last_name");
+						
+						if (middle.equals("NULL"))
+							middle = "";
+						
+						String student_information = "SSN: " + ssn + " " + 
+													"First Name: " + first + " " + 
+													"Middle Name: " + middle + " " +
+													"Last Name: " + last + " ";
+						
+					%>
+						<option value=<%=ssn%>><%=student_information%></option>
+					<%
+					}
+				}
 				
-				// Use the statement to SELECT the advisor attributes
-				// FROM the advisor table.
-				ResultSet rs = null;
-				
-			if(student_num == null)
-			{
-					rs = stmt.executeQuery(GET_QUERY);
 				%>
-				<p>Select a student who is enrolled in the current quarter (<b><%=CURRENT_QUARTER%>&nbsp;<%=CURRENT_YEAR%></b>).
-            	<br/>
-            	<b>Note</b>: Students who are not enrolled in the current quarter
-            	(<b><%=CURRENT_QUARTER%>&nbsp;<%=CURRENT_YEAR%></b>) are not shown.
-            	<br/>
-            	<b>Note</b>: Student_Num's are used instead of SSN.</p>
-            	
-            	<form action="1a.jsp" method="POST">
-            	<select name="student_num" required>
-            	<%
-            		if(!rs.isBeforeFirst()) 
-            		{
-                %>
-                    <option selected disabled>No students available</option>
-                <%
-                    } 
-            		else 
-            		{
-                %>
-                    	<option selected disabled>Select Student</option>
-                <%
-                        while (rs.next()) 
-                        {
-                        	String info = rs.getString("st_num") + " | " + rs.getString("first_name") + " " +
-                        			rs.getString("middle_name") + " " + rs.getString("last_name");
-                %>
-                            <option value="<%=rs.getString("st_num")%>"><%=info%></option>
-                <%
-                    	}
-                	}
-            	%>
-				</select>
-            	<input type="submit" value="Submit">
-            	</form>
-            <%
-            }  // end if request student_num == null
-       		else
-            {
-            %>
-            	<p>Classes for student_num '<b><%=student_num%></b>' for the current quarter:
-            	<b><%=CURRENT_QUARTER%>&nbsp;<%=CURRENT_YEAR%></b>.</p>
-            	<%
-                rs = stmt.executeQuery(
-                        "SELECT class_title, quarter, class_year, units_taking, section_num " +
-                        "FROM SectionEnrollment se " +
-                        "JOIN Section s ON se.section_id = s.id " +
-                        "JOIN Class c ON s.class_id = c.id " +
-                        "WHERE c.quarter = '" + CURRENT_QUARTER + "' " +
-                        "AND c.class_year = '" + CURRENT_YEAR + "' " +
-                        "AND se.student_num = '" + student_num + "' " +
-                        "ORDER BY class_year, quarter, class_title");
-                %>
-                <table border="1">
-                    <tr>
-                        <th>Class_Title</th>
-                        <th>Quarter</th>
-                        <th>Class_Year</th>
-                        <th>Units_Taking</th>
-                        <th>Section_Num</th>
-                    </tr>
-                    <%
-                    while (rs.next()) 
-                    {
-                        %>
-                        <tr>
-                            <td><input type="text" name="class_title" value="<%=rs.getString("class_title")%>" readonly></td>
-                            <td><input type="text" name="quarter" value="<%=rs.getString("quarter")%>" readonly></td>
-                            <td><input type="text" name="class_year" value="<%=rs.getString("class_year")%>" readonly></td>
-                            <td><input type="text" name="units_taking" value="<%=rs.getInt("units_taking")%>" readonly></td>
-                            <td><input type="text" name="section_num" value="<%=rs.getString("section_num")%>" readonly></td>
-                        </tr>
-                        <%
-                    }
-                    %>
-                </table>
-                <%
-            }  // end else
-            %>
+			</select>
+		</div>
+		
+		<button type="submit" name="action" value="submit">Submit</button>
+	</form>
+	
+	<h3>Student</h3>
 	<%
-				// Close the ResultSet
-				rs.close();
-				// Close the Statement
-				stmt.close();
-				// Close the Connection
-				connection.close();
-			} catch (SQLException sqle) {
-				out.println(sqle.getMessage());
-			} catch (Exception e) {
-				out.println(e.getMessage());
+		try
+		{
+			PreparedStatement stmt2 = connection.prepareStatement("SELECT * from students where ssn = ?");
+			stmt2.setInt(1, Integer.parseInt(request.getParameter("ssn")));
+			
+			ResultSet rs = stmt2.executeQuery();
+			
+			if(rs != null)
+			{
+				if(rs.isBeforeFirst())
+				{
+					while(rs.next())
+					{
+						ssn = rs.getString("ssn");
+						first = rs.getString("first_name");
+						middle = rs.getString("middle_name");
+						last = rs.getString("last_name");
+					}
+				}
 			}
+	%>
+	
+	<%-- Table --%>
+	<table style="width:100%">
+		<tr>
+			<th>SSN</th>
+            <th>First Name</th>
+            <th>Middle Name</th>
+			<th>Last Name</th>
+		</tr>
+		<tr>
+				<td><%=ssn %></td>
+				<td><%=first %></td>
+				<td><%=middle %></td>
+				<td><%=last %></td>
+		</tr>
+	</table>
+	<%
+		}
+		catch (Exception e) 
+		{
+			out.println("Select Student Above First");
+		}
+	%>
+	<h3>Taking Classes</h3>
+	<%
+	if(class_info != null)
+	{	
+		//System.out.println("Test0: " + student_info.isBeforeFirst());
+			
+		if(class_info.isBeforeFirst())
+		{
+			//System.out.println("Test1");
+			while(class_info.next())
+			{
+				//System.out.println("Hello");
+			%>	
+			<table style="width:100%">
+				<tr>
+					<th>Section ID</th>
+					<th>Class</th>
+				</tr>
+				
+				<form>
+					<tr>
+						<td><%=class_info.getString("section_id") %></td>
+						<td><%=class_info.getString("class_name") %></td>
+					</tr>
+				</form>
+			</table>
+				<%
+			}
+			}
+			else
+			{
 			%>
+			<p>No Classes Are Taken</p>
+			<%
+			}
+		}
+		%>
+		
+
+	<%-- Close --%>
+	<%
+		
+		// Close the Connection
+		connection.close();
+	} catch (SQLException sqle) {
+		out.println(sqle.getMessage());
+	} catch (Exception e) {
+		out.println(e.getMessage());
+	}
+	%>
 </body>
 
 </html>
