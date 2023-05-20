@@ -64,7 +64,7 @@ table, th, td {
 						);
 			
 				stmt1.setInt(1, Integer.parseInt(request.getParameter("ssn")));
-				System.out.println("Test3");
+				//System.out.println("Test3");
 			
 			class_info = stmt1.executeQuery();
 			
