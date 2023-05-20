@@ -199,6 +199,8 @@ INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_nam
 VALUES('18', 'DSC104', 'Data_Management', '2022', 'SP', 'Robert_Clarkson', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
 VALUES('19', 'MAE180A', 'Spacecraft', '2022', 'SP', 'Ada_Riz', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('20', 'COGS101A', 'SenNPer', '2021', 'FA', 'Justin_Smith', '100');
 
 -----------------Course Enrollment Info-----------------
 INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
@@ -226,11 +228,17 @@ VALUES('9', '19', 'MAE180A', '2022', 'SP', '4', 'S/U');
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion) 
 VALUES('1', '2', 'CSE132A', '2020', 'WI', 'Flo_Rence', 'A', '4','4.0');
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion) 
+VALUES('1', '3', 'CSE142', '2021', 'FA', 'Flo_Rence', 'A-', '4','3.7');
+INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion) 
+VALUES('1', '20', 'COGS101A', '2021', 'FA', 'Justin_Smith', 'A', '4','4.0');
+INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion) 
+VALUES('1', '9', 'MAE180A', '2021', 'FA', 'Ada_Riz', 'U', '4','0.0');
+INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion) 
 VALUES('2', '3', 'CSE142', '2021', 'FA', 'Flo_Rence', 'A-', '4','3.7');
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion) 
-VALUES('3', '4', 'CSE142', '2022', 'FA', 'Flo_Rence', 'B+', '4','3.3');
+VALUES('3', '4', 'CSE142', '2022', 'FA', 'Flo_Rence', 'B+', '4','3.4');
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion) 
-VALUES('4', '6', 'DSC120', '2021', 'SP', 'Robert_Clarkson', 'B', '4','3.0');
+VALUES('4', '6', 'DSC120', '2021', 'SP', 'Robert_Clarkson', 'B', '4','3.1');
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion) 
 VALUES('5', '7', 'ECE108', '2021', 'WI', 'Taylor_Swan', 'S', '4','0.0');
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion) 
@@ -238,11 +246,11 @@ VALUES('6', '9', 'MAE180A', '2021', 'FA', 'Ada_Riz', 'U', '4','0.0');
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion) 
 VALUES('7', '10', 'MAE180A', '2020', 'SP', 'Ada_Riz', 'S', '4','0.0');
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion) 
-VALUES('8', '12', 'SE110B', '2021', 'WI', 'Tim_Asreal', 'A+', '4','4.0');
+VALUES('8', '12', 'SE110B', '2021', 'WI', 'Tim_Asreal', 'A+', '4','4.3');
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion) 
-VALUES('9', '14', 'COGS101A', '2020', 'FA', 'Justin_Smith', 'C', '4','2.0');
+VALUES('9', '14', 'COGS101A', '2020', 'FA', 'Justin_Smith', 'C', '4','2.2');
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion) 
-VALUES('10', '15', 'DSC104', '2022', 'FA', 'Robert_Clarkson', 'B-', '4','3.0');
+VALUES('10', '15', 'DSC104', '2022', 'FA', 'Robert_Clarkson', 'B-', '4','2.8');
 
 -----------------Grade Conversion Info-----------------
 INSERT INTO grade_conversion VALUES('A+', 4.3);

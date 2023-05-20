@@ -233,7 +233,7 @@ CREATE TABLE ms_degree
 CREATE TABLE past_classes
 (
     student_id serial,
-    section_id serial UNIQUE,
+    section_id serial,
     title varchar(20),
     year int,
     quarter varchar(20),
