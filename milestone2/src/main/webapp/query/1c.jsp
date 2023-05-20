@@ -40,8 +40,8 @@ table, th, td {
 		String GET_STUDENT_QUERY = "SELECT DISTINCT s.ssn, s.first_name, " +
 								"s.middle_name, s.last_name " +
 								"FROM students s " + 
-								"INNER JOIN past_classes p " + 
-								"ON s.student_id = p.student_id";
+								"NATURAL JOIN past_classes p " + 
+								"WHERE s.student_id = p.student_id";
 		String ssn = "";
 		String first = "";
 		String middle = "";
@@ -49,9 +49,10 @@ table, th, td {
 		String grade = "";
 		String quarter = "";
 		int year = 0;
-		Double gpa = 0.0;
-		Double total_gpa = 0.0;
-		Double total_units = 0.0;
+		double gpa = 0.0;
+		double total_gpa = 0.0;
+		double total_units = 0.0;
+		double cumulative_gpa = 0.0;
 		
 		ResultSet class_info = null;
     	ResultSet student_info = null;
@@ -141,8 +142,8 @@ table, th, td {
 	<h1>Student Information</h1>
 	<form action="1c.jsp" method="POST">
 		<div>
-			<p><b>Select: </b></p>
 			<select name="ssn">
+			<option>--Choose A Student--</option>
 				<%
 				if (student_info.isBeforeFirst())
 				{
@@ -241,7 +242,13 @@ table, th, td {
 	{	
 		//System.out.println("Test0: " + student_info.isBeforeFirst());
 			
-		if(class_info.isBeforeFirst())
+		if(!class_info.isBeforeFirst())
+		{
+			%>
+			<p>No Classes Are Taken</p>
+			<%
+		}
+		else
 		{
 			//System.out.println("Test1");
 			while(class_info.next())
@@ -249,9 +256,9 @@ table, th, td {
 				grade = class_info.getString("grade");
 				quarter = class_info.getString("quarter");
 				year = class_info.getInt("year");
-				System.out.println("quarter " + quarter);
-				System.out.println("year " + year);
-				System.out.println("grade " + grade);
+				//System.out.println("quarter " + quarter);
+				//System.out.println("year " + year);
+				//System.out.println("grade " + grade);
 			%>
 				<form>
 					<tr>
@@ -267,34 +274,24 @@ table, th, td {
 					</tr>
 				<%
 			}
-			%>
-			</form>
-		</table>
-			<%
-		}
-		else
-		{
-		%>
-		<p>No Classes Are Taken</p>
-		<%
 		}
 	}
 	%>
+		</form>
+	</table>
 	
 	<h3>Student's GPA For Each Quarter</h3>
-	
-		
 	<table style="width:100%">
 				<tr>
 					<th>Year</th>
 					<th>Quarter</th>
 					<th>GPA For Each Quarter</th>
-				</tr>
-				
+				</tr>	
 	<%
-	if(grade.equals("S") || grade.equals("U"))
+	if(grade.equals("S") || grade.equals("U") || grade.equals("IN"))
 	{
-		System.out.println(grade);
+		//System.out.println(grade);
+		if(grade.equals("IN"))
 		%>
 		<form>
 			<tr>
@@ -303,7 +300,6 @@ table, th, td {
 				<td><%=grade %></td>
 			</tr>
 		</form>
-		</table>
 		<%
 	}
 	else
@@ -317,7 +313,7 @@ table, th, td {
 				
 				while(gpa_info.next())
 				{
-					System.out.println(grade);	
+					//System.out.println(grade);	
 					double units = gpa_info.getDouble("quarter_units");
 					double quarter_gpa = gpa_info.getDouble("quarter_gpa");
 					gpa = quarter_gpa / units;
@@ -326,7 +322,7 @@ table, th, td {
 					total_units += (units/2);
 					quarter = gpa_info.getString("quarter");
 					year = gpa_info.getInt("year");
-					System.out.println(grade);
+					//System.out.println(grade);
 					%>
 						<form>
 							<tr>
@@ -337,23 +333,9 @@ table, th, td {
 						</form>
 					<%
 					}
-				%>
-		</table>
-			
-			<h3>Student's Cumulative GPA</h3>
-			<table style="width:75%">
-				<%
-				System.out.println("total_gpa " + total_gpa + " total_units " + total_units);
-				double cumulative_gpa = total_gpa/total_units;
-				%>
-				<form>
-						<tr>
-							<td><b>Cumulative GPA</b></td>
-							<td><%=cumulative_gpa %></td>
-						</tr>
-				</form>
-			</table>
-				<%
+				
+				//System.out.println("total_gpa " + total_gpa + " total_units " + total_units);
+				cumulative_gpa = total_gpa/total_units;
 			}
 			else
 			{
@@ -363,7 +345,19 @@ table, th, td {
 			}
 		}
 	}
-	%>	
+	%>
+	</table>
+	
+	<h3>Student's Cumulative GPA</h3>
+	
+	<table style="width:75%">
+		<form>
+			<tr>
+				<td><b>Cumulative GPA</b></td>
+				<td><%=cumulative_gpa %></td>
+			</tr>
+		</form>
+	</table>
 
 	<%-- Close --%>
 	<%
