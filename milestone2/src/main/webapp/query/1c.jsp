@@ -138,10 +138,10 @@ table, th, td {
 	%>
 
 	<%-- Form --%>
-	<h2>Student Information</h2>
+	<h1>Student Information</h1>
 	<form action="1c.jsp" method="POST">
 		<div>
-			<p>Select: </p>
+			<p><b>Select: </b></p>
 			<select name="ssn">
 				<%
 				if (student_info.isBeforeFirst())
@@ -170,7 +170,7 @@ table, th, td {
 				%>
 			</select>
 		</div>
-		
+		<br>
 		<button type="submit" name="action" value="submit">Submit</button>
 	</form>
 	
@@ -341,14 +341,14 @@ table, th, td {
 		</table>
 			
 			<h3>Student's Cumulative GPA</h3>
-			<table>
+			<table style="width:75%">
 				<%
 				System.out.println("total_gpa " + total_gpa + " total_units " + total_units);
 				double cumulative_gpa = total_gpa/total_units;
 				%>
 				<form>
 						<tr>
-							<td>Cumulative Gpa</td>
+							<td><b>Cumulative GPA</b></td>
 							<td><%=cumulative_gpa %></td>
 						</tr>
 				</form>
