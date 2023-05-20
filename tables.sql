@@ -259,7 +259,7 @@ CREATE TABLE thesis_committee
 
 CREATE TABLE course_enrollment
 (
-    student_id int UNIQUE,
+    student_id int,
     section_id serial,
     class_name varchar(20),
     year int,
