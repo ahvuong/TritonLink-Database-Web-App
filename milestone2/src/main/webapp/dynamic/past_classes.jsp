@@ -9,15 +9,12 @@
 </head>
 
 <style>
-table, th, td {
-  border:1px solid black;
-}
+
 </style>
 
 <body>
 	<%-- Set the scripting language to Java and --%>
 	<%@ page language="java" import="java.sql.*" %>
-
 	<%-- -------- Open Connection Code -------- --%>
 	<%
 			try {
@@ -47,7 +44,7 @@ table, th, td {
 					pstmt.setString(6, request.getParameter("instructor_name"));
 					pstmt.setString(7, request.getParameter("grade"));
 					pstmt.setInt(8, Integer.parseInt(request.getParameter("units")));
-					pstmt.setInt(9, Integer.parseInt(request.getParameter("grade_conversion")));
+					pstmt.setDouble(9, Double.parseDouble(request.getParameter("grade_conversion")));
 					
 					pstmt.executeUpdate();
 					//connection.commit();
@@ -55,7 +52,6 @@ table, th, td {
 					connection.setAutoCommit(true);
 					}
 				%>
-
 	<%-- Update Info --%>
 	<% 
 				if (action != null && action.equals("update")) {
@@ -65,19 +61,19 @@ table, th, td {
 	<% 
 					
 					PreparedStatement pstmt = connection.prepareStatement(
-							"UPDATE past_classes SET section_id = ?, title = ?, " +
-		                      "year = ?, quarter = ?, instructor_name = ?, grade = ? , " +
-								"units = ?, grade_conversion = ? WHERE section_id = ?");
-					
-					pstmt.setInt(1,Integer.parseInt(request.getParameter("section_id")));
-					pstmt.setString(2,request.getParameter("title"));
-					pstmt.setInt(3, Integer.parseInt(request.getParameter("year")));
-					pstmt.setString(4, request.getParameter("quarter"));
-					pstmt.setString(5, request.getParameter("instructor_name"));
-					pstmt.setString(6, request.getParameter("grade"));
-					pstmt.setInt(7, Integer.parseInt(request.getParameter("units")));
-					pstmt.setInt(8, Integer.parseInt(request.getParameter("grade_conversion")));
-					pstmt.setInt(9,Integer.parseInt(request.getParameter("student_id")));
+							"UPDATE past_classes SET title = ?, year = ?, quarter = ?, " +
+		                      "instructor_name = ?, grade = ? , units = ?, " +
+								"grade_conversion = ? WHERE student_id = ? AND section_id = ?");
+
+					pstmt.setString(1,request.getParameter("title"));
+					pstmt.setInt(2, Integer.parseInt(request.getParameter("year")));
+					pstmt.setString(3, request.getParameter("quarter"));
+					pstmt.setString(4, request.getParameter("instructor_name"));
+					pstmt.setString(5, request.getParameter("grade"));
+					pstmt.setInt(6, Integer.parseInt(request.getParameter("units")));
+					pstmt.setDouble(7, Double.parseDouble(request.getParameter("grade_conversion")));
+					pstmt.setInt(8,Integer.parseInt(request.getParameter("student_id")));
+					pstmt.setInt(9,Integer.parseInt(request.getParameter("section_id")));
 	                  
 	                pstmt.executeUpdate();
 	                
@@ -86,7 +82,6 @@ table, th, td {
 					connection.setAutoCommit(true);
 					}
 				%>
-
 	<%-- Delete --%>
 	<% 
 				if (action != null && action.equals("delete")) {
@@ -107,7 +102,6 @@ table, th, td {
 					connection.setAutoCommit(true);
 					}
 				%>
-
 	<%
 				// Create the statement
 				Statement stmt = connection.createStatement();
@@ -118,7 +112,7 @@ table, th, td {
 				
 				%>
 	<%-- Entry Form --%>
-	<table style="width:100%">
+	<table>
 		<tr>
 			<th>student_id</th>
 			<th>section_id</th>
@@ -130,7 +124,6 @@ table, th, td {
 			<th>units</th>
 			<th>grade_conversion</th>
 		</tr>
-
 		<%-- Insert Form Code --%>
 		<tr>
 			<form action="past_classes.jsp" method="get">
@@ -140,8 +133,8 @@ table, th, td {
 				<th><input value="" name="section_id"></th>
 				<th><input value="" name="title"></th>
 				<th><input value="" name="year"></th>
-				<th><input value="" name="quarter" ></th>
-				<th><input value="" name="instructor_name" ></th>
+				<th><input value="" name="quarter"></th>
+				<th><input value="" name="instructor_name"></th>
 				<th>
 					<select name="grade">
 						<option value="A+">A+</option>
@@ -159,14 +152,40 @@ table, th, td {
 						<option value="U" >U</option>
 					</select>
 				</th>
-				<th><input value="" name="units" ></th>
+				<th><input value="" name="units"></th>
+				<th><input value="" name="grade_conversion" placeholder="Result will appear here"></th>
+				<script>
+				var grade = document.getElementsByName("grade")[0];
+				var grade_convert = document.getElementsByName("grade_conversion")[0];
+				grade.addEventListener("input", function(){
+					if(grade.value == "A+")
+						grade_convert.value = 4.0;
+					else if(grade.value == "A")
+						grade_convert.value = 4.0;
+					else if(grade.value == "A-")
+						grade_convert.value = 3.7;
+					else if(grade.value == "B+")
+						grade_convert.value = 3.3;
+					else if(grade.value == "B")
+						grade_convert.value = 3.0;
+					else if(grade.value == "B-")
+						grade_convert.value = 2.7;
+					else if(grade.value == "C+")
+						grade_convert.value = 2.3;
+					else if(grade.value == "C")
+						grade_convert.value = 2.0;
+					else if(grade.value == "C-")
+						grade_convert.value = 1.7;
+					else if(grade.value == "D")
+						grade_convert.value = 1.0;
+			        else
+			        	grade_convert.value = 0.0;
+				});
+				</script>
 				
-				<th><input value="Do Not Fill" name="grade_conversion" ></th>
-
 				<th><input type="submit" value="Insert"></th>
 			</form>
 		</tr>
-
 		<%
 				//System.out.print("hello1\n");
 				// Iterate over the ResultSet
@@ -201,6 +220,7 @@ table, th, td {
 	                    <option value="U" <%= s.equals("U") ? "selected":"" %>>U</option>
                 	</select></td>
 				<td>
+				
 				<td><input value="<%= rs.getInt("units")%>"  name="units"></td>
 				
 				<%
@@ -210,7 +230,7 @@ table, th, td {
 				{
 					gradeSU = s;
 				%>
-				<td><input value="<%=gradeSU %>" name="grade_conversion"></td>
+				   <td><input value="<%=gradeSU %>" name="grade_conversion"></td>
 				<%
 				}
 				else 
@@ -238,11 +258,11 @@ table, th, td {
 					else
 						grade = 0.0;
 					
-					System.out.println(s);
-					System.out.println(grade);
-					System.out.println(gradeSU);
+					//System.out.println(s);
+					//System.out.println(grade);
+					//System.out.println(gradeSU);
 					%>
-					<td><input value="<%=grade %>" name="grade_conversion" size="10"></td>
+					<td><input value="<%=grade %>" name="grade_conversion"></td>
 					<%
 				}
 				%>
@@ -251,7 +271,6 @@ table, th, td {
 					<input type="submit" value="Update">
 				</td>
 			</form>
-
 			<form action="past_classes.jsp" method="get">
 				<input type="hidden" value="delete" name="action">
 				<input type="hidden" value="<%= rs.getInt("section_id") %>" name="section_id">
@@ -262,7 +281,6 @@ table, th, td {
 				}
 				%>
 	</table>
-
 	<%
 				// Close the ResultSet
 				rs.close();
@@ -277,5 +295,4 @@ table, th, td {
 			}
 			%>
 </body>
-<a href="../index.html">Go to Home Page</a>
 </html>
