@@ -57,7 +57,7 @@
 					PreparedStatement pstmt = connection.prepareStatement(
 							"UPDATE courses SET old_number = ?, units = ?, " +
 		                      "department = ?, prerequisites = ?, lab_requirements = ?, " +
-								"grade = ?, WHERE new_number = ?");
+								"grade = ? WHERE new_number = ?");
 					
 					pstmt.setString(1,request.getParameter("old_number"));
 					pstmt.setInt(2, Integer.parseInt(request.getParameter("units")));
@@ -154,7 +154,7 @@
 								<select name="grade">
 									<option value="LETTER">LETTER</option>
 									<option value="S/U" >S/U</option>
-									<option value="LETTER  & S/U">LETTER  & S/U</option>
+									<option value="IN">IN</option>
 								</select>
 							</th>
 							
@@ -183,7 +183,7 @@
 			                    <% String s = rs.getString("grade"); %>
 			                    <option value="LETTER" <%= s.equals("LETTER") ? "selected":"" %>>LETTER</option>
 			                    <option value="S/U" <%= s.equals("S/U") ? "selected":"" %>>S/U</option>
-			                    <option value="LETTER & S/U" <%= s.equals("LETTER & S/U") ? "selected":"" %>>LETTER & S/U</option>
+			                    <option value="IN" <%= s.equals("IN") ? "selected":"" %>>IN</option>
 		                	</select></td>
 						<td>
 				        

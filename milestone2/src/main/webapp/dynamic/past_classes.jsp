@@ -147,7 +147,6 @@
 						<option value="C">C</option>
 						<option value="C-">C-</option>
 						<option value="D">D</option>
-						<option value="F">F</option>
 						<option value="S" >S</option>
 						<option value="U" >U</option>
 					</select>
@@ -159,25 +158,25 @@
 				var grade_convert = document.getElementsByName("grade_conversion")[0];
 				grade.addEventListener("input", function(){
 					if(grade.value == "A+")
-						grade_convert.value = 4.0;
+						grade_convert.value = 4.3;
 					else if(grade.value == "A")
 						grade_convert.value = 4.0;
 					else if(grade.value == "A-")
 						grade_convert.value = 3.7;
 					else if(grade.value == "B+")
-						grade_convert.value = 3.3;
+						grade_convert.value = 3.4;
 					else if(grade.value == "B")
-						grade_convert.value = 3.0;
+						grade_convert.value = 3.1;
 					else if(grade.value == "B-")
-						grade_convert.value = 2.7;
+						grade_convert.value = 2.8;
 					else if(grade.value == "C+")
-						grade_convert.value = 2.3;
+						grade_convert.value = 2.5;
 					else if(grade.value == "C")
-						grade_convert.value = 2.0;
+						grade_convert.value = 2.2;
 					else if(grade.value == "C-")
-						grade_convert.value = 1.7;
+						grade_convert.value = 1.9;
 					else if(grade.value == "D")
-						grade_convert.value = 1.0;
+						grade_convert.value = 1.6;
 			        else
 			        	grade_convert.value = 0.0;
 				});
@@ -214,9 +213,7 @@
 	                    <option value="C+" <%= s.equals("C+") ? "selected":"" %>>C+</option>
 	                    <option value="C" <%= s.equals("C") ? "selected":"" %>>C</option>
 	                    <option value="C-" <%= s.equals("C-") ? "selected":"" %>>C-</option>
-	                    <option value="D" <%= s.equals("D") ? "selected":"" %>>D</option>
-	                    <option value="F" <%= s.equals("F") ? "selected":"" %>>F</option>
-	                    <option value="S" <%= s.equals("S") ? "selected":"" %>>S</option>
+	                    <option value="D" <%= s.equals("D") ? "selected":"" %>>D</option><option value="S" <%= s.equals("S") ? "selected":"" %>>S</option>
 	                    <option value="U" <%= s.equals("U") ? "selected":"" %>>U</option>
                 	</select></td>
 				<td>
@@ -236,27 +233,25 @@
 				else 
 				{
 					if (s.equals("A+"))
-						grade = 4.0;
+						grade = 4.3;
 					else if (s.equals("A"))
 						grade = 4.0;
 					else if (s.equals("A-"))
 						grade = 3.7;
 					else if (s.equals("B+"))
-						grade = 3.3;
+						grade = 3.4;
 					else if (s.equals("B"))
-						grade = 3.0;
+						grade = 3.1;
 					else if (s.equals("B-"))
-						grade = 2.7;
+						grade = 2.8;
 					else if (s.equals("C+"))
-						grade = 2.3;
+						grade = 2.5;
 					else if (s.equals("C"))
-						grade = 2.0;
+						grade = 2.2;
 					else if (s.equals("C-"))
-						grade = 1.7;
-					else if (s.equals("D"))
-						grade = 1.0;
+						grade = 1.9;
 					else
-						grade = 0.0;
+						grade = 1.6;
 					
 					//System.out.println(s);
 					//System.out.println(grade);

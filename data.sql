@@ -220,7 +220,7 @@ VALUES('7', '17', 'NANO119', '2022', 'SP', '1', 'LETTER');
 INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
 VALUES('8', '18', 'DSC104', '2022', 'SP', '4', 'LETTER');
 INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
-VALUES('9', '19', 'MAE180A', '2022', 'SP', '4', 'S');
+VALUES('9', '19', 'MAE180A', '2022', 'SP', '4', 'S/U');
 
 -----------------Classes Taken In The Past Info-----------------
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion) 
@@ -243,6 +243,18 @@ INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructo
 VALUES('9', '14', 'COGS101A', '2020', 'FA', 'Justin_Smith', 'C', '4','2.0');
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion) 
 VALUES('10', '15', 'DSC104', '2022', 'FA', 'Robert_Clarkson', 'B-', '4','3.0');
+
+-----------------Grade Conversion Info-----------------
+INSERT INTO grade_conversion VALUES('A+', 4.3);
+INSERT INTO grade_conversion VALUES('A', 4.0);
+INSERT INTO grade_conversion VALUES('A-', 3.7);
+INSERT INTO grade_conversion VALUES('B+', 3.4);
+INSERT INTO grade_conversion VALUES('B', 3.1);
+INSERT INTO grade_conversion VALUES('B-', 2.8);
+INSERT INTO grade_conversion VALUES('C+', 2.5);
+INSERT INTO grade_conversion VALUES('C', 2.2);
+INSERT INTO grade_conversion VALUES('C-', 1.9);
+INSERT INTO grade_conversion VALUES('D', 1.6);
 
 -----------------Weekly Meeting Info-----------------
 DO

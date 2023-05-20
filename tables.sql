@@ -240,7 +240,7 @@ CREATE TABLE past_classes
     instructor_name varchar(20),
     grade varchar(20),
     units int,
-    grade_conversion float,
+    grade_conversion decimal(2,1),
     PRIMARY KEY(student_id, section_id),
     FOREIGN KEY(section_id) references classes(section_id) ON DELETE CASCADE,
     FOREIGN KEY(student_id) references students(student_id) ON DELETE CASCADE,
@@ -270,4 +270,10 @@ CREATE TABLE course_enrollment
     FOREIGN KEY(student_id) references students(student_id) ON DELETE CASCADE,
     FOREIGN KEY(section_id) references classes(section_id) ON DELETE CASCADE,
     FOREIGN KEY(class_name) references courses(new_number) ON DELETE CASCADE
+);
+
+create table grade_conversion
+(
+    letter_grade char(2) not null,
+    number_grade decimal(2,1)
 );
