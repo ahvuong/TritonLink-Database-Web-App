@@ -149,6 +149,7 @@
 						<option value="D">D</option>
 						<option value="S" >S</option>
 						<option value="U" >U</option>
+						<option value="IN" >IN</option>
 					</select>
 				</th>
 				<th><input value="" name="units"></th>
@@ -213,8 +214,10 @@
 	                    <option value="C+" <%= s.equals("C+") ? "selected":"" %>>C+</option>
 	                    <option value="C" <%= s.equals("C") ? "selected":"" %>>C</option>
 	                    <option value="C-" <%= s.equals("C-") ? "selected":"" %>>C-</option>
-	                    <option value="D" <%= s.equals("D") ? "selected":"" %>>D</option><option value="S" <%= s.equals("S") ? "selected":"" %>>S</option>
+	                    <option value="D" <%= s.equals("D") ? "selected":"" %>>D</option>
+	                    <option value="S" <%= s.equals("S") ? "selected":"" %>>S</option>
 	                    <option value="U" <%= s.equals("U") ? "selected":"" %>>U</option>
+	                    <option value="IN" <%= s.equals("IN") ? "selected":"" %>>IN</option>
                 	</select></td>
 				<td>
 				
@@ -223,11 +226,11 @@
 				<%
 				double grade = 0;
 				String gradeSU = "";
-				if(s.equals("S") || s.equals("U"))
+				if(s.equals("S") || s.equals("U") || s.equals("IN"))
 				{
 					gradeSU = s;
 				%>
-				   <td><input value="<%=gradeSU %>" name="grade_conversion"></td>
+				   <td><input value="<%=s %>" name="grade_conversion"></td>
 				<%
 				}
 				else 
