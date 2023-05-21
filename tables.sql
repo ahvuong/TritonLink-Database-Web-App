@@ -218,7 +218,9 @@ CREATE TABLE degree
     upper_units int,
     lower_units int,
     total_units int,
-    min_grade varchar(20)
+    min_grade varchar(20), 
+    degree_name varchar(20),
+    degree_type varchar(20)
 );
 
 CREATE TABLE ms_degree
@@ -241,6 +243,7 @@ CREATE TABLE past_classes
     grade varchar(20),
     units int,
     grade_conversion decimal(2,1),
+    class_type varchar(20),
     PRIMARY KEY(student_id, section_id),
     FOREIGN KEY(section_id) references classes(section_id) ON DELETE CASCADE,
     FOREIGN KEY(student_id) references students(student_id) ON DELETE CASCADE,

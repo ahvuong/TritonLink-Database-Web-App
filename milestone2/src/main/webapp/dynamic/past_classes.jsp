@@ -24,7 +24,7 @@
 				
 				// Make a connection to the Oracle datasource
 				Connection connection = DriverManager.getConnection
-				("jdbc:postgresql:tables?user=postgres&password=ahvuong");
+				("jdbc:postgresql:tables?user=postgres&password=trungtinvo");
 				%>
 	<%-- Check if an insertion is requested --%>
 	<% String action = request.getParameter("action");
@@ -34,7 +34,7 @@
 	<%-- INSERT the past_classes attrs INTO the past_classes table. --%>
 	<% 
 					PreparedStatement pstmt = connection.prepareStatement(
-							("INSERT INTO past_classes VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"));
+							("INSERT INTO past_classes VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"));
 					
 					pstmt.setInt(1,Integer.parseInt(request.getParameter("student_id")));
 					pstmt.setInt(2,Integer.parseInt(request.getParameter("section_id")));
@@ -45,6 +45,7 @@
 					pstmt.setString(7, request.getParameter("grade"));
 					pstmt.setInt(8, Integer.parseInt(request.getParameter("units")));
 					pstmt.setDouble(9, Double.parseDouble(request.getParameter("grade_conversion")));
+					pstmt.setString(10, request.getParameter("class_type"));
 					
 					pstmt.executeUpdate();
 					//connection.commit();
@@ -63,7 +64,7 @@
 					PreparedStatement pstmt = connection.prepareStatement(
 							"UPDATE past_classes SET title = ?, year = ?, quarter = ?, " +
 		                      "instructor_name = ?, grade = ? , units = ?, " +
-								"grade_conversion = ? WHERE student_id = ? AND section_id = ?");
+								"grade_conversion = ?, class_type = ? WHERE student_id = ? AND section_id = ?");
 
 					pstmt.setString(1,request.getParameter("title"));
 					pstmt.setInt(2, Integer.parseInt(request.getParameter("year")));
@@ -72,8 +73,9 @@
 					pstmt.setString(5, request.getParameter("grade"));
 					pstmt.setInt(6, Integer.parseInt(request.getParameter("units")));
 					pstmt.setDouble(7, Double.parseDouble(request.getParameter("grade_conversion")));
-					pstmt.setInt(8,Integer.parseInt(request.getParameter("student_id")));
-					pstmt.setInt(9,Integer.parseInt(request.getParameter("section_id")));
+					pstmt.setString(8, request.getParameter("class_type"));
+					pstmt.setInt(9,Integer.parseInt(request.getParameter("student_id")));
+					pstmt.setInt(10,Integer.parseInt(request.getParameter("section_id")));
 	                  
 	                pstmt.executeUpdate();
 	                
@@ -123,12 +125,13 @@
 			<th>grade</th>
 			<th>units</th>
 			<th>grade_conversion</th>
+			<th>class_type</th>
 		</tr>
 		<%-- Insert Form Code --%>
 		<tr>
 			<form action="past_classes.jsp" method="get">
 				<input type="hidden" value="insert" name="action">
-	
+
 				<th><input value="" name="student_id"></th>
 				<th><input value="" name="section_id"></th>
 				<th><input value="" name="title"></th>
@@ -147,42 +150,48 @@
 						<option value="C">C</option>
 						<option value="C-">C-</option>
 						<option value="D">D</option>
-						<option value="S" >S</option>
-						<option value="U" >U</option>
-						<option value="IN" >IN</option>
+						<option value="S">S</option>
+						<option value="U">U</option>
 					</select>
 				</th>
 				<th><input value="" name="units"></th>
 				<th><input value="" name="grade_conversion" placeholder="Result will appear here"></th>
+				<th>
+					<select name="class_type">
+						<option value="upper_units">upper_units</option>
+						<option value="lower_units">lower_units</option>
+					</select>
+				</th>
+
 				<script>
-				var grade = document.getElementsByName("grade")[0];
-				var grade_convert = document.getElementsByName("grade_conversion")[0];
-				grade.addEventListener("input", function(){
-					if(grade.value == "A+")
-						grade_convert.value = 4.3;
-					else if(grade.value == "A")
-						grade_convert.value = 4.0;
-					else if(grade.value == "A-")
-						grade_convert.value = 3.7;
-					else if(grade.value == "B+")
-						grade_convert.value = 3.4;
-					else if(grade.value == "B")
-						grade_convert.value = 3.1;
-					else if(grade.value == "B-")
-						grade_convert.value = 2.8;
-					else if(grade.value == "C+")
-						grade_convert.value = 2.5;
-					else if(grade.value == "C")
-						grade_convert.value = 2.2;
-					else if(grade.value == "C-")
-						grade_convert.value = 1.9;
-					else if(grade.value == "D")
-						grade_convert.value = 1.6;
-			        else
-			        	grade_convert.value = 0.0;
-				});
+					var grade = document.getElementsByName("grade")[0];
+					var grade_convert = document.getElementsByName("grade_conversion")[0];
+					grade.addEventListener("input", function () {
+						if (grade.value == "A+")
+							grade_convert.value = 4.3;
+						else if (grade.value == "A")
+							grade_convert.value = 4.0;
+						else if (grade.value == "A-")
+							grade_convert.value = 3.7;
+						else if (grade.value == "B+")
+							grade_convert.value = 3.4;
+						else if (grade.value == "B")
+							grade_convert.value = 3.1;
+						else if (grade.value == "B-")
+							grade_convert.value = 2.8;
+						else if (grade.value == "C+")
+							grade_convert.value = 2.5;
+						else if (grade.value == "C")
+							grade_convert.value = 2.2;
+						else if (grade.value == "C-")
+							grade_convert.value = 1.9;
+						else if (grade.value == "D")
+							grade_convert.value = 1.6;
+						else
+							grade_convert.value = 0.0;
+					});
 				</script>
-				
+
 				<th><input type="submit" value="Insert"></th>
 			</form>
 		</tr>
@@ -204,33 +213,32 @@
 				<td><input value="<%= rs.getString("instructor_name")%>" name="instructor_name"></td>
 				<td>
 					<select name="grade" required>
-	                    <% String s = rs.getString("grade"); %>
-	                    <option value="A+" <%= s.equals("A+") ? "selected":"" %>>A+</option>
-	                    <option value="A" <%= s.equals("A") ? "selected":"" %>>A</option>
-	                    <option value="A-" <%= s.equals("A-") ? "selected":"" %>>A-</option>
-	                    <option value="B+" <%= s.equals("B+") ? "selected":"" %>>B+</option>
-	                    <option value="B" <%= s.equals("B") ? "selected":"" %>>B</option>
-	                    <option value="B-" <%= s.equals("B-") ? "selected":"" %>>B-</option>
-	                    <option value="C+" <%= s.equals("C+") ? "selected":"" %>>C+</option>
-	                    <option value="C" <%= s.equals("C") ? "selected":"" %>>C</option>
-	                    <option value="C-" <%= s.equals("C-") ? "selected":"" %>>C-</option>
-	                    <option value="D" <%= s.equals("D") ? "selected":"" %>>D</option>
-	                    <option value="S" <%= s.equals("S") ? "selected":"" %>>S</option>
-	                    <option value="U" <%= s.equals("U") ? "selected":"" %>>U</option>
-	                    <option value="IN" <%= s.equals("IN") ? "selected":"" %>>IN</option>
-                	</select></td>
+						<% String s = rs.getString("grade"); %>
+						<option value="A+" <%= s.equals("A+") ? "selected":"" %>>A+</option>
+						<option value="A" <%= s.equals("A") ? "selected":"" %>>A</option>
+						<option value="A-" <%= s.equals("A-") ? "selected":"" %>>A-</option>
+						<option value="B+" <%= s.equals("B+") ? "selected":"" %>>B+</option>
+						<option value="B" <%= s.equals("B") ? "selected":"" %>>B</option>
+						<option value="B-" <%= s.equals("B-") ? "selected":"" %>>B-</option>
+						<option value="C+" <%= s.equals("C+") ? "selected":"" %>>C+</option>
+						<option value="C" <%= s.equals("C") ? "selected":"" %>>C</option>
+						<option value="C-" <%= s.equals("C-") ? "selected":"" %>>C-</option>
+						<option value="D" <%= s.equals("D") ? "selected":"" %>>D</option>
+						<option value="S" <%= s.equals("S") ? "selected":"" %>>S</option>
+						<option value="U" <%= s.equals("U") ? "selected":"" %>>U</option>
+					</select></td>
 				<td>
-				
-				<td><input value="<%= rs.getInt("units")%>"  name="units"></td>
-				
+
+				<td><input value="<%= rs.getInt("units")%>" name="units"></td>
+
 				<%
 				double grade = 0;
 				String gradeSU = "";
-				if(s.equals("S") || s.equals("U") || s.equals("IN"))
+				if(s.equals("S") || s.equals("U"))
 				{
 					gradeSU = s;
 				%>
-				   <td><input value="<%=s %>" name="grade_conversion"></td>
+				<td><input value="<%=gradeSU %>" name="grade_conversion"></td>
 				<%
 				}
 				else 
@@ -260,11 +268,18 @@
 					//System.out.println(grade);
 					//System.out.println(gradeSU);
 					%>
-					<td><input value="<%=grade %>" name="grade_conversion"></td>
-					<%
+				<td><input value="<%=grade %>" name="grade_conversion"></td>
+				<%
 				}
 				%>
-				
+				<td>
+					<select name="class_type" required>
+						<% String t = rs.getString("class_type"); %>
+						<option value="upper_units" <%= t.equals("upper_units") ? "selected":"" %>>upper_units</option>
+						<option value="lower_units" <%= t.equals("lower_units") ? "selected":"" %>>lower_units</option>
+					</select>
+				</td>
+
 				<td>
 					<input type="submit" value="Update">
 				</td>
@@ -294,4 +309,5 @@
 			%>
 </body>
 <a href="../../index.html">Go to Home Page</a>
+
 </html>
