@@ -202,20 +202,6 @@ table, th, td {
 	
 	<h3>Student Information</h3>
 	<%-- Table --%>
-	
-		<%
-		if(student_info != null)
-		{	
-			//System.out.println("Test0: " + student_info.isBeforeFirst());
-			
-			if(student_info.isBeforeFirst())
-			{
-				
-				//System.out.println("Test1");
-				while(student_info.next())
-				{
-					//System.out.println("Hello");
-				%>	
 	<table style="width:100%">
 			<tr>
 				<th>student_id</th>
@@ -227,6 +213,25 @@ table, th, td {
 	            <th>units</th>
 				<th>grade</th>
 			</tr>
+		<%
+		if(student_info != null)
+		{	
+			//System.out.println("Test0: " + student_info.isBeforeFirst());
+			
+			if(!student_info.isBeforeFirst())
+			{
+				%>
+				<p>No Classes Are Taken</p>
+				<%
+			}
+			else
+			{
+				
+				//System.out.println("Test1");
+				while(student_info.next())
+				{
+					//System.out.println("Hello");
+				%>	
 			<form>
 					<tr>
 						<td><%=student_info.getString("student_id") %></td>
@@ -248,19 +253,13 @@ table, th, td {
 						%>
 						<td><%=grade %></td>
 					</tr>
-			</form>
-	</table>
 				<%
 				}
 			}
-			else
-			{
-			%>
-			<p>No Student Information</p>
-			<%
-			}
 		}
 		%>
+		</form>
+	</table>
 		
 
 	<%-- Close --%>

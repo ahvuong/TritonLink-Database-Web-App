@@ -41,7 +41,8 @@ table, th, td {
 								"s.middle_name, s.last_name " +
 								"FROM students s " + 
 								"NATURAL JOIN past_classes p " + 
-								"WHERE s.student_id = p.student_id";
+								"WHERE s.student_id = p.student_id " +
+								"ORDER BY s.ssn ASC";
 		String ssn = "";
 		String first = "";
 		String middle = "";
@@ -221,6 +222,7 @@ table, th, td {
 			out.println("Select Student Above First");
 		}
 	%>
+	
 	<h3>Taking Classes</h3>
 	
 		
