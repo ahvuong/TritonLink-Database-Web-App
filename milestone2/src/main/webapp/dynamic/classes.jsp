@@ -104,7 +104,7 @@
 	        		
 	        		int id = 0;
 	        		String num = "";
-	        		System.out.println("1.year " + year + " quarter " + quarter);
+	        		//System.out.println("1.year " + year + " quarter " + quarter);
 	        		
 	        		if(year == 2022)
 	        		{
@@ -118,9 +118,9 @@
 				        		stID = course_info.getInt("student_id");
 				        		units = course_info.getInt("units");
 				        		
-				        		System.out.println("sectionID " + sectionID + " newNum " + newNum);
-								System.out.println("id " + id + " num " + num);
-				        		System.out.println("2.year " + year + " quarter " + quarter);
+				        		//System.out.println("sectionID " + sectionID + " newNum " + newNum);
+								//System.out.println("id " + id + " num " + num);
+				        		//System.out.println("2.year " + year + " quarter " + quarter);
 								
 				        		if(sectionID == id && newNum.equals(num))
 				                {	
@@ -129,7 +129,7 @@
 					                				"quarter = ? " +
 														"WHERE student_id = ? AND section_id = ?");
 					                
-					                System.out.println("3.year " + year + " quarter " + quarter);
+					                //System.out.println("3.year " + year + " quarter " + quarter);
 					                
 					                course.setString(1, num);
 					                course.setInt(2, year);
@@ -153,9 +153,9 @@
 				        		num = pcourse_info.getString("title");			        		
 				        		stID = pcourse_info.getInt("student_id");
 				        		
-				        		System.out.println("sectionID " + sectionID + " newNum " + newNum);
-								System.out.println("id " + id + " num " + num);
-				        		System.out.println("3.year " + year + " quarter " + quarter);
+				        		//System.out.println("sectionID " + sectionID + " newNum " + newNum);
+								//System.out.println("id " + id + " num " + num);
+				        		//System.out.println("3.year " + year + " quarter " + quarter);
 								
 				        		if(sectionID == id && newNum.equals(num))
 				                {	
