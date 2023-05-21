@@ -42,6 +42,8 @@ DROP TABLE IF EXISTS teaching CASCADE;
 
 DROP TABLE IF EXISTS advisor CASCADE;
 
+DROP TABLE IF EXISTS grade_conversion CASCADE;
+
 
 CREATE TABLE students
 (
