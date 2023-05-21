@@ -77,8 +77,8 @@ table, th, td {
 	<h2>Student Information</h2>
 	<form action="1a.jsp" method="POST">
 		<div>
-			Student:
 			<select name="ssn">
+			<option>--Choose A Student--</option>
 				<%
 				if (student_info.isBeforeFirst())
 				{

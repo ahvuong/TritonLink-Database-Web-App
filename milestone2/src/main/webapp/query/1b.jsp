@@ -137,8 +137,8 @@ table, th, td {
 	<h2>Class Option</h2>
 	<form action="1b.jsp" method="POST">
 		<div>
-			Class:
 			<select name="class_information">
+			<option>--Choose A Class--</option>
 				<%
 				if (class_info.isBeforeFirst())
 				{
