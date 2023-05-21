@@ -210,7 +210,7 @@ VALUES('2', '1', 'CSE132B', '2022', 'SP', '4', 'LETTER');
 INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
 VALUES('1', '5', 'DSC120', '2022', 'SP', '4', 'LETTER');
 INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
-VALUES('3', '8', 'DSC120', '2022', 'SP', '4', 'S/U');
+VALUES('3', '8', 'ECE108', '2022', 'WI', '4', 'S/U');
 INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
 VALUES('4', '11', 'SE110B', '2022', 'SP', '4', 'LETTER');
 INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
