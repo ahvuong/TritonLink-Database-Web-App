@@ -202,15 +202,15 @@ VALUES('19', 'MAE180A', 'Spacecraft', '2022', 'SP', 'Ada_Riz', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
 VALUES('20', 'COGS101A', 'SenNPer', '2021', 'FA', 'Justin_Smith', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('21', 'ECE108', 'DigCir', '2022', 'SP', 'Taylor_Swan', '100');
+VALUES('72', 'ECE108', 'DigCir', '2022', 'SP', 'Taylor_Swan', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('22', 'ECE108', 'DigCir', '2022', 'SP', 'Taylor_Swan', '100');
+VALUES('81', 'MAE180A', 'Spacecraft', '2022', 'SP', 'Ada_Riz', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('23', 'MAE180A', 'Spacecraft', '2022', 'SP', 'Ada_Riz', '100');
+VALUES('82', 'MAE180A', 'Spacecraft', '2022', 'SP', 'Ada_Riz', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('24', 'MAE180A', 'Spacecraft', '2022', 'SP', 'Ada_Riz', '100');
+VALUES('91', 'NANO119', 'SysDesign', '2022', 'SP', 'Adam_Cao', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('25', 'NANO119', 'SysDesign', '2022', 'SP', 'Adam_Cao', '100');
+VALUES('92', 'NANO119', 'SysDesign', '2022', 'SP', 'Adam_Cao', '100');
 
 -----------------Course Enrollment Info-----------------
 INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
@@ -233,7 +233,8 @@ INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter,
 VALUES('8', '18', 'DSC104', '2022', 'SP', '4', 'LETTER');
 INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
 VALUES('9', '19', 'MAE180A', '2022', 'SP', '4', 'S/U');
-
+INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
+VALUES('10', '72', 'ECE108', '2022', 'SP', '4', 'S/U');
 -----------------Classes Taken In The Past Info-----------------
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion) 
 VALUES('1', '2', 'CSE132A', '2020', 'WI', 'Flo_Rence', 'A', '4','4.0');
@@ -274,74 +275,96 @@ INSERT INTO grade_conversion VALUES('C', 2.2);
 INSERT INTO grade_conversion VALUES('C-', 1.9);
 INSERT INTO grade_conversion VALUES('D', 1.6);
 
------------------Meeting Section Info-----------------
-DO
-$$
-BEGIN
-    FOR i IN 0..9 LOOP
-        INSERT INTO meeting_sections(section_id, new_number, date_time, begin_time, end_time, room, building, section_type)
-                VALUES(1, 'LECTURE', '2016-01-04 10:00:00'::timestamp + (i * INTERVAL '7 DAYS') , '2016-01-04 11:00:00'::timestamp + (i * INTERVAL '7 DAYS'), 'LOCATION', FALSE);
-        INSERT INTO WeeklyMeeting(section_id, meeting_type, start_datetime, end_datetime, location, required)
-                VALUES(1, 'LECTURE', '2016-01-06 10:00:00'::timestamp + (i * INTERVAL '7 DAYS'), '2016-01-06 11:00:00'::timestamp + (i * INTERVAL '7 DAYS'), 'LOCATION', FALSE);
-        INSERT INTO WeeklyMeeting(section_id, meeting_type, start_datetime, end_datetime, location, required)
-                VALUES(1, 'LECTURE', '2016-01-08 10:00:00'::timestamp + (i * INTERVAL '7 DAYS'), '2016-01-08 11:00:00'::timestamp + (i * INTERVAL '7 DAYS'), 'LOCATION', FALSE);
+-----------------Weekly Section Info-----------------
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('72', 'ECE108', '2022-04-03', '15:00:00', '17:00:00', '1', 'ECE', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('72', 'ECE108', '2022-04-05', '15:00:00', '17:00:00', '1', 'ECE', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('72', 'ECE108', '2022-04-10', '15:00:00', '17:00:00', '1', 'ECE', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('72', 'ECE108', '2022-04-12', '15:00:00', '17:00:00', '1', 'ECE', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('72', 'ECE108', '2022-04-17', '15:00:00', '17:00:00', '1', 'ECE', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('72', 'ECE108', '2022-04-19', '15:00:00', '17:00:00', '1', 'ECE', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('72', 'ECE108', '2022-04-24', '15:00:00', '17:00:00', '1', 'ECE', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('72', 'ECE108', '2022-04-26', '15:00:00', '17:00:00', '1', 'ECE', 'Yes', 'LECTURE');
 
-        INSERT INTO WeeklyMeeting(section_id, meeting_type, start_datetime, end_datetime, location, required)
-                VALUES(2, 'LECTURE', '2016-01-04 10:00:00'::timestamp + (i * INTERVAL '7 DAYS'), '2016-01-04 11:00:00'::timestamp + (i * INTERVAL '7 DAYS'), 'LOCATION', FALSE);
-        INSERT INTO WeeklyMeeting(section_id, meeting_type, start_datetime, end_datetime, location, required)
-                VALUES(2, 'LECTURE', '2016-01-06 10:00:00'::timestamp + (i * INTERVAL '7 DAYS'), '2016-01-06 11:00:00'::timestamp + (i * INTERVAL '7 DAYS'), 'LOCATION', FALSE);
-        INSERT INTO WeeklyMeeting(section_id, meeting_type, start_datetime, end_datetime, location, required)
-                VALUES(2, 'LECTURE', '2016-01-08 10:00:00'::timestamp + (i * INTERVAL '7 DAYS'), '2016-01-08 11:00:00'::timestamp + (i * INTERVAL '7 DAYS'), 'LOCATION', FALSE);
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('81', 'MAE180A', '2022-04-03', '14:00:00', '15:30:00', '2', 'MAE', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('81', 'MAE180A', '2022-04-06', '13:00:00', '14:30:00', '2', 'MAE', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('81', 'MAE180A', '2022-04-10', '14:00:00', '15:30:00', '2', 'MAE', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('81', 'MAE180A', '2022-04-13', '13:00:00', '14:30:00', '2', 'MAE', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('81', 'MAE180A', '2022-04-17', '14:00:00', '15:30:00', '2', 'MAE', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('81', 'MAE180A', '2022-04-20', '13:00:00', '14:30:00', '2', 'MAE', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('81', 'MAE180A', '2022-04-24', '14:00:00', '15:30:00', '2', 'MAE', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('81', 'MAE180A', '2022-04-27', '13:00:00', '14:30:00', '2', 'MAE', 'Yes', 'LECTURE');
 
-        INSERT INTO WeeklyMeeting(section_id, meeting_type, start_datetime, end_datetime, location, required)
-                VALUES(3, 'LECTURE', '2016-01-04 12:00:00'::timestamp + (i * INTERVAL '7 DAYS'), '2016-01-04 13:00:00'::timestamp + (i * INTERVAL '7 DAYS'), 'LOCATION', FALSE);
-        INSERT INTO WeeklyMeeting(section_id, meeting_type, start_datetime, end_datetime, location, required)
-                VALUES(3, 'LECTURE', '2016-01-06 12:00:00'::timestamp + (i * INTERVAL '7 DAYS'), '2016-01-06 13:00:00'::timestamp + (i * INTERVAL '7 DAYS'), 'LOCATION', FALSE);
-        INSERT INTO WeeklyMeeting(section_id, meeting_type, start_datetime, end_datetime, location, required)
-                VALUES(3, 'LECTURE', '2016-01-08 12:00:00'::timestamp + (i * INTERVAL '7 DAYS'), '2016-01-08 13:00:00'::timestamp + (i * INTERVAL '7 DAYS'), 'LOCATION', FALSE);
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('82', 'MAE180A', '2022-04-03', '17:00:00', '17:50:00', '3', 'MAE', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('82', 'MAE180A', '2022-04-05', '15:00:00', '15:50:00', '3', 'MAE', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('82', 'MAE180A', '2022-04-07', '13:00:00', '13:50:00', '3', 'MAE', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('82', 'MAE180A', '2022-04-10', '17:00:00', '17:50:00', '3', 'MAE', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('82', 'MAE180A', '2022-04-12', '15:00:00', '15:50:00', '3', 'MAE', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('82', 'MAE180A', '2022-04-14', '13:00:00', '13:50:00', '3', 'MAE', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('82', 'MAE180A', '2022-04-17', '17:00:00', '17:50:00', '3', 'MAE', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('82', 'MAE180A', '2022-04-19', '15:00:00', '15:50:00', '3', 'MAE', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('82', 'MAE180A', '2022-04-21', '13:00:00', '13:50:00', '3', 'MAE', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('82', 'MAE180A', '2022-04-24', '17:00:00', '17:50:00', '3', 'MAE', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('82', 'MAE180A', '2022-04-26', '15:00:00', '15:50:00', '3', 'MAE', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('82', 'MAE180A', '2022-04-28', '13:00:00', '13:50:00', '3', 'MAE', 'Yes', 'LECTURE');
 
-        INSERT INTO WeeklyMeeting(section_id, meeting_type, start_datetime, end_datetime, location, required)
-                VALUES(4, 'LECTURE', '2016-01-04 12:00:00'::timestamp + (i * INTERVAL '7 DAYS'), '2016-01-04 13:00:00'::timestamp + (i * INTERVAL '7 DAYS'), 'LOCATION', FALSE);
-        INSERT INTO WeeklyMeeting(section_id, meeting_type, start_datetime, end_datetime, location, required)
-                VALUES(4, 'LECTURE', '2016-01-06 12:00:00'::timestamp + (i * INTERVAL '7 DAYS'), '2016-01-06 13:00:00'::timestamp + (i * INTERVAL '7 DAYS'), 'LOCATION', FALSE);
-        INSERT INTO WeeklyMeeting(section_id, meeting_type, start_datetime, end_datetime, location, required)
-                VALUES(4, 'LECTURE', '2016-01-08 12:00:00'::timestamp + (i * INTERVAL '7 DAYS'), '2016-01-08 13:00:00'::timestamp + (i * INTERVAL '7 DAYS'), 'LOCATION', FALSE);
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('91', 'NANO119', '2022-04-03', '14:00:00', '15:30:00', '4', 'NANO', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('91', 'NANO119', '2022-04-05', '13:00:00', '14:00:00', '4', 'NANO', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('91', 'NANO119', '2022-04-10', '14:00:00', '15:30:00', '4', 'NANO', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('91', 'NANO119', '2022-04-12', '13:00:00', '14:00:00', '4', 'NANO', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('91', 'NANO119', '2022-04-17', '14:00:00', '15:30:00', '4', 'NANO', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('91', 'NANO119', '2022-04-19', '13:00:00', '14:00:00', '4', 'NANO', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('91', 'NANO119', '2022-04-24', '14:00:00', '15:30:00', '4', 'NANO', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('91', 'NANO119', '2022-04-26', '13:00:00', '14:00:00', '4', 'NANO', 'Yes', 'LECTURE');
 
-        INSERT INTO WeeklyMeeting(section_id, meeting_type, start_datetime, end_datetime, location, required)
-                VALUES(5, 'LECTURE', '2016-01-04 12:00:00'::timestamp + (i * INTERVAL '7 DAYS'), '2016-01-04 13:00:00'::timestamp + (i * INTERVAL '7 DAYS'), 'LOCATION', FALSE);
-        INSERT INTO WeeklyMeeting(section_id, meeting_type, start_datetime, end_datetime, location, required)
-                VALUES(5, 'LECTURE', '2016-01-06 12:00:00'::timestamp + (i * INTERVAL '7 DAYS'), '2016-01-06 13:00:00'::timestamp + (i * INTERVAL '7 DAYS'), 'LOCATION', FALSE);
-        INSERT INTO WeeklyMeeting(section_id, meeting_type, start_datetime, end_datetime, location, required)
-                VALUES(5, 'LECTURE', '2016-01-08 12:00:00'::timestamp + (i * INTERVAL '7 DAYS'), '2016-01-08 13:00:00'::timestamp + (i * INTERVAL '7 DAYS'), 'LOCATION', FALSE);
-
-        INSERT INTO WeeklyMeeting(section_id, meeting_type, start_datetime, end_datetime, location, required)
-                VALUES(6, 'LECTURE', '2016-01-05 14:00:00'::timestamp + (i * INTERVAL '7 DAYS'), '2016-01-05 15:00:00'::timestamp + (i * INTERVAL '7 DAYS'), 'LOCATION', FALSE);
-        INSERT INTO WeeklyMeeting(section_id, meeting_type, start_datetime, end_datetime, location, required)
-                VALUES(6, 'LECTURE', '2016-01-07 14:00:00'::timestamp + (i * INTERVAL '7 DAYS'), '2016-01-07 15:00:00'::timestamp + (i * INTERVAL '7 DAYS'), 'LOCATION', FALSE);
-        INSERT INTO WeeklyMeeting(section_id, meeting_type, start_datetime, end_datetime, location, required)
-                VALUES(6, 'DISCUSSION', '2016-01-08 18:00:00'::timestamp + (i * INTERVAL '7 DAYS'), '2016-01-08 19:00:00'::timestamp + (i * INTERVAL '7 DAYS'), 'LOCATION', FALSE);
-
-        INSERT INTO WeeklyMeeting(section_id, meeting_type, start_datetime, end_datetime, location, required)
-                VALUES(7, 'LECTURE', '2016-01-05 15:00:00'::timestamp + (i * INTERVAL '7 DAYS'), '2016-01-05 16:00:00'::timestamp + (i * INTERVAL '7 DAYS'), 'LOCATION', FALSE);
-        INSERT INTO WeeklyMeeting(section_id, meeting_type, start_datetime, end_datetime, location, required)
-                VALUES(7, 'LECTURE', '2016-01-07 15:00:00'::timestamp + (i * INTERVAL '7 DAYS'), '2016-01-07 16:00:00'::timestamp + (i * INTERVAL '7 DAYS'), 'LOCATION', FALSE);
-
-        INSERT INTO WeeklyMeeting(section_id, meeting_type, start_datetime, end_datetime, location, required)
-                VALUES(8, 'LECTURE', '2016-01-05 15:00:00'::timestamp + (i * INTERVAL '7 DAYS'), '2016-01-05 16:00:00'::timestamp + (i * INTERVAL '7 DAYS'), 'LOCATION', FALSE);
-        INSERT INTO WeeklyMeeting(section_id, meeting_type, start_datetime, end_datetime, location, required)
-                VALUES(8, 'LECTURE', '2016-01-07 15:00:00'::timestamp + (i * INTERVAL '7 DAYS'), '2016-01-07 16:00:00'::timestamp + (i * INTERVAL '7 DAYS'), 'LOCATION', FALSE);
-
-        INSERT INTO WeeklyMeeting(section_id, meeting_type, start_datetime, end_datetime, location, required)
-                VALUES(9, 'LECTURE', '2016-01-05 17:00:00'::timestamp + (i * INTERVAL '7 DAYS'), '2016-01-05 18:00:00'::timestamp + (i * INTERVAL '7 DAYS'), 'LOCATION', FALSE);
-        INSERT INTO WeeklyMeeting(section_id, meeting_type, start_datetime, end_datetime, location, required)
-                VALUES(9, 'LECTURE', '2016-01-07 17:00:00'::timestamp + (i * INTERVAL '7 DAYS'), '2016-01-07 18:00:00'::timestamp + (i * INTERVAL '7 DAYS'), 'LOCATION', FALSE);
-
-        INSERT INTO WeeklyMeeting(section_id, meeting_type, start_datetime, end_datetime, location, required)
-                VALUES(10, 'LECTURE', '2016-01-05 17:00:00'::timestamp + (i * INTERVAL '7 DAYS'), '2016-01-05 18:00:00'::timestamp + (i * INTERVAL '7 DAYS'), 'LOCATION', FALSE);
-        INSERT INTO WeeklyMeeting(section_id, meeting_type, start_datetime, end_datetime, location, required)
-                VALUES(10, 'LECTURE', '2016-01-07 17:00:00'::timestamp + (i * INTERVAL '7 DAYS'), '2016-01-07 18:00:00'::timestamp + (i * INTERVAL '7 DAYS'), 'LOCATION', FALSE);
-        INSERT INTO WeeklyMeeting(section_id, meeting_type, start_datetime, end_datetime, location, required)
-                VALUES(10, 'DISCUSSION', '2016-01-06 19:00:00'::timestamp + (i * INTERVAL '7 DAYS'), '2016-01-06 20:00:00'::timestamp + (i * INTERVAL '7 DAYS'), 'LOCATION', FALSE);
-    END LOOP;
-END
-$$
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('92', 'NANO119', '2022-04-03', '13:00:00', '14:00:00', '5', 'NANO', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('92', 'NANO119', '2022-04-05', '13:00:00', '14:00:00', '5', 'NANO', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('92', 'NANO119', '2022-04-10', '13:00:00', '14:00:00', '5', 'NANO', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('92', 'NANO119', '2022-04-12', '13:00:00', '14:00:00', '5', 'NANO', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('92', 'NANO119', '2022-04-17', '13:00:00', '14:00:00', '5', 'NANO', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('92', 'NANO119', '2022-04-19', '13:00:00', '14:00:00', '5', 'NANO', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('92', 'NANO119', '2022-04-24', '13:00:00', '14:00:00', '5', 'NANO', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('92', 'NANO119', '2022-04-26', '13:00:00', '14:00:00', '5', 'NANO', 'Yes', 'LECTURE');

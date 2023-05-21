@@ -88,7 +88,7 @@ CREATE TABLE meeting_sections
     room varchar(20),
     building varchar(10),
     section_type varchar(10),
-    PRIMARY KEY(section_id, new_number),
+    PRIMARY KEY(section_id, new_number, date_time),
     FOREIGN KEY(section_id) references classes(section_id) ON DELETE CASCADE
 );
 
@@ -103,7 +103,7 @@ CREATE TABLE weekly
     building varchar(10),
     mandatory boolean,
     session_type varchar(10),
-    PRIMARY KEY(section_id, new_number),
+    PRIMARY KEY(section_id, new_number, date_time),
     FOREIGN KEY(section_id) references classes(section_id) ON DELETE CASCADE
 );
 
@@ -116,7 +116,7 @@ CREATE TABLE review
     end_time Time,
     room varchar(20),
     building varchar(10),
-    PRIMARY KEY(section_id, new_number),
+    PRIMARY KEY(section_id, new_number, date_time),
     FOREIGN KEY(section_id) references classes(section_id) ON DELETE CASCADE
 );
 
