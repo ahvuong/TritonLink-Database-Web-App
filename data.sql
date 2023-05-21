@@ -201,6 +201,16 @@ INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_nam
 VALUES('19', 'MAE180A', 'Spacecraft', '2022', 'SP', 'Ada_Riz', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
 VALUES('20', 'COGS101A', 'SenNPer', '2021', 'FA', 'Justin_Smith', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('21', 'ECE108', 'DigCir', '2022', 'SP', 'Taylor_Swan', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('22', 'ECE108', 'DigCir', '2022', 'SP', 'Taylor_Swan', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('23', 'MAE180A', 'Spacecraft', '2022', 'SP', 'Ada_Riz', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('24', 'MAE180A', 'Spacecraft', '2022', 'SP', 'Ada_Riz', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('25', 'NANO119', 'SysDesign', '2022', 'SP', 'Adam_Cao', '100');
 
 -----------------Course Enrollment Info-----------------
 INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
@@ -264,12 +274,12 @@ INSERT INTO grade_conversion VALUES('C', 2.2);
 INSERT INTO grade_conversion VALUES('C-', 1.9);
 INSERT INTO grade_conversion VALUES('D', 1.6);
 
------------------Weekly Meeting Info-----------------
+-----------------Meeting Section Info-----------------
 DO
 $$
 BEGIN
     FOR i IN 0..9 LOOP
-        INSERT INTO WeeklyMeeting(section_id, meeting_type, start_datetime, end_datetime, location, required)
+        INSERT INTO meeting_sections(section_id, new_number, date_time, begin_time, end_time, room, building, section_type)
                 VALUES(1, 'LECTURE', '2016-01-04 10:00:00'::timestamp + (i * INTERVAL '7 DAYS') , '2016-01-04 11:00:00'::timestamp + (i * INTERVAL '7 DAYS'), 'LOCATION', FALSE);
         INSERT INTO WeeklyMeeting(section_id, meeting_type, start_datetime, end_datetime, location, required)
                 VALUES(1, 'LECTURE', '2016-01-06 10:00:00'::timestamp + (i * INTERVAL '7 DAYS'), '2016-01-06 11:00:00'::timestamp + (i * INTERVAL '7 DAYS'), 'LOCATION', FALSE);

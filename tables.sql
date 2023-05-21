@@ -80,7 +80,7 @@ CREATE TABLE classes
 
 CREATE TABLE meeting_sections
 (
-    section_id int UNIQUE,
+    section_id int,
     new_number varchar(20),
     date_time Date,
     begin_time Time,
@@ -94,7 +94,7 @@ CREATE TABLE meeting_sections
 
 CREATE TABLE weekly
 (
-    section_id int UNIQUE,
+    section_id int,
     new_number varchar(20),
     date_time Date,
     begin_time Time,
