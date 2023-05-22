@@ -10,7 +10,13 @@
 	<meta charset="UTF-8">
 	<title>undergraduate degree remaining</title>
 </head>
-
+<style>
+	table,
+	th,
+	td {
+		border: 1px solid black;
+	}
+</style>
 
 <body>
 
@@ -58,8 +64,8 @@
             	correct_major = major_info.getString("major");
             }
             
-             String majorValue = request.getParameter("major"); 
-             if (majorValue.equals(correct_major)) { 
+            String majorValue = request.getParameter("major"); 
+            if (majorValue.equals(correct_major)) { 
                 PreparedStatement pstmt = connection.prepareStatement(
     				"SELECT * FROM degree where degree_name = ? AND degree_type = ?"
     			);
@@ -132,23 +138,11 @@
 			</select>
 		</div>
 
-
 		<button type="submit" name="action" value="submit">Submit</button>
 
 	</form>
 
-
-	<h3> </h3>
-	<table>
-		<tr>
-			<th>Student id</th>
-			<th>Upper Units Remaining</th>
-			<th>Lower Units Remaining</th>
-			<th>Total</th>
-
-		</tr>
-
-		<% 
+	<% 
   	 		if (degree_info != null) {
   				if (degree_info.isBeforeFirst()) {
 					while(degree_info.next()) { 
@@ -156,9 +150,11 @@
 					    System.out.println("lower_units1: " + required_units.get("lower_units")); */
 					    int upperUnits = degree_info.getInt("upper_units");
 					    int lowerUnits = degree_info.getInt("lower_units");
+					    int electiveUnits = degree_info.getInt("elective_units");
 
 					    required_units.put("upper_units", upperUnits);
 					    required_units.put("lower_units", lowerUnits);
+					    required_units.put("elective_units", electiveUnits);
 		
 /*  					System.out.println("upper_units1: " + required_units.get("upper_units"));
 					    System.out.println("lower_units1: " + required_units.get("lower_units"));  */
@@ -169,6 +165,7 @@
   	 		if (class_info != null) {
 				archieved_units.put("upper_units", 0);
 				archieved_units.put("lower_units", 0);
+				archieved_units.put("elective_units", 0);
   				if (class_info.isBeforeFirst()) {
 					while(class_info.next()) { 
 						String class_type = class_info.getString("class_type");
@@ -180,23 +177,23 @@
 						if (class_type.equals("lower_units")) {
 							archieved_units.put("lower_units", archieved_units.get("lower_units") + units);
 						}
-		/* 			    System.out.println("upper_units2: " + archieved_units.get("upper_units"));
-					    System.out.println("lower_units2: " + archieved_units.get("lower_units")); */
+						if (class_type.equals("elective_units")) {
+							archieved_units.put("elective_units", archieved_units.get("elective_units") + units);
+						}
+						if (class_type.equals("UP&ELT_units")) {
+							archieved_units.put("upper_units", archieved_units.get("upper_units") + units);
+							archieved_units.put("elective_units", archieved_units.get("elective_units") + units);
+						}
 					}
 				}	
   			}
    	 		int upper_remain = 0;	
  	 		int lower_remain = 0;
- 	 		int total_remain = 0;
-  	 		
+ 	 		int elective_remain = 0;
+ 	 		int total_remain = 0;		
 
-			System.out.println("upper_units1: " + required_units.get("upper_units"));
-		    System.out.println("lower_units1: " + required_units.get("lower_units")); 
-		    System.out.println("upper_units2: " + archieved_units.get("upper_units"));
-		    System.out.println("lower_units2: " + archieved_units.get("lower_units"));
- 	 		
- 	 		
-   	 	/* 	if (class_info != null && degree_info != null) { */
+ 	 			
+   	 	 	if (class_info != null && degree_info != null) { 
 		 		if(archieved_units.get("upper_units")>= required_units.get("upper_units")) {
 		 			upper_remain = 0;
 		 		} else {
@@ -208,24 +205,42 @@
 		 		} else {
 		 			lower_remain = required_units.get("lower_units") - archieved_units.get("lower_units");
 		 		}
-		 		total_remain = upper_remain + lower_remain;
- 	 		/* } */   
+		 		
+		 		if(archieved_units.get("elective_units")>= required_units.get("elective_units")) {
+		 			elective_remain = 0;
+		 		} else {
+		 			elective_remain = required_units.get("elective_units") - archieved_units.get("elective_units");
+		 		}
+		 		
+		 		
+		 		total_remain = upper_remain + lower_remain + elective_remain;
+ 	 		 }    
 	 		
 	 		if (class_info != null) {   
 		 
 	 		%>
+
+	<%-- Table --%>
+	<table style="width:60%">
+		<tr>
+			<th>Student id</th>
+			<th>Upper Units Remaining</th>
+			<th>Lower Units Remaining</th>
+			<th>Elective Units Remaining</th>
+			<th>Total</th>
+
+		</tr>
 		<tr>
 			<td><%= request.getParameter("student_id") %></td>
 			<td><%= upper_remain %></td>
 			<td><%= lower_remain %></td>
+			<td><%= elective_remain %></td>
 			<td><%= total_remain %></td>
 		</tr>
-
-		<% 
-	 		  }  
-	  %>
-
 	</table>
+	<% } else { %>
+	<p><strong>Wrong major, please choose again!</strong></p>
+	<% } %>
 
 	<%-- iteration --%>
 

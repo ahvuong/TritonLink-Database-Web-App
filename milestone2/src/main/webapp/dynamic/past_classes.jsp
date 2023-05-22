@@ -160,6 +160,8 @@
 					<select name="class_type">
 						<option value="upper_units">upper_units</option>
 						<option value="lower_units">lower_units</option>
+						<option value="elective_units">lower_units</option>
+						<option value="UP&ELT_units">lower_units</option>
 					</select>
 				</th>
 
@@ -277,6 +279,10 @@
 						<% String t = rs.getString("class_type"); %>
 						<option value="upper_units" <%= t.equals("upper_units") ? "selected":"" %>>upper_units</option>
 						<option value="lower_units" <%= t.equals("lower_units") ? "selected":"" %>>lower_units</option>
+						<option value="elective_units" <%= t.equals("elective_units") ? "selected":"" %>>elective_units
+						</option>
+						<option value="UP&ELT_units" <%= t.equals("UP&ELT_units") ? "selected":"" %>>UP&ELT_units
+						</option>
 					</select>
 				</td>
 

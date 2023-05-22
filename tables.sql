@@ -219,6 +219,7 @@ CREATE TABLE degree
     degree_id serial PRIMARY KEY,
     upper_units int,
     lower_units int,
+    elective_units int,
     total_units int,
     min_grade varchar(20), 
     degree_name varchar(20),
