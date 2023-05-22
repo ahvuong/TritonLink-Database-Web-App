@@ -25,7 +25,7 @@
         DriverManager.registerDriver(new org.postgresql.Driver());
     
         Connection connection = DriverManager.getConnection(
-        		"jdbc:postgresql:tables?user=postgres&password=ahvuong");
+        		"jdbc:postgresql:tables?user=postgres&password=trungtinvo");
     
         String action = request.getParameter("action");
         
