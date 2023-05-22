@@ -8,7 +8,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>undergraduate degree remaining</title>
+	<title>Undergraduate Degree Requirement Report</title>
 </head>
 <style>
 	table,
@@ -24,9 +24,15 @@
     try {
         DriverManager.registerDriver(new org.postgresql.Driver());
     
-        Connection connection = DriverManager.getConnection("jdbc:postgresql:tables?user=postgres&password=trungtinvo");
+        Connection connection = DriverManager.getConnection(
+        		"jdbc:postgresql:tables?user=postgres&password=ahvuong");
     
         String action = request.getParameter("action");
+        
+        String ssn = "";
+		String first = "";
+		String middle = "";
+		String last = "";
         
         ResultSet student_info = null;
         ResultSet class_info = null;
@@ -96,20 +102,26 @@
 	<form action="1d.jsp" method="POST">
 
 		<div>
-			Student:
 			<select name="student_id">
+			<option>--Choose A Student--</option>
 				<%
 					if (student_info.isBeforeFirst())
 					{
 						while(student_info.next()){
-	                       
-							%>
-				<option value="<%=student_info.getString("student_id")%>">
-					<%=student_info.getString("first_name")%>
-					<%=student_info.getString("middle_name").equals("NULL")? " " : student_info.getString("middle_name")%>
-					<%=student_info.getString("last_name")%>
-					(SSN: <%=student_info.getString("ssn")%>)
-				</option>
+							ssn = student_info.getString("ssn");
+							first = student_info.getString("first_name");
+							middle = student_info.getString("middle_name");
+							last = student_info.getString("last_name");
+							
+							if (middle.equals("NULL"))
+								middle = "";
+							
+							String student_information = "SSN: " + ssn + " " + 
+														"First Name: " + first + " " + 
+														"Middle Name: " + middle + " " +
+														"Last Name: " + last + " ";
+	                    %>
+				<option value=<%=ssn%>><%=student_information%></option>
 				<%
 						}
 					}
@@ -117,10 +129,10 @@
 			</select>
 
 		</div>
-
+		<br>
 		<div>
-			Degree Name and Type:
 			<select name="major">
+			<option>--Degree Name and Type--</option>
 				<%
 					if (filter_degree.isBeforeFirst())
 					{
@@ -137,7 +149,7 @@
 					%>
 			</select>
 		</div>
-
+		<br>
 		<button type="submit" name="action" value="submit">Submit</button>
 
 	</form>
@@ -238,7 +250,8 @@
 			<td><%= total_remain %></td>
 		</tr>
 	</table>
-	<% } else { %>
+	<% } 
+	 else { %>
 	<p><strong>Wrong major, please choose again!</strong></p>
 	<% } %>
 
