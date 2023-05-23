@@ -233,6 +233,7 @@
 	 		%>
 
 	<%-- Table --%>
+	<br>
 	<table style="width:60%">
 		<tr>
 			<th>Student id</th>
@@ -250,13 +251,14 @@
 			<td><%= total_remain %></td>
 		</tr>
 	</table>
+	<br>
 	<% } 
 	 else { %>
 	<p><strong>Wrong major, please choose again!</strong></p>
 	<% } %>
 
 	<%-- iteration --%>
-
+	
 	<%
       connection.close();
            
@@ -269,5 +271,5 @@
       %>
 
 </body>
-
+<a href="../../index.html">Back To Home Page Here</a>
 </html>
