@@ -44,6 +44,8 @@ DROP TABLE IF EXISTS advisor CASCADE;
 
 DROP TABLE IF EXISTS grade_conversion CASCADE;
 
+DROP TABLE IF EXISTS concentration CASCADE;
+
 
 CREATE TABLE students
 (
@@ -230,8 +232,11 @@ CREATE TABLE ms_degree
 (
     degree_id int PRIMARY KEY,
     concentration_min_grade varchar(20),
-    concentration_courses varchar(20),
+    concentration_1_units int,
+    concentration_2_units int,
+    concentration_3_units int,
     concentration_total_units int,
+    ms_name varchar(20),
     FOREIGN KEY(degree_id) references degree(degree_id) ON DELETE CASCADE
 );
 
@@ -246,7 +251,7 @@ CREATE TABLE past_classes
     grade varchar(20),
     units int,
     grade_conversion decimal(2,1),
-    class_type varchar(20),
+    class_type varchar(30),
     PRIMARY KEY(student_id, section_id),
     FOREIGN KEY(section_id) references classes(section_id) ON DELETE CASCADE,
     FOREIGN KEY(student_id) references students(student_id) ON DELETE CASCADE,
@@ -282,4 +287,12 @@ create table grade_conversion
 (
     letter_grade char(2) not null,
     number_grade decimal(2,1)
+);
+
+create table concentration
+(
+  id int PRIMARY KEY,
+  department VARCHAR(30),
+  concentration VARCHAR(30),
+  class_name VARCHAR(20)
 );

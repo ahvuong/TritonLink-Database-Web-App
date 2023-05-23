@@ -156,6 +156,54 @@ VALUES('SE110B', 'SE110', 4, 'SE', 'BOTH', 'Required', 'LETTER');
 INSERT INTO courses(new_number, old_number, units, department, prerequisites, lab_requirements, grade)  
 VALUES('NANO119', 'NANO119A', 1, 'NANO', 'BOTH', 'Not_Required', 'LETTER');
 
+INSERT INTO courses(new_number, old_number, units, department, prerequisites, lab_requirements, grade)  
+VALUES('CE110', 'CE110', '4', 'CE', 'BOTH', 'Not_Required', 'LETTER');
+INSERT INTO courses(new_number, old_number, units, department, prerequisites, lab_requirements, grade)  
+VALUES('CE111', 'CE111', '4', 'CE', 'BOTH', 'Not_Required', 'LETTER');
+INSERT INTO courses(new_number, old_number, units, department, prerequisites, lab_requirements, grade)  
+VALUES('CE112', 'CE112', '4', 'CE', 'BOTH', 'Not_Required', 'LETTER');
+INSERT INTO courses(new_number, old_number, units, department, prerequisites, lab_requirements, grade)  
+VALUES('CE220', 'CE220', '4', 'CE', 'BOTH', 'Not_Required', 'LETTER');
+INSERT INTO courses(new_number, old_number, units, department, prerequisites, lab_requirements, grade)  
+VALUES('CE221', 'CE221', '4', 'CE', 'BOTH', 'Not_Required', 'LETTER');
+INSERT INTO courses(new_number, old_number, units, department, prerequisites, lab_requirements, grade)  
+VALUES('CE222', 'CE222', '4', 'CE', 'BOTH', 'Not_Required', 'LETTER');
+INSERT INTO courses(new_number, old_number, units, department, prerequisites, lab_requirements, grade)  
+VALUES('CE330', 'CE330', '4', 'CE', 'BOTH', 'Not_Required', 'LETTER');
+INSERT INTO courses(new_number, old_number, units, department, prerequisites, lab_requirements, grade)  
+VALUES('CE331', 'CE331', '4', 'CE', 'BOTH', 'Not_Required', 'LETTER');
+INSERT INTO courses(new_number, old_number, units, department, prerequisites, lab_requirements, grade)  
+VALUES('CE332', 'CE332', '4', 'CE', 'BOTH', 'Not_Required', 'LETTER');
+
+INSERT INTO courses(new_number, old_number, units, department, prerequisites, lab_requirements, grade)  
+VALUES('CSE110', 'CSE110', '4', 'CSE', 'BOTH', 'Not_Required', 'LETTER');
+INSERT INTO courses(new_number, old_number, units, department, prerequisites, lab_requirements, grade)  
+VALUES('CSE111', 'CSE111', '4', 'CSE', 'BOTH', 'Not_Required', 'LETTER');
+INSERT INTO courses(new_number, old_number, units, department, prerequisites, lab_requirements, grade)  
+VALUES('CSE220', 'CSE220', '4', 'CSE', 'BOTH', 'Not_Required', 'LETTER');
+INSERT INTO courses(new_number, old_number, units, department, prerequisites, lab_requirements, grade)  
+VALUES('CSE221', 'CSE221', '4', 'CSE', 'BOTH', 'Not_Required', 'LETTER');
+
+INSERT INTO courses(new_number, old_number, units, department, prerequisites, lab_requirements, grade)  
+VALUES('ME110', 'ME110', '4', 'ME', 'BOTH', 'Not_Required', 'LETTER');
+INSERT INTO courses(new_number, old_number, units, department, prerequisites, lab_requirements, grade)  
+VALUES('ME220', 'ME220', '4', 'ME', 'BOTH', 'Not_Required', 'LETTER');
+
+INSERT INTO courses(new_number, old_number, units, department, prerequisites, lab_requirements, grade)  
+VALUES('DS110', 'DS110', '4', 'DS', 'BOTH', 'Not_Required', 'LETTER');
+INSERT INTO courses(new_number, old_number, units, department, prerequisites, lab_requirements, grade)  
+VALUES('DS220', 'DS220', '4', 'DS', 'BOTH', 'Not_Required', 'LETTER');
+INSERT INTO courses(new_number, old_number, units, department, prerequisites, lab_requirements, grade)  
+VALUES('DS330', 'DS330', '4', 'DS', 'BOTH', 'Not_Required', 'LETTER');
+
+INSERT INTO courses(new_number, old_number, units, department, prerequisites, lab_requirements, grade)  
+VALUES('COGS110', 'COGS110', '4', 'COGS', 'BOTH', 'Not_Required', 'LETTER');
+INSERT INTO courses(new_number, old_number, units, department, prerequisites, lab_requirements, grade)  
+VALUES('COGS220', 'COGS220', '4', 'COGS', 'BOTH', 'Not_Required', 'LETTER');
+INSERT INTO courses(new_number, old_number, units, department, prerequisites, lab_requirements, grade)  
+VALUES('COGS330', 'COGS330', '4', 'COGS', 'BOTH', 'Not_Required', 'LETTER');
+
+
 -----------------Class Info-----------------
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
 VALUES('1', 'CSE132B', 'Database', '2022', 'SP', 'Flo_Rence', '100');
@@ -273,6 +321,37 @@ INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructo
 VALUES('9', '14', 'COGS101A', '2020', 'FA', 'Justin_Smith', 'C', '4','2.2','upper_units');
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
 VALUES('10', '15', 'DSC104', '2022', 'FA', 'Robert_Clarkson', 'B-', '4','2.8', 'upper_units');
+
+INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
+VALUES('16', '6', 'CE110', '2021', 'SP', 'Robert_Clarkson', 'B', '4','3.1', 'concentration_1_units');
+INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
+VALUES('16', '7', 'CE330', '2021', 'SP', 'Robert_Clarkson', 'B', '4','3.1', 'concentration_3_units');
+INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
+VALUES('16', '8', 'CE220', '2021', 'SP', 'Robert_Clarkson', 'B', '4','3.1', 'concentration_2_units');
+
+INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
+VALUES('17', '7', 'CSE220', '2021', 'WI', 'Taylor_Swan', 'S', '4','0.0','concentration_2_units');
+INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
+VALUES('17', '8', 'CSE110', '2021', 'WI', 'Taylor_Swan', 'S', '4','0.0','concentration_1_units');
+
+INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
+VALUES('18', '9', 'ME110', '2021', 'FA', 'Ada_Riz', 'U', '4','0.0','concentration_1_units');
+
+INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
+VALUES('19', '10', 'CE220', '2020', 'SP', 'Ada_Riz', 'S', '4','0.0','concentration_2_units');
+
+INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
+VALUES('20', '1', 'DS110', '2021', 'WI', 'Tim_Asreal', 'A+', '4','4.3','concentration_1_units');
+INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
+VALUES('20', '2', 'DS220', '2021', 'WI', 'Tim_Asreal', 'A+', '4','4.3','concentration_2_units');
+INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
+VALUES('20', '3', 'DS330', '2021', 'WI', 'Tim_Asreal', 'A+', '4','4.3','concentration_3_units');
+
+INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
+VALUES('21', '14', 'DS220', '2020', 'FA', 'Justin_Smith', 'C', '4','2.2','concentration_2_units');
+
+INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
+VALUES('22', '15', 'COGS330', '2022', 'FA', 'Robert_Clarkson', 'B-', '4','2.8', 'concentration_3_units');
 
 -----------------Grade Conversion Info-----------------
 INSERT INTO grade_conversion VALUES('A+', 4.3);
@@ -416,3 +495,60 @@ INSERT INTO degree(degree_id, upper_units, lower_units, elective_units, total_un
 VALUES ('8', '40', '85', '15', '140', '3.5', 'SE', 'BS');
 INSERT INTO degree(degree_id, upper_units, lower_units, elective_units, total_units, min_grade, degree_name, degree_type) 
 VALUES ('9', '10', '125', '15', '150', '3.5', 'ECE', 'BS');
+
+-----------------MS degree Info-----------------
+INSERT INTO ms_degree(degree_id, concentration_min_grade, concentration_1_units, concentration_2_units, concentration_3_units, concentration_total_units, ms_name) 
+VALUES ('1', '3.5', '12', '12', '12', '36', 'CE');
+INSERT INTO ms_degree(degree_id, concentration_min_grade, concentration_1_units, concentration_2_units, concentration_3_units, concentration_total_units, ms_name) 
+VALUES ('2', '3.5', '8', '8', '0', '16', 'CSE');
+INSERT INTO ms_degree(degree_id, concentration_min_grade, concentration_1_units, concentration_2_units, concentration_3_units, concentration_total_units, ms_name) 
+VALUES ('3', '3.5', '4', '4', '0', '8', 'ME');
+INSERT INTO ms_degree(degree_id, concentration_min_grade, concentration_1_units, concentration_2_units, concentration_3_units, concentration_total_units, ms_name) 
+VALUES ('4', '3.5', '4', '4', '4', '12', 'DS');
+INSERT INTO ms_degree(degree_id, concentration_min_grade, concentration_1_units, concentration_2_units, concentration_3_units, concentration_total_units, ms_name) 
+VALUES ('5', '3.5', '4', '4', '4', '12', 'COGS');
+
+-----------------Concentration Info-----------------
+INSERT INTO concentration (id, department, concentration, class_name)
+VALUES (1, 'CE', 'concentration_1', 'CE110');
+INSERT INTO concentration (id, department, concentration, class_name)
+VALUES (2, 'CE', 'concentration_1', 'CE111');
+INSERT INTO concentration (id, department, concentration, class_name)
+VALUES (3, 'CE', 'concentration_1', 'CE112');
+INSERT INTO concentration (id, department, concentration, class_name)
+VALUES (4, 'CE', 'concentration_2', 'CE220');
+INSERT INTO concentration (id, department, concentration, class_name)
+VALUES (5, 'CE', 'concentration_2', 'CE221');
+INSERT INTO concentration (id, department, concentration, class_name)
+VALUES (6, 'CE', 'concentration_2', 'CE222');
+INSERT INTO concentration (id, department, concentration, class_name)
+VALUES (7, 'CE', 'concentration_3', 'CE330');
+INSERT INTO concentration (id, department, concentration, class_name)
+VALUES (8, 'CE', 'concentration_3', 'CE331');
+INSERT INTO concentration (id, department, concentration, class_name)
+VALUES (9, 'CE', 'concentration_3', 'CE332');
+INSERT INTO concentration (id, department, concentration, class_name)
+VALUES (10, 'CSE', 'concentration_1', 'CSE110');
+INSERT INTO concentration (id, department, concentration, class_name)
+VALUES (12, 'CSE', 'concentration_1', 'CSE111');
+INSERT INTO concentration (id, department, concentration, class_name)
+VALUES (13, 'CSE', 'concentration_2', 'CSE220');
+INSERT INTO concentration (id, department, concentration, class_name)
+VALUES (14, 'CSE', 'concentration_2', 'CSE221');
+INSERT INTO concentration (id, department, concentration, class_name)
+VALUES (15, 'ME', 'concentration_1', 'ME110');
+INSERT INTO concentration (id, department, concentration, class_name)
+VALUES (16, 'ME', 'concentration_2', 'ME220');
+INSERT INTO concentration (id, department, concentration, class_name)
+VALUES (17, 'DS', 'concentration_1', 'DS110');
+INSERT INTO concentration (id, department, concentration, class_name)
+VALUES (18, 'DS', 'concentration_2', 'DS220');
+INSERT INTO concentration (id, department, concentration, class_name)
+VALUES (19, 'DS', 'concentration_3', 'DS330');
+INSERT INTO concentration (id, department, concentration, class_name)
+VALUES (20, 'COGS', 'concentration_1', 'COGS110');
+INSERT INTO concentration (id, department, concentration, class_name)
+VALUES (21, 'COGS', 'concentration_2', 'COGS220');
+INSERT INTO concentration (id, department, concentration, class_name)
+VALUES (22, 'COGS', 'concentration_3', 'COGS330');
+
