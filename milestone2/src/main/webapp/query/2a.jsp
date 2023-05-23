@@ -50,8 +50,6 @@ table, th, td {
 		
 		ResultSet class_info = null;
     	ResultSet student_info = null;
-    	ResultSet gpa_info = null;
-    	//ResultSet total_gpa_info = null;
     
     	// Select all class's information
     	connection.setAutoCommit(false);
