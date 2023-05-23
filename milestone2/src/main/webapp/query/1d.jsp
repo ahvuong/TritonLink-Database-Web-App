@@ -29,6 +29,7 @@
     
         String action = request.getParameter("action");
         
+        String student_id = "";
         String ssn = "";
 		String first = "";
 		String middle = "";
@@ -108,6 +109,7 @@
 					if (student_info.isBeforeFirst())
 					{
 						while(student_info.next()){
+							student_id = student_info.getString("student_id");
 							ssn = student_info.getString("ssn");
 							first = student_info.getString("first_name");
 							middle = student_info.getString("middle_name");
@@ -121,7 +123,7 @@
 														"Middle Name: " + middle + " " +
 														"Last Name: " + last + " ";
 	                    %>
-				<option value=<%=ssn%>><%=student_information%></option>
+				<option value=<%=student_id%>><%=student_information%></option>
 				<%
 						}
 					}

@@ -24,10 +24,17 @@
     try {
         DriverManager.registerDriver(new org.postgresql.Driver());
     
-        Connection connection = DriverManager.getConnection("jdbc:postgresql:tables?user=postgres&password=trungtinvo");
+        Connection connection = DriverManager.getConnection(
+        		"jdbc:postgresql:tables?user=postgres&password=ahvuong");
     
         String action = request.getParameter("action");
         
+        String student_id = "";
+        String ssn = "";
+		String first = "";
+		String middle = "";
+		String last = "";
+		
         ResultSet student_info = null;
         ResultSet class_info = null;
         ResultSet degree_info = null;
@@ -124,20 +131,27 @@
 	<form action="1e.jsp" method="POST">
 
 		<div>
-			Student:
 			<select name="student_id">
+			<option>--Choose A Student--</option>
 				<%
 					if (student_info.isBeforeFirst())
 					{
 						while(student_info.next()){
-	                       
+							student_id = student_info.getString("student_id");
+							ssn = student_info.getString("ssn");
+							first = student_info.getString("first_name");
+							middle = student_info.getString("middle_name");
+							last = student_info.getString("last_name");
+							
+							if (middle.equals("NULL"))
+								middle = "";
+							
+							String student_information = "SSN: " + ssn + " " + 
+														"First Name: " + first + " " + 
+														"Middle Name: " + middle + " " +
+														"Last Name: " + last + " ";
 							%>
-				<option value="<%=student_info.getString("student_id")%>">
-					<%=student_info.getString("first_name")%>
-					<%=student_info.getString("middle_name").equals("NULL")? " " : student_info.getString("middle_name")%>
-					<%=student_info.getString("last_name")%>
-					(SSN: <%=student_info.getString("ssn")%>)
-				</option>
+				<option value=<%=student_id%>><%=student_information%></option>
 				<%
 						}
 					}
@@ -148,18 +162,16 @@
 		<br>
 
 		<div>
-			Degree Name and Type:
 			<select name="department">
+			<option>--Degree Name and Type--</option>
 				<%
 					if (filter_degree.isBeforeFirst())
 					{
 						while(filter_degree.next()){
-	                       
+	                       String degree = filter_degree.getString("department");
+	                       System.out.println(degree);
 							%>
-				<option value="<%=filter_degree.getString("department")%>">
-					<%=filter_degree.getString("department")%>
-					(MS)
-				</option>
+				<option value="<%=degree %>"><%=degree %> (MS)</option>
 				<%
 						}
 					}
@@ -262,9 +274,9 @@
 	<table style="width:60%">
 		<tr>
 			<th>Student id</th>
-			<th>concentration_1 Units Remaining</th>
-			<th>concentration_2 Units Remaining</th>
-			<th>concentration_3 Units Remaining</th>
+			<th>Concentration_1 Units Remaining</th>
+			<th>Concentration_2 Units Remaining</th>
+			<th>Concentration_3 Units Remaining</th>
 			<th>Total</th>
 
 		</tr>
@@ -280,19 +292,19 @@
 	<% 
 				String completed_concentration = "";
 				if (concentration_1_remain == 0){
-					completed_concentration = "concentration_1";
+					completed_concentration = "Concentration 1 \n";
 				} 
 				if (concentration_2_remain == 0) {
-					completed_concentration = completed_concentration + ", concentration_2";
+					completed_concentration = completed_concentration + " Concentration 2 \n";
 				}
 				if (concentration_3_remain == 0) {
-					completed_concentration = completed_concentration + ", concentration_3";
+					completed_concentration = completed_concentration + " Concentration 3 \n";
 				}
 				%>
 	<table style="width:60%">
 		<tr>
 			<th>Student id</th>
-			<th>completed concentration</th>
+			<th>Completed Concentration</th>
 		</tr>
 		<tr>
 			<td><%= request.getParameter("student_id") %></td>
@@ -326,7 +338,7 @@
 					            	
 					            	if (!concentration_1_courses_done.contains(className)) {
 					            		System.out.println(!concentration_1_courses_done.contains(className));  	
-					                	course_1_remain = course_1_remain + ", " + className;
+					                	course_1_remain = course_1_remain + "\n " + className;
 					                	System.out.println(course_1_remain);
 					                }				         
 					            }
@@ -337,7 +349,7 @@
 
 					               	if (!concentration_2_courses_done.contains(className)) {
 					                	System.out.println(!concentration_2_courses_done.contains(className));
-					                	course_2_remain = course_2_remain + ", " + className;
+					                	course_2_remain = course_2_remain + "\n " + className;
 					                	System.out.println(course_2_remain);
 					                }				         
 					            }
@@ -348,8 +360,9 @@
 
 					                if (!concentration_3_courses_done.contains(className)) {
 					                	System.out.println(!concentration_3_courses_done.contains(className));
-					                	course_3_remain = course_3_remain + ", " + className;
+					                	course_3_remain = course_3_remain + "\n " + className;
 					                	System.out.println(course_3_remain);
+					                	System.out.println(course_3_remain instanceof String);
 					                }				         
 					            }
 				            }
@@ -363,9 +376,9 @@
 	<table style="width:60%">
 		<tr>
 			<th>Student id</th>
-			<th>concentration 1 courses remain</th>
-			<th>concentration 2 courses remain</th>
-			<th>concentration 3 courses remain</th>
+			<th>Concentration 1 Courses Remain</th>
+			<th>Concentration 2 Courses Remain</th>
+			<th>Concentration 3 Courses Remain</th>
 		</tr>
 		<tr>
 			<td><%= request.getParameter("student_id") %></td>
@@ -389,5 +402,5 @@
       %>
 
 </body>
-
+<a href="../../index.html">Go to Home Page</a>
 </html>
