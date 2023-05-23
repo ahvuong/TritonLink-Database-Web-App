@@ -25,7 +25,7 @@
         DriverManager.registerDriver(new org.postgresql.Driver());
     
         Connection connection = DriverManager.getConnection(
-        		"jdbc:postgresql:tables?user=postgres&password=trungtinvo");
+        		"jdbc:postgresql:tables?user=postgres&password=ahvuong");
     
         String action = request.getParameter("action");
         
@@ -151,7 +151,7 @@
 		</div>
 		<br>
 		<button type="submit" name="action" value="submit">Submit</button>
-
+	<br>
 	</form>
 
 	<% 
