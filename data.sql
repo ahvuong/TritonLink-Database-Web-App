@@ -45,12 +45,12 @@ INSERT INTO undergraduate(student_id, college, major, minor)
 VALUES ('9', 'MAE', '', 'Warren');
 
 INSERT INTO students(student_id, ssn, first_name, middle_name, last_name, resident_status, enrollment) 
-VALUES ('10', '10', 'Logan', '', 'F', 'Non-California Resident', 'Yes');
+VALUES ('10', '10', 'Jim', 'Logan', 'F', 'Non-California Resident', 'Yes');
 INSERT INTO undergraduate(student_id, college, major, minor) 
 VALUES ('10', 'DSC', '', 'Muir');
 
 INSERT INTO students(student_id, ssn, first_name, middle_name, last_name, resident_status, enrollment) 
-VALUES ('11', '11', 'Vikram', 'Vi', 'N', 'California Resident', 'No');
+VALUES ('11', '11', 'Joe', 'Vikram', 'N', 'California Resident', 'No');
 INSERT INTO undergraduate(student_id, college, major, minor) 
 VALUES ('11', 'ECE', '', 'Warren');
 
@@ -202,6 +202,8 @@ VALUES('19', 'MAE180A', 'Spacecraft', '2022', 'SP', 'Ada_Riz', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
 VALUES('20', 'COGS101A', 'SenNPer', '2021', 'FA', 'Justin_Smith', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('63', 'DSC120', 'Data_Analysis', '2022', 'SP', 'Robert_Clarkson', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
 VALUES('72', 'ECE108', 'DigCir', '2022', 'SP', 'Taylor_Swan', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
 VALUES('81', 'MAE180A', 'Spacecraft', '2022', 'SP', 'Ada_Riz', '100');
@@ -235,6 +237,9 @@ INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter,
 VALUES('9', '19', 'MAE180A', '2022', 'SP', '4', 'S/U');
 INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
 VALUES('10', '72', 'ECE108', '2022', 'SP', '4', 'S/U');
+INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
+VALUES('11', '63', 'DSC120', '2022', 'SP', '4', 'LETTER');
+
 -----------------Classes Taken In The Past Info-----------------
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
 VALUES('1', '2', 'CSE132A', '2020', 'WI', 'Flo_Rence', 'A', '4','4.0','upper_units');
@@ -282,6 +287,23 @@ INSERT INTO grade_conversion VALUES('C-', 1.9);
 INSERT INTO grade_conversion VALUES('D', 1.6);
 
 -----------------Weekly Section Info-----------------
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('63', 'DSC120', '2022-04-03', '14:00:00', '15:30:00', '1', 'DSC', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('63', 'DSC120', '2022-04-05', '14:00:00', '15:30:00', '1', 'DSC', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('63', 'DSC120', '2022-04-10', '14:00:00', '15:30:00', '1', 'DSC', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('63', 'DSC120', '2022-04-12', '14:00:00', '15:30:00', '1', 'DSC', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('63', 'DSC120', '2022-04-17', '14:00:00', '15:30:00', '1', 'DSC', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('63', 'DSC120', '2022-04-19', '14:00:00', '15:30:00', '1', 'DSC', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('63', 'DSC120', '2022-04-24', '14:00:00', '15:30:00', '1', 'DSC', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('63', 'DSC120', '2022-04-26', '14:00:00', '15:30:00', '1', 'DSC', 'Yes', 'LECTURE');
+
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
 VALUES('72', 'ECE108', '2022-04-03', '15:00:00', '17:00:00', '1', 'ECE', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
