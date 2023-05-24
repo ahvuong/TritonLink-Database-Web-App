@@ -5,7 +5,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Class Roster Report</title>
+	<title>Review Schedule Report</title>
 </head>
 
 <style>
@@ -16,7 +16,8 @@ table, th, td {
 
 <body>
 	<%-- Set the scripting language to Java and --%>
-	<%@ page language="java" import="java.sql.*" import="java.util.*" %>
+	<%@ page language="java" import="java.sql.*" import="java.util.*" 
+	import="java.util.Date" import="java.text.SimpleDateFormat" %>
 
 	<%-- -------- Open Connection Code -------- --%>
 	<%!
@@ -51,14 +52,13 @@ table, th, td {
 		int year = 0;
 		
 		ResultSet class_info = null;
-    	ResultSet student_info = null;
     	ResultSet review_info = null;
     
     	// Select all class's information
     	connection.setAutoCommit(false);
 		PreparedStatement pstmt2 = connection.prepareStatement(
 								"SELECT * FROM classes c " +
-								"WHERE c.quarter = 'SP' AND c.year = 2022");
+								"WHERE c.quarter = 'SP' AND c.year = 2023");
 	
 		class_info = pstmt2.executeQuery();
 		connection.commit();
@@ -69,8 +69,8 @@ table, th, td {
 		{
 			connection.setAutoCommit(false); %>
 	<%-- Create the prepared statement and use it to --%>
-	<% 
-			PreparedStatement pstmt = connection.prepareStatement(
+	<% 				
+				PreparedStatement pstmt = connection.prepareStatement(
 						"WITH student_in_current_course AS (SELECT student_id " +
 															"FROM course_enrollment " +
 															"WHERE section_id = ? AND class_name = ? " +
@@ -110,15 +110,11 @@ table, th, td {
 	
 			sdate = request.getParameter("start");
 			edate = request.getParameter("end");
-			System.out.println("sdate " + sdate);
-			System.out.println("edate " + edate);
-			
+			//System.out.println("sdate " + sdate);
+			//System.out.println("edate " + edate);
 			
 			id = Integer.parseInt(info[1]);
-			System.out.println(info.length);
 			num = info[3];
-			System.out.println("id " + id);
-			System.out.println("num " + num);
 			
 			pstmt.setInt(1, id);
 			pstmt.setString(2, num);
@@ -159,7 +155,7 @@ table, th, td {
 													"Class: " + title + " " + 
 													"Year: " + String.valueOf(year) + " " + 
 													"Quarter: " + quarter + " ";
-						System.out.println(class_information);
+						//System.out.println(class_information);
 			%>
 			<option value="<%=class_information%>"><%=class_information%></option>
 			<%
@@ -179,7 +175,7 @@ table, th, td {
 		<button type="submit" name="action" value="submit">Submit</button>
 	</form>
 	
-	<h3>Students Enrolled In</h3>
+	<h3>Review Session For</h3>
 	<%
 	String[] info1 = request.getParameter("class_information").split(" ");
 	%>
@@ -239,7 +235,7 @@ table, th, td {
 					String begin_time = review_info.getString("begin_time");
 					String end_time = review_info.getString("end_time");
 					
-					System.out.println("begin_time " + begin_time);
+					//System.out.println("begin_time " + begin_time);
 				%>
 					<form>
 						<tr>
