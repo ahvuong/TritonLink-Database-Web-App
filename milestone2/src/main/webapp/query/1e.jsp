@@ -8,7 +8,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>MS degree remaining</title>
+	<title>MS Degree Requirement Report</title>
 </head>
 <style>
 	table,
