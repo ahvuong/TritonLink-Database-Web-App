@@ -17,7 +17,7 @@
 			try {
 				// Load Oracle Driver class file
 				DriverManager.registerDriver (new org.postgresql.Driver());
-				String GET_CLASS_QUERY = "Select * from classes";
+				String GET_CLASS_QUERY = "SELECT * FROM classes";
 				
 				Map<Integer, Integer> section_unit = new HashMap<>();
 				Map<Integer, Map<Integer, Integer>> student_map = new HashMap<>();
@@ -106,7 +106,7 @@
 	        		String num = "";
 	        		//System.out.println("1.year " + year + " quarter " + quarter);
 	        		
-	        		if(year == 2022)
+	        		if(year == 2023)
 	        		{
 	        			// Update course_enrollment if the section_id exists.
 	        			if (course_info.isBeforeFirst())
