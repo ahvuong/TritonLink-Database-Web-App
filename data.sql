@@ -287,6 +287,10 @@ INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter,
 VALUES('10', '72', 'ECE108', '2022', 'SP', '4', 'S/U');
 INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
 VALUES('11', '63', 'DSC120', '2022', 'SP', '4', 'LETTER');
+INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
+VALUES('10', '82', 'MAE180A', '2022', 'SP', '4', 'LETTER');
+INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
+VALUES('11', '82', 'MAE180A', '2022', 'SP', '4', 'LETTER');
 
 -----------------Classes Taken In The Past Info-----------------
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
@@ -551,4 +555,3 @@ INSERT INTO concentration (id, department, concentration, class_name)
 VALUES (21, 'COGS', 'concentration_2', 'COGS220');
 INSERT INTO concentration (id, department, concentration, class_name)
 VALUES (22, 'COGS', 'concentration_3', 'COGS330');
-
