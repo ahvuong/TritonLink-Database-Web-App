@@ -169,7 +169,6 @@
 					{
 						while(filter_degree.next()){
 	                       String degree = filter_degree.getString("department");
-	                       System.out.println(degree);
 							%>
 				<option value="<%=degree %>"><%=degree %> (MS)</option>
 				<%
@@ -271,9 +270,9 @@
 
 	<%-- Table --%>
 	<br>
-	<table style="width:60%">
+	<table style="width:100%">
 		<tr>
-			<th>Student id</th>
+			<th>Student ID</th>
 			<th>Concentration_1 Units Remaining</th>
 			<th>Concentration_2 Units Remaining</th>
 			<th>Concentration_3 Units Remaining</th>
@@ -301,9 +300,9 @@
 					completed_concentration = completed_concentration + " Concentration 3 \n";
 				}
 				%>
-	<table style="width:60%">
+	<table style="width:100%">
 		<tr>
-			<th>Student id</th>
+			<th>Student ID</th>
 			<th>Completed Concentration</th>
 		</tr>
 		<tr>
@@ -334,12 +333,12 @@
 				            if (concentration.equals("concentration_1")) {
 					            // Iterate over the classes and print them
 					            for (String className : concentrationClasses) {
-					             	System.out.println("className: " + className); 
+					             	//System.out.println("className: " + className); 
 					            	
 					            	if (!concentration_1_courses_done.contains(className)) {
-					            		System.out.println(!concentration_1_courses_done.contains(className));  	
+					            		//System.out.println(!concentration_1_courses_done.contains(className));  	
 					                	course_1_remain = course_1_remain + "\n " + className;
-					                	System.out.println(course_1_remain);
+					                	//System.out.println(course_1_remain);
 					                }				         
 					            }
 				            }
@@ -348,9 +347,9 @@
 					            for (String className : concentrationClasses) {
 
 					               	if (!concentration_2_courses_done.contains(className)) {
-					                	System.out.println(!concentration_2_courses_done.contains(className));
+					                	//System.out.println(!concentration_2_courses_done.contains(className));
 					                	course_2_remain = course_2_remain + "\n " + className;
-					                	System.out.println(course_2_remain);
+					                	//System.out.println(course_2_remain);
 					                }				         
 					            }
 				            }
@@ -359,10 +358,9 @@
 					            for (String className : concentrationClasses) {
 
 					                if (!concentration_3_courses_done.contains(className)) {
-					                	System.out.println(!concentration_3_courses_done.contains(className));
+					                	//System.out.println(!concentration_3_courses_done.contains(className));
 					                	course_3_remain = course_3_remain + "\n " + className;
-					                	System.out.println(course_3_remain);
-					                	System.out.println(course_3_remain instanceof String);
+					                	//System.out.println(course_3_remain);
 					                }				         
 					            }
 				            }
@@ -373,9 +371,9 @@
 	        
 		%>
 	<br>
-	<table style="width:60%">
+	<table style="width:100%">
 		<tr>
-			<th>Student id</th>
+			<th>Student ID</th>
 			<th>Concentration 1 Courses Remain</th>
 			<th>Concentration 2 Courses Remain</th>
 			<th>Concentration 3 Courses Remain</th>
@@ -387,6 +385,7 @@
 			<td><%= course_3_remain %></td>
 		</tr>
 	</table>
+	<br>
 
 	<%-- iteration --%>
 

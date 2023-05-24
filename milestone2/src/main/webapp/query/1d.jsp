@@ -236,7 +236,7 @@
 
 	<%-- Table --%>
 	<br>
-	<table style="width:60%">
+	<table style="width:100%">
 		<tr>
 			<th>Student id</th>
 			<th>Upper Units Remaining</th>
