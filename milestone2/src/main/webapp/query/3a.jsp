@@ -8,7 +8,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Undergraduate Degree Requirement Report</title>
+	<title>Grade Distribution Report</title>
 </head>
 <style>
 	table,
@@ -298,5 +298,4 @@
 
 </body>
 <a href="../../index.html">Back To Home Page Here</a>
-
 </html>

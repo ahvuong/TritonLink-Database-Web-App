@@ -73,7 +73,7 @@ table, th, td {
 			int year = Integer.parseInt(info[7]);
 			String quarter = info[9];
 			
-			if(year == 2022 && quarter.equals("SP"))
+			if(year == 2023 && quarter.equals("SP"))
 			{
 				pstmt = connection.prepareStatement(
 						"SELECT * " +
