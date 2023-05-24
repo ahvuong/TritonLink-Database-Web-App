@@ -262,6 +262,49 @@ VALUES('91', 'NANO119', 'SysDesign', '2022', 'SP', 'Adam_Cao', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
 VALUES('92', 'NANO119', 'SysDesign', '2022', 'SP', 'Adam_Cao', '100');
 
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('26', 'CE110', 'Computer Engineer 1', '2023', 'SP', 'Adam_Cao', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('27', 'CE111', 'Computer Engineer 2', '2023', 'FA', 'Adam_A', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('28', 'CE112', 'Computer Engineer 3', '2023', 'WI', 'Adam_B', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('29', 'CE220', 'Computer Engineer 4', '2023', 'WI', 'Adam_C', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('30', 'CE221', 'Computer Engineer 5', '2023', 'SP', 'Adam_C', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('31', 'CE222', 'Computer Engineer 6', '2023', 'FA', 'Adam_D', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('32', 'CE330', 'Computer Engineer 7', '2023', 'FA', 'Adam_E', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('33', 'CE331', 'Computer Engineer 8', '2024', 'SP', 'Adam_F', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('34', 'CE332', 'Computer Engineer 9', '2024', 'WI', 'Adam_F', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('35', 'CSE110', 'Computer Science 4', '2023', 'WI', 'GreenFord_A', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('36', 'CSE111', 'Computer Science 1', '2023', 'FA', 'GreenFord_B', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('37', 'CSE220', 'Computer Science 2', '2023', 'SP', 'GreenFord_C', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('38', 'CSE221', 'Computer Science 3', '2023', 'SP', 'GreenFord_D', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('39', 'ME110', 'Machnical Engineer 1', '2023', 'SP', 'Chris_A', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('40', 'ME220', 'Machnical Engineer 2', '2023', 'FA', 'Chris_B', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('41', 'DS110', 'Machnical Engineer 3', '2023', 'SP', 'Chris_C', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('42', 'DS220', 'Machnical Engineer 4', '2023', 'SP', 'Chris_D', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('43', 'DS330', 'Machnical Engineer 5', '2023', 'FA', 'Chris_E', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('44', 'COGS110', 'Cognitive Science 1', '2023', 'FA', 'Ben_1', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('45', 'COGS220', 'Cognitive Science 2', '2023', 'FA', 'Ben_2', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('46', 'COGS330', 'Cognitive Science 3', '2023', 'WI', 'Ben_3', '100');
+
 -----------------Course Enrollment Info-----------------
 INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
 VALUES('1', '1', 'CSE132B', '2022', 'SP', '4', 'LETTER');
@@ -382,7 +425,6 @@ INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room
 VALUES('63', 'DSC120', '2022-04-24', '14:00:00', '15:30:00', '1', 'DSC', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
 VALUES('63', 'DSC120', '2022-04-26', '14:00:00', '15:30:00', '1', 'DSC', 'Yes', 'LECTURE');
-
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
 VALUES('72', 'ECE108', '2022-04-03', '15:00:00', '17:00:00', '1', 'ECE', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
@@ -551,4 +593,3 @@ INSERT INTO concentration (id, department, concentration, class_name)
 VALUES (21, 'COGS', 'concentration_2', 'COGS220');
 INSERT INTO concentration (id, department, concentration, class_name)
 VALUES (22, 'COGS', 'concentration_3', 'COGS330');
-

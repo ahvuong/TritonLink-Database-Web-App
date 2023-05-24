@@ -8,7 +8,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>MS Degree Requirement Report</title>
+	<title>MS degree remaining</title>
 </head>
 <style>
 	table,
@@ -24,21 +24,16 @@
     try {
         DriverManager.registerDriver(new org.postgresql.Driver());
     
-        Connection connection = DriverManager.getConnection(
-        		"jdbc:postgresql:tables?user=postgres&password=ahvuong");
-    
+        Connection connection = DriverManager.getConnection("jdbc:postgresql:tables?user=postgres&password=trungtinvo");
+        Statement statement1 = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+
         String action = request.getParameter("action");
         
-        String student_id = "";
-        String ssn = "";
-		String first = "";
-		String middle = "";
-		String last = "";
-		
         ResultSet student_info = null;
         ResultSet class_info = null;
         ResultSet degree_info = null;
         ResultSet filter_degree = null; 
+        ResultSet schedule = null; 
 
         HashMap <String, Integer> required_units = new HashMap<>();
         HashMap <String, Integer> archieved_units = new HashMap<>();
@@ -76,12 +71,18 @@
         connection.setAutoCommit(false);
     	PreparedStatement pstmt2 = connection.prepareStatement("SELECT * FROM students where student_id in (select student_id from ms_student)");
     	student_info = pstmt2.executeQuery();
+    	
+    /* 	PreparedStatement pstmt6 = connection.prepareStatement("SELECT * FROM classes "); */
+    	schedule = statement1.executeQuery("SELECT * FROM classes");
+
+    	/* schedule = pstmt6.executeQuery(); */
 
     	PreparedStatement pstmt5 = connection.prepareStatement("SELECT * FROM ms_student");
     	filter_degree = pstmt5.executeQuery(); 
     	
     	connection.commit();
     	connection.setAutoCommit(true);
+    	
     	
         if (action != null && action.equals("submit")) {
         	
@@ -131,27 +132,20 @@
 	<form action="1e.jsp" method="POST">
 
 		<div>
+			Student:
 			<select name="student_id">
-			<option>--Choose A Student--</option>
 				<%
 					if (student_info.isBeforeFirst())
 					{
 						while(student_info.next()){
-							student_id = student_info.getString("student_id");
-							ssn = student_info.getString("ssn");
-							first = student_info.getString("first_name");
-							middle = student_info.getString("middle_name");
-							last = student_info.getString("last_name");
-							
-							if (middle.equals("NULL"))
-								middle = "";
-							
-							String student_information = "SSN: " + ssn + " " + 
-														"First Name: " + first + " " + 
-														"Middle Name: " + middle + " " +
-														"Last Name: " + last + " ";
+	                       
 							%>
-				<option value=<%=student_id%>><%=student_information%></option>
+				<option value="<%=student_info.getString("student_id")%>">
+					<%=student_info.getString("first_name")%>
+					<%=student_info.getString("middle_name").equals("NULL")? " " : student_info.getString("middle_name")%>
+					<%=student_info.getString("last_name")%>
+					(SSN: <%=student_info.getString("ssn")%>)
+				</option>
 				<%
 						}
 					}
@@ -162,15 +156,18 @@
 		<br>
 
 		<div>
+			Degree Name and Type:
 			<select name="department">
-			<option>--Degree Name and Type--</option>
 				<%
 					if (filter_degree.isBeforeFirst())
 					{
 						while(filter_degree.next()){
-	                       String degree = filter_degree.getString("department");
+	                       
 							%>
-				<option value="<%=degree %>"><%=degree %> (MS)</option>
+				<option value="<%=filter_degree.getString("department")%>">
+					<%=filter_degree.getString("department")%>
+					(MS)
+				</option>
 				<%
 						}
 					}
@@ -261,7 +258,6 @@
 		 			concentration_3_remain = required_units.get("concentration_3_units") - archieved_units.get("concentration_3_units");
 		 		}
 		 		
-		 		
 		 		total_remain = concentration_1_remain + concentration_2_remain + concentration_3_remain;
  	 		 }    
 	 		
@@ -270,12 +266,12 @@
 
 	<%-- Table --%>
 	<br>
-	<table style="width:100%">
+	<table style="width:60%">
 		<tr>
-			<th>Student ID</th>
-			<th>Concentration_1 Units Remaining</th>
-			<th>Concentration_2 Units Remaining</th>
-			<th>Concentration_3 Units Remaining</th>
+			<th>Student id</th>
+			<th>concentration_1 Units Remaining</th>
+			<th>concentration_2 Units Remaining</th>
+			<th>concentration_3 Units Remaining</th>
 			<th>Total</th>
 
 		</tr>
@@ -291,19 +287,19 @@
 	<% 
 				String completed_concentration = "";
 				if (concentration_1_remain == 0){
-					completed_concentration = "Concentration 1 \n";
+					completed_concentration = "concentration_1";
 				} 
 				if (concentration_2_remain == 0) {
-					completed_concentration = completed_concentration + " Concentration 2 \n";
+					completed_concentration = completed_concentration + ", concentration_2";
 				}
 				if (concentration_3_remain == 0) {
-					completed_concentration = completed_concentration + " Concentration 3 \n";
+					completed_concentration = completed_concentration + ", concentration_3";
 				}
 				%>
-	<table style="width:100%">
+	<table style="width:60%">
 		<tr>
-			<th>Student ID</th>
-			<th>Completed Concentration</th>
+			<th>Student id</th>
+			<th>completed concentration</th>
 		</tr>
 		<tr>
 			<td><%= request.getParameter("student_id") %></td>
@@ -319,6 +315,8 @@
 	        String course_1_remain = "";
 	        String course_2_remain = "";
 	        String course_3_remain = "";
+	        String reg_time = "";
+	        String quar = "hello";
 	        
  	        if (class_info != null && degree_info != null) {   
 				for (String department : concentration_db.keySet()) {
@@ -333,37 +331,55 @@
 				            if (concentration.equals("concentration_1")) {
 					            // Iterate over the classes and print them
 					            for (String className : concentrationClasses) {
-					             	//System.out.println("className: " + className); 
-					            	
 					            	if (!concentration_1_courses_done.contains(className)) {
-					            		//System.out.println(!concentration_1_courses_done.contains(className));  	
-					                	course_1_remain = course_1_remain + "\n " + className;
-					                	//System.out.println(course_1_remain);
+					            		if (schedule.isBeforeFirst()){
+											while(schedule.next()){	
+												if (schedule.getString("new_number").equals(className)) {
+													reg_time = schedule.getString("quarter") + schedule.getString("year");
+													break;
+												}
+											}
+					            		}
+					                	course_1_remain = course_1_remain + "\n " + className + ": in " + reg_time;
+					                	reg_time = "";
+					                	schedule.beforeFirst();
 					                }				         
 					            }
 				            }
-				            if (concentration.equals("concentration_2")) {
+ 				            if (concentration.equals("concentration_2")) {
 					            // Iterate over the classes and print them
 					            for (String className : concentrationClasses) {
-
 					               	if (!concentration_2_courses_done.contains(className)) {
-					                	//System.out.println(!concentration_2_courses_done.contains(className));
-					                	course_2_remain = course_2_remain + "\n " + className;
-					                	//System.out.println(course_2_remain);
-					                }				         
+					            		if (schedule.isBeforeFirst()){
+											while(schedule.next()){	
+												if (schedule.getString("new_number").equals(className)) {
+													reg_time = schedule.getString("quarter") + schedule.getString("year");
+												}
+											}
+					            		}
+					                	course_2_remain = course_2_remain + "\n " + className + ": in " + reg_time;
+					                	reg_time = "";
+					                	schedule.beforeFirst();
+					                }					        
 					            }
 				            }
 				            if (concentration.equals("concentration_3")) {
 					            // Iterate over the classes and print them
 					            for (String className : concentrationClasses) {
-
 					                if (!concentration_3_courses_done.contains(className)) {
-					                	//System.out.println(!concentration_3_courses_done.contains(className));
-					                	course_3_remain = course_3_remain + "\n " + className;
-					                	//System.out.println(course_3_remain);
+					            		if (schedule.isBeforeFirst()){
+											while(schedule.next()){	
+												if (schedule.getString("new_number").equals(className)) {
+													reg_time = schedule.getString("quarter") + schedule.getString("year");
+												}
+											}
+					            		}
+					                	course_3_remain = course_3_remain + "\n " + className + ": in " + reg_time;
+					                	reg_time = "";
+					                	schedule.beforeFirst();
 					                }				         
 					            }
-				            }
+				            } 
 				        }		        
 				    }
 		        }
@@ -373,7 +389,7 @@
 	<br>
 	<table style="width:100%">
 		<tr>
-			<th>Student ID</th>
+			<th>Student id</th>
 			<th>Concentration 1 Courses Remain</th>
 			<th>Concentration 2 Courses Remain</th>
 			<th>Concentration 3 Courses Remain</th>
@@ -385,7 +401,6 @@
 			<td><%= course_3_remain %></td>
 		</tr>
 	</table>
-	<br>
 
 	<%-- iteration --%>
 
@@ -402,4 +417,5 @@
 
 </body>
 <a href="../../index.html">Go to Home Page</a>
+
 </html>
