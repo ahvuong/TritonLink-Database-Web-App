@@ -49,11 +49,11 @@
     %>
 	<!--------------- choose inputs including course, professor, quarter ----------------->
 	<ol>
-		<li>choose course, professor, and a quarter to get the count of "A", "B", "C", "D", and "other" grades that the
+		<li>Choose course, professor, and a quarter to get the count of "A", "B", "C", "D", and "other" grades that the
 			professor gave at the quarter to the students taking course</li>
-		<li>choose course, professor to get grade points average, the count of "A", "B", "C", "D", and "other" grades
+		<li>Choose course, professor to get grade points average, the count of "A", "B", "C", "D", and "other" grades
 			that the professor has given over the years.</li>
-		<li>choose the course to get the count of "A", "B", "C", "D", and "other" grades given to students over the
+		<li>Choose the course to get the count of "A", "B", "C", "D", and "other" grades given to students over the
 			years</li>
 	</ol>
 
