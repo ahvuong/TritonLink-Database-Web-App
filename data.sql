@@ -206,21 +206,21 @@ VALUES('COGS330', 'COGS330', '4', 'COGS', 'BOTH', 'Not_Required', 'LETTER');
 
 -----------------Class Info-----------------
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('1', 'CSE132B', 'Database', '2022', 'SP', 'Flo_Rence', '100');
+VALUES('1', 'CSE132B', 'Database', '2023', 'SP', 'Flo_Rence', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
 VALUES('2', 'CSE132A', 'Database', '2020', 'WI', 'Flo_Rence', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
 VALUES('3', 'CSE142', 'CompArch', '2021', 'FA', 'Flo_Rence', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('4', 'CSE142', 'CompArch', '2022', 'FA', 'Flo_Rence', '100');
+VALUES('4', 'CSE142', 'CompArch', '2023', 'FA', 'Flo_Rence', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('5', 'DSC120', 'Data_Analysis', '2022', 'SP', 'Robert_Clarkson', '100');
+VALUES('5', 'DSC120', 'Data_Analysis', '2023', 'SP', 'Robert_Clarkson', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
 VALUES('6', 'DSC120', 'Data_Analysis', '2021', 'SP', 'Robert_Clarkson', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
 VALUES('7', 'ECE108', 'DigCir', '2021', 'WI', 'Taylor_Swan', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('8', 'ECE108', 'DigCir', '2022', 'WI', 'Taylor_Swan', '100');
+VALUES('8', 'ECE108', 'DigCir', '2023', 'WI', 'Taylor_Swan', '100');
 
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
 VALUES('9', 'MAE180A', 'Spacecraft', '2021', 'FA', 'Ada_Riz', '100');
@@ -228,69 +228,112 @@ INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_nam
 VALUES('10', 'MAE180A', 'Spacecraft', '2020', 'SP', 'Ada_Riz', '100');
 
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('11', 'SE110B', 'SolidMech', '2022', 'SP', 'Tim_Asreal', '100');
+VALUES('11', 'SE110B', 'SolidMech', '2023', 'SP', 'Tim_Asreal', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
 VALUES('12', 'SE110B', 'SolidMech', '2021', 'WI', 'Tim_Asreal', '100');
 
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('13', 'COGS101A', 'SenNPer', '2022', 'SP', 'Justin_Smith', '100');
+VALUES('13', 'COGS101A', 'SenNPer', '2023', 'SP', 'Justin_Smith', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
 VALUES('14', 'COGS101A', 'SenNPer', '2020', 'FA', 'Justin_Smith', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
 VALUES('15', 'DSC104', 'Data_Management', '2021', 'FA', 'Robert_Clarkson', '100');
 
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('16', 'NANO119', 'SysDesign', '2022', 'SP', 'Adam_Cao', '100');
+VALUES('16', 'NANO119', 'SysDesign', '2023', 'SP', 'Adam_Cao', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('17', 'NANO119', 'SysDesign', '2022', 'SP', 'Adam_Cao', '100');
+VALUES('17', 'NANO119', 'SysDesign', '2023', 'SP', 'Adam_Cao', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('18', 'DSC104', 'Data_Management', '2022', 'SP', 'Robert_Clarkson', '100');
+VALUES('18', 'DSC104', 'Data_Management', '2023', 'SP', 'Robert_Clarkson', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('19', 'MAE180A', 'Spacecraft', '2022', 'SP', 'Ada_Riz', '100');
+VALUES('19', 'MAE180A', 'Spacecraft', '2023', 'SP', 'Ada_Riz', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
 VALUES('20', 'COGS101A', 'SenNPer', '2021', 'FA', 'Justin_Smith', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('63', 'DSC120', 'Data_Analysis', '2022', 'SP', 'Robert_Clarkson', '100');
+VALUES('63', 'DSC120', 'Data_Analysis', '2023', 'SP', 'Robert_Clarkson', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('72', 'ECE108', 'DigCir', '2022', 'SP', 'Taylor_Swan', '100');
+VALUES('72', 'ECE108', 'DigCir', '2023', 'SP', 'Taylor_Swan', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('81', 'MAE180A', 'Spacecraft', '2022', 'SP', 'Ada_Riz', '100');
+VALUES('81', 'MAE180A', 'Spacecraft', '2023', 'SP', 'Ada_Riz', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('82', 'MAE180A', 'Spacecraft', '2022', 'SP', 'Ada_Riz', '100');
+VALUES('82', 'MAE180A', 'Spacecraft', '2023', 'SP', 'Ada_Riz', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('91', 'NANO119', 'SysDesign', '2022', 'SP', 'Adam_Cao', '100');
+VALUES('91', 'NANO119', 'SysDesign', '2023', 'SP', 'Adam_Cao', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('92', 'NANO119', 'SysDesign', '2022', 'SP', 'Adam_Cao', '100');
+VALUES('92', 'NANO119', 'SysDesign', '2023', 'SP', 'Adam_Cao', '100');
+
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('26', 'CE110', 'Computer Engineer 1', '2023', 'SP', 'Adam_Cao', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('27', 'CE111', 'Computer Engineer 2', '2023', 'FA', 'Adam_A', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('28', 'CE112', 'Computer Engineer 3', '2023', 'WI', 'Adam_B', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('29', 'CE220', 'Computer Engineer 4', '2023', 'WI', 'Adam_C', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('30', 'CE221', 'Computer Engineer 5', '2023', 'SP', 'Adam_C', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('31', 'CE222', 'Computer Engineer 6', '2023', 'FA', 'Adam_D', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('32', 'CE330', 'Computer Engineer 7', '2023', 'FA', 'Adam_E', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('33', 'CE331', 'Computer Engineer 8', '2024', 'SP', 'Adam_F', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('34', 'CE332', 'Computer Engineer 9', '2024', 'WI', 'Adam_F', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('35', 'CSE110', 'Computer Science 4', '2023', 'WI', 'GreenFord_A', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('36', 'CSE111', 'Computer Science 1', '2023', 'FA', 'GreenFord_B', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('37', 'CSE220', 'Computer Science 2', '2023', 'SP', 'GreenFord_C', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('38', 'CSE221', 'Computer Science 3', '2023', 'SP', 'GreenFord_D', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('39', 'ME110', 'Machnical Engineer 1', '2023', 'SP', 'Chris_A', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('40', 'ME220', 'Machnical Engineer 2', '2023', 'FA', 'Chris_B', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('41', 'DS110', 'Machnical Engineer 3', '2023', 'SP', 'Chris_C', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('42', 'DS220', 'Machnical Engineer 4', '2023', 'SP', 'Chris_D', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('43', 'DS330', 'Machnical Engineer 5', '2023', 'FA', 'Chris_E', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('44', 'COGS110', 'Cognitive Science 1', '2023', 'FA', 'Ben_1', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('45', 'COGS220', 'Cognitive Science 2', '2023', 'FA', 'Ben_2', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('46', 'COGS330', 'Cognitive Science 3', '2023', 'WI', 'Ben_3', '100');
 
 -----------------Course Enrollment Info-----------------
 INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
-VALUES('1', '1', 'CSE132B', '2022', 'SP', '4', 'LETTER');
+VALUES('1', '1', 'CSE132B', '2023', 'SP', '4', 'LETTER');
 INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
-VALUES('2', '1', 'CSE132B', '2022', 'SP', '4', 'LETTER');
+VALUES('2', '1', 'CSE132B', '2023', 'SP', '4', 'LETTER');
 INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
-VALUES('1', '5', 'DSC120', '2022', 'SP', '4', 'LETTER');
+VALUES('1', '5', 'DSC120', '2023', 'SP', '4', 'LETTER');
 INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
-VALUES('3', '8', 'ECE108', '2022', 'WI', '4', 'S/U');
+VALUES('3', '8', 'ECE108', '2023', 'WI', '4', 'S/U');
 INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
-VALUES('4', '11', 'SE110B', '2022', 'SP', '4', 'LETTER');
+VALUES('4', '11', 'SE110B', '2023', 'SP', '4', 'LETTER');
 INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
-VALUES('5', '13', 'COGS101A', '2022', 'SP', '4', 'LETTER');
+VALUES('5', '13', 'COGS101A', '2023', 'SP', '4', 'LETTER');
 INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
-VALUES('6', '16', 'NANO119', '2022', 'SP', '1', 'LETTER');
+VALUES('6', '16', 'NANO119', '2023', 'SP', '1', 'LETTER');
 INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
-VALUES('7', '17', 'NANO119', '2022', 'SP', '1', 'LETTER');
+VALUES('7', '17', 'NANO119', '2023', 'SP', '1', 'LETTER');
 INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
-VALUES('8', '18', 'DSC104', '2022', 'SP', '4', 'LETTER');
+VALUES('8', '18', 'DSC104', '2023', 'SP', '4', 'LETTER');
 INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
-VALUES('9', '19', 'MAE180A', '2022', 'SP', '4', 'S/U');
+VALUES('9', '19', 'MAE180A', '2023', 'SP', '4', 'S/U');
 INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
-VALUES('10', '72', 'ECE108', '2022', 'SP', '4', 'S/U');
+VALUES('10', '72', 'ECE108', '2023', 'SP', '4', 'S/U');
 INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
-VALUES('11', '63', 'DSC120', '2022', 'SP', '4', 'LETTER');
+VALUES('11', '63', 'DSC120', '2023', 'SP', '4', 'LETTER');
 INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
-VALUES('10', '82', 'MAE180A', '2022', 'SP', '4', 'LETTER');
+VALUES('10', '82', 'MAE180A', '2023', 'SP', '4', 'LETTER');
 INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
-VALUES('11', '82', 'MAE180A', '2022', 'SP', '4', 'LETTER');
+VALUES('11', '82', 'MAE180A', '2023', 'SP', '4', 'LETTER');
 
 -----------------Classes Taken In The Past Info-----------------
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
@@ -310,7 +353,7 @@ VALUES('2', '5', 'CSE142', '2021', 'FA', 'Flo_Rence', 'A-', '4','3.7','elective_
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
 VALUES('2', '6', 'CSE142', '2021', 'FA', 'Flo_Rence', 'A-', '4','3.7','UP&ELT_units');
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
-VALUES('3', '4', 'CSE142', '2022', 'FA', 'Flo_Rence', 'B+', '4','3.4','lower_units');
+VALUES('3', '4', 'CSE142', '2023', 'FA', 'Flo_Rence', 'B+', '4','3.4','lower_units');
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
 VALUES('4', '6', 'DSC120', '2021', 'SP', 'Robert_Clarkson', 'B', '4','3.1', 'upper_units');
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
@@ -324,7 +367,7 @@ VALUES('8', '12', 'SE110B', '2021', 'WI', 'Tim_Asreal', 'A+', '4','4.3','lower_u
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
 VALUES('9', '14', 'COGS101A', '2020', 'FA', 'Justin_Smith', 'C', '4','2.2','upper_units');
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
-VALUES('10', '15', 'DSC104', '2022', 'FA', 'Robert_Clarkson', 'B-', '4','2.8', 'upper_units');
+VALUES('10', '15', 'DSC104', '2023', 'FA', 'Robert_Clarkson', 'B-', '4','2.8', 'upper_units');
 
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
 VALUES('16', '6', 'CE110', '2021', 'SP', 'Robert_Clarkson', 'B', '4','3.1', 'concentration_1_units');
@@ -355,7 +398,7 @@ INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructo
 VALUES('21', '14', 'DS220', '2020', 'FA', 'Justin_Smith', 'C', '4','2.2','concentration_2_units');
 
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
-VALUES('22', '15', 'COGS330', '2022', 'FA', 'Robert_Clarkson', 'B-', '4','2.8', 'concentration_3_units');
+VALUES('22', '15', 'COGS330', '2023', 'FA', 'Robert_Clarkson', 'B-', '4','2.8', 'concentration_3_units');
 
 -----------------Grade Conversion Info-----------------
 INSERT INTO grade_conversion VALUES('A+', 4.3);
@@ -371,114 +414,113 @@ INSERT INTO grade_conversion VALUES('D', 1.6);
 
 -----------------Weekly Section Info-----------------
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('63', 'DSC120', '2022-04-03', '14:00:00', '15:30:00', '1', 'DSC', 'Yes', 'LECTURE');
+VALUES('63', 'DSC120', '2023-04-03', '14:00:00', '15:30:00', '1', 'DSC', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('63', 'DSC120', '2022-04-05', '14:00:00', '15:30:00', '1', 'DSC', 'Yes', 'LECTURE');
+VALUES('63', 'DSC120', '2023-04-05', '14:00:00', '15:30:00', '1', 'DSC', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('63', 'DSC120', '2022-04-10', '14:00:00', '15:30:00', '1', 'DSC', 'Yes', 'LECTURE');
+VALUES('63', 'DSC120', '2023-04-10', '14:00:00', '15:30:00', '1', 'DSC', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('63', 'DSC120', '2022-04-12', '14:00:00', '15:30:00', '1', 'DSC', 'Yes', 'LECTURE');
+VALUES('63', 'DSC120', '2023-04-12', '14:00:00', '15:30:00', '1', 'DSC', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('63', 'DSC120', '2022-04-17', '14:00:00', '15:30:00', '1', 'DSC', 'Yes', 'LECTURE');
+VALUES('63', 'DSC120', '2023-04-17', '14:00:00', '15:30:00', '1', 'DSC', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('63', 'DSC120', '2022-04-19', '14:00:00', '15:30:00', '1', 'DSC', 'Yes', 'LECTURE');
+VALUES('63', 'DSC120', '2023-04-19', '14:00:00', '15:30:00', '1', 'DSC', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('63', 'DSC120', '2022-04-24', '14:00:00', '15:30:00', '1', 'DSC', 'Yes', 'LECTURE');
+VALUES('63', 'DSC120', '2023-04-24', '14:00:00', '15:30:00', '1', 'DSC', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('63', 'DSC120', '2022-04-26', '14:00:00', '15:30:00', '1', 'DSC', 'Yes', 'LECTURE');
+VALUES('63', 'DSC120', '2023-04-26', '14:00:00', '15:30:00', '1', 'DSC', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('72', 'ECE108', '2023-04-03', '15:00:00', '17:00:00', '1', 'ECE', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('72', 'ECE108', '2023-04-05', '15:00:00', '17:00:00', '1', 'ECE', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('72', 'ECE108', '2023-04-10', '15:00:00', '17:00:00', '1', 'ECE', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('72', 'ECE108', '2023-04-12', '15:00:00', '17:00:00', '1', 'ECE', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('72', 'ECE108', '2023-04-17', '15:00:00', '17:00:00', '1', 'ECE', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('72', 'ECE108', '2023-04-19', '15:00:00', '17:00:00', '1', 'ECE', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('72', 'ECE108', '2023-04-24', '15:00:00', '17:00:00', '1', 'ECE', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('72', 'ECE108', '2023-04-26', '15:00:00', '17:00:00', '1', 'ECE', 'Yes', 'LECTURE');
 
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('72', 'ECE108', '2022-04-03', '15:00:00', '17:00:00', '1', 'ECE', 'Yes', 'LECTURE');
+VALUES('81', 'MAE180A', '2023-04-03', '14:00:00', '15:30:00', '2', 'MAE', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('72', 'ECE108', '2022-04-05', '15:00:00', '17:00:00', '1', 'ECE', 'Yes', 'LECTURE');
+VALUES('81', 'MAE180A', '2023-04-06', '13:00:00', '14:30:00', '2', 'MAE', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('72', 'ECE108', '2022-04-10', '15:00:00', '17:00:00', '1', 'ECE', 'Yes', 'LECTURE');
+VALUES('81', 'MAE180A', '2023-04-10', '14:00:00', '15:30:00', '2', 'MAE', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('72', 'ECE108', '2022-04-12', '15:00:00', '17:00:00', '1', 'ECE', 'Yes', 'LECTURE');
+VALUES('81', 'MAE180A', '2023-04-13', '13:00:00', '14:30:00', '2', 'MAE', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('72', 'ECE108', '2022-04-17', '15:00:00', '17:00:00', '1', 'ECE', 'Yes', 'LECTURE');
+VALUES('81', 'MAE180A', '2023-04-17', '14:00:00', '15:30:00', '2', 'MAE', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('72', 'ECE108', '2022-04-19', '15:00:00', '17:00:00', '1', 'ECE', 'Yes', 'LECTURE');
+VALUES('81', 'MAE180A', '2023-04-20', '13:00:00', '14:30:00', '2', 'MAE', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('72', 'ECE108', '2022-04-24', '15:00:00', '17:00:00', '1', 'ECE', 'Yes', 'LECTURE');
+VALUES('81', 'MAE180A', '2023-04-24', '14:00:00', '15:30:00', '2', 'MAE', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('72', 'ECE108', '2022-04-26', '15:00:00', '17:00:00', '1', 'ECE', 'Yes', 'LECTURE');
+VALUES('81', 'MAE180A', '2023-04-27', '13:00:00', '14:30:00', '2', 'MAE', 'Yes', 'LECTURE');
 
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('81', 'MAE180A', '2022-04-03', '14:00:00', '15:30:00', '2', 'MAE', 'Yes', 'LECTURE');
+VALUES('82', 'MAE180A', '2023-04-03', '17:00:00', '17:50:00', '3', 'MAE', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('81', 'MAE180A', '2022-04-06', '13:00:00', '14:30:00', '2', 'MAE', 'Yes', 'LECTURE');
+VALUES('82', 'MAE180A', '2023-04-05', '15:00:00', '15:50:00', '3', 'MAE', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('81', 'MAE180A', '2022-04-10', '14:00:00', '15:30:00', '2', 'MAE', 'Yes', 'LECTURE');
+VALUES('82', 'MAE180A', '2023-04-07', '13:00:00', '13:50:00', '3', 'MAE', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('81', 'MAE180A', '2022-04-13', '13:00:00', '14:30:00', '2', 'MAE', 'Yes', 'LECTURE');
+VALUES('82', 'MAE180A', '2023-04-10', '17:00:00', '17:50:00', '3', 'MAE', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('81', 'MAE180A', '2022-04-17', '14:00:00', '15:30:00', '2', 'MAE', 'Yes', 'LECTURE');
+VALUES('82', 'MAE180A', '2023-04-12', '15:00:00', '15:50:00', '3', 'MAE', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('81', 'MAE180A', '2022-04-20', '13:00:00', '14:30:00', '2', 'MAE', 'Yes', 'LECTURE');
+VALUES('82', 'MAE180A', '2023-04-14', '13:00:00', '13:50:00', '3', 'MAE', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('81', 'MAE180A', '2022-04-24', '14:00:00', '15:30:00', '2', 'MAE', 'Yes', 'LECTURE');
+VALUES('82', 'MAE180A', '2023-04-17', '17:00:00', '17:50:00', '3', 'MAE', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('81', 'MAE180A', '2022-04-27', '13:00:00', '14:30:00', '2', 'MAE', 'Yes', 'LECTURE');
+VALUES('82', 'MAE180A', '2023-04-19', '15:00:00', '15:50:00', '3', 'MAE', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('82', 'MAE180A', '2023-04-21', '13:00:00', '13:50:00', '3', 'MAE', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('82', 'MAE180A', '2023-04-24', '17:00:00', '17:50:00', '3', 'MAE', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('82', 'MAE180A', '2023-04-26', '15:00:00', '15:50:00', '3', 'MAE', 'Yes', 'LECTURE');
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('82', 'MAE180A', '2023-04-28', '13:00:00', '13:50:00', '3', 'MAE', 'Yes', 'LECTURE');
 
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('82', 'MAE180A', '2022-04-03', '17:00:00', '17:50:00', '3', 'MAE', 'Yes', 'LECTURE');
+VALUES('91', 'NANO119', '2023-04-03', '14:00:00', '15:30:00', '4', 'NANO', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('82', 'MAE180A', '2022-04-05', '15:00:00', '15:50:00', '3', 'MAE', 'Yes', 'LECTURE');
+VALUES('91', 'NANO119', '2023-04-05', '13:00:00', '14:00:00', '4', 'NANO', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('82', 'MAE180A', '2022-04-07', '13:00:00', '13:50:00', '3', 'MAE', 'Yes', 'LECTURE');
+VALUES('91', 'NANO119', '2023-04-10', '14:00:00', '15:30:00', '4', 'NANO', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('82', 'MAE180A', '2022-04-10', '17:00:00', '17:50:00', '3', 'MAE', 'Yes', 'LECTURE');
+VALUES('91', 'NANO119', '2023-04-12', '13:00:00', '14:00:00', '4', 'NANO', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('82', 'MAE180A', '2022-04-12', '15:00:00', '15:50:00', '3', 'MAE', 'Yes', 'LECTURE');
+VALUES('91', 'NANO119', '2023-04-17', '14:00:00', '15:30:00', '4', 'NANO', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('82', 'MAE180A', '2022-04-14', '13:00:00', '13:50:00', '3', 'MAE', 'Yes', 'LECTURE');
+VALUES('91', 'NANO119', '2023-04-19', '13:00:00', '14:00:00', '4', 'NANO', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('82', 'MAE180A', '2022-04-17', '17:00:00', '17:50:00', '3', 'MAE', 'Yes', 'LECTURE');
+VALUES('91', 'NANO119', '2023-04-24', '14:00:00', '15:30:00', '4', 'NANO', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('82', 'MAE180A', '2022-04-19', '15:00:00', '15:50:00', '3', 'MAE', 'Yes', 'LECTURE');
-INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('82', 'MAE180A', '2022-04-21', '13:00:00', '13:50:00', '3', 'MAE', 'Yes', 'LECTURE');
-INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('82', 'MAE180A', '2022-04-24', '17:00:00', '17:50:00', '3', 'MAE', 'Yes', 'LECTURE');
-INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('82', 'MAE180A', '2022-04-26', '15:00:00', '15:50:00', '3', 'MAE', 'Yes', 'LECTURE');
-INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('82', 'MAE180A', '2022-04-28', '13:00:00', '13:50:00', '3', 'MAE', 'Yes', 'LECTURE');
+VALUES('91', 'NANO119', '2023-04-26', '13:00:00', '14:00:00', '4', 'NANO', 'Yes', 'LECTURE');
 
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('91', 'NANO119', '2022-04-03', '14:00:00', '15:30:00', '4', 'NANO', 'Yes', 'LECTURE');
+VALUES('92', 'NANO119', '2023-04-03', '13:00:00', '14:00:00', '5', 'NANO', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('91', 'NANO119', '2022-04-05', '13:00:00', '14:00:00', '4', 'NANO', 'Yes', 'LECTURE');
+VALUES('92', 'NANO119', '2023-04-05', '13:00:00', '14:00:00', '5', 'NANO', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('91', 'NANO119', '2022-04-10', '14:00:00', '15:30:00', '4', 'NANO', 'Yes', 'LECTURE');
+VALUES('92', 'NANO119', '2023-04-10', '13:00:00', '14:00:00', '5', 'NANO', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('91', 'NANO119', '2022-04-12', '13:00:00', '14:00:00', '4', 'NANO', 'Yes', 'LECTURE');
+VALUES('92', 'NANO119', '2023-04-12', '13:00:00', '14:00:00', '5', 'NANO', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('91', 'NANO119', '2022-04-17', '14:00:00', '15:30:00', '4', 'NANO', 'Yes', 'LECTURE');
+VALUES('92', 'NANO119', '2023-04-17', '13:00:00', '14:00:00', '5', 'NANO', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('91', 'NANO119', '2022-04-19', '13:00:00', '14:00:00', '4', 'NANO', 'Yes', 'LECTURE');
+VALUES('92', 'NANO119', '2023-04-19', '13:00:00', '14:00:00', '5', 'NANO', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('91', 'NANO119', '2022-04-24', '14:00:00', '15:30:00', '4', 'NANO', 'Yes', 'LECTURE');
+VALUES('92', 'NANO119', '2023-04-24', '13:00:00', '14:00:00', '5', 'NANO', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('91', 'NANO119', '2022-04-26', '13:00:00', '14:00:00', '4', 'NANO', 'Yes', 'LECTURE');
-
-INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('92', 'NANO119', '2022-04-03', '13:00:00', '14:00:00', '5', 'NANO', 'Yes', 'LECTURE');
-INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('92', 'NANO119', '2022-04-05', '13:00:00', '14:00:00', '5', 'NANO', 'Yes', 'LECTURE');
-INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('92', 'NANO119', '2022-04-10', '13:00:00', '14:00:00', '5', 'NANO', 'Yes', 'LECTURE');
-INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('92', 'NANO119', '2022-04-12', '13:00:00', '14:00:00', '5', 'NANO', 'Yes', 'LECTURE');
-INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('92', 'NANO119', '2022-04-17', '13:00:00', '14:00:00', '5', 'NANO', 'Yes', 'LECTURE');
-INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('92', 'NANO119', '2022-04-19', '13:00:00', '14:00:00', '5', 'NANO', 'Yes', 'LECTURE');
-INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('92', 'NANO119', '2022-04-24', '13:00:00', '14:00:00', '5', 'NANO', 'Yes', 'LECTURE');
-INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
-VALUES('92', 'NANO119', '2022-04-26', '13:00:00', '14:00:00', '5', 'NANO', 'Yes', 'LECTURE');
+VALUES('92', 'NANO119', '2023-04-26', '13:00:00', '14:00:00', '5', 'NANO', 'Yes', 'LECTURE');
 
 -----------------degree Info-----------------
 INSERT INTO degree(degree_id, upper_units, lower_units, elective_units, total_units, min_grade, degree_name, degree_type) 
