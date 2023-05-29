@@ -66,38 +66,39 @@ table, th, td {
 	<%-- Create the prepared statement and use it to --%>
 	<% 				
 				PreparedStatement pstmt = connection.prepareStatement(
-						"WITH student_in_current_course AS (SELECT student_id " +
-															"FROM course_enrollment " +
-															"WHERE section_id = ? AND class_name = ? " +
-															"), " +
-										"weekly_section AS (SELECT w.date_time, w.begin_time, w.end_time " +
-															"FROM weekly w, course_enrollment ce " +
-															"WHERE w.section_id = ce.section_id " +
-																"AND w.new_number = ce.class_name " +
-																"AND ce.student_id IN " + 
-																	"(SELECT * FROM student_in_current_course) " +
-															"), " +
-													"date AS (SELECT DISTINCT date::date " +
-																"FROM GENERATE_SERIES(?::date, ?::date, '1 day'::interval) date " +
-																"ORDER BY date::date " +
-																"), " +
-													"time AS (SELECT DISTINCT time::time " +
-																"FROM GENERATE_SERIES(?::date, ?::date, '1 hour'::interval) time " +
-																"ORDER BY time::time " +
-																"), " +
-										"date_choice AS(SELECT DISTINCT d.date, t.time as begin_time, t.time + '1 hour'::interval as end_time " +
-														"FROM date d, time t " +
-														"ORDER BY d.date, t.time " +
-														") " +
+						"WITH date AS (SELECT DISTINCT date::date " +
+										"FROM GENERATE_SERIES(?::date, ?::date, '1 day'::interval) date " +
+										"ORDER BY date::date " +
+										"), " +
+								"time AS (SELECT DISTINCT time::time " +
+											"FROM GENERATE_SERIES(?::date, ?::date, '1 hour'::interval) time " +
+											"ORDER BY time::time " +
+										"), " +
+								"date_time AS(SELECT DISTINCT d.date, t.time as begin_time, t.time " +
+																"+ '1 hour'::interval as end_time " +
+											"FROM date d, time t " +
+											"ORDER BY d.date, t.time " +
+											"), " +
+								"student_cur_course AS (SELECT student_id " +
+														"FROM course_enrollment " +
+														"WHERE section_id = ? AND class_name = ? " +
+														"), " +
+								"weekly_section AS (SELECT w.date_time, w.begin_time, w.end_time " +
+													"FROM weekly w, course_enrollment ce " +
+													"WHERE w.section_id = ce.section_id " +
+															"AND w.new_number = ce.class_name " +
+															"AND ce.student_id IN " + 
+																			"(SELECT * FROM student_cur_course) " +
+													") " +
 						"SELECT d.date, d.begin_time, d.end_time " +
-						"FROM date_choice d " +
-						"WHERE d.begin_time >= '08:00:00' AND d.end_time <= '20:00:00' " +
-							"AND d.begin_time <> '23:00:00' AND d.end_time <> '00:00:00' " +
+						"FROM date_time d " +
+						"WHERE d.begin_time >= '08:00:00' AND d.begin_time <> '23:00:00' " +
+							"AND d.end_time <= '20:00:00' AND d.end_time <> '00:00:00' " +
 							"AND NOT EXISTS (SELECT w.date_time, w.begin_time, w.end_time " +
 											"FROM weekly_section w " +
 											"WHERE w.date_time = d.date " +
-												"AND (w.begin_time, w.end_time) OVERLAPS (d.begin_time, d.end_time) " +
-						")"
+											"AND (w.begin_time, w.end_time) OVERLAPS (d.begin_time, d.end_time) " +
+											")"
 						);
 			
 			String[] info = request.getParameter("class_information").split(" ");
@@ -110,12 +111,12 @@ table, th, td {
 			id = Integer.parseInt(info[1]);
 			num = info[3];
 			
-			pstmt.setInt(1, id);
-			pstmt.setString(2, num);
+			pstmt.setString(1, sdate);
+			pstmt.setString(2, edate);
 			pstmt.setString(3, sdate);
 			pstmt.setString(4, edate);
-			pstmt.setString(5, sdate);
-			pstmt.setString(6, edate);
+			pstmt.setInt(5, id);
+			pstmt.setString(6, num);
 			
 			//System.out.println("Test3");
 		

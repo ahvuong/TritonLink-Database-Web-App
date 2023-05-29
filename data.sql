@@ -430,6 +430,7 @@ VALUES('63', 'DSC120', '2023-04-24', '14:00:00', '15:30:00', '1', 'DSC', 'Yes', 
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
 VALUES('63', 'DSC120', '2023-04-26', '14:00:00', '15:30:00', '1', 'DSC', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+
 VALUES('72', 'ECE108', '2023-04-03', '15:00:00', '17:00:00', '1', 'ECE', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
 VALUES('72', 'ECE108', '2023-04-05', '15:00:00', '17:00:00', '1', 'ECE', 'Yes', 'LECTURE');
