@@ -48,6 +48,7 @@
             
     %>
 	<!--------------- choose inputs including course, professor, quarter ----------------->
+	<h2>Instruction:</h2>
 	<ol>
 		<li>Choose course, professor, and a quarter to get the count of "A", "B", "C", "D", and "other" grades that the
 			professor gave at the quarter to the students taking course</li>
@@ -123,6 +124,7 @@
 					%>
 			</select>
 		</div>
+		<br>
 		<button type="submit" name="action" value="submit">Submit</button>
 	</form>
 	<br>

@@ -20,14 +20,7 @@ table, th, td {
 	import="java.util.Date" import="java.text.SimpleDateFormat" %>
 
 	<%-- -------- Open Connection Code -------- --%>
-	<%!
-	// Function
-	/*public String[] time(String date) {
-		
-		
-		return res;
-	}*/
-	%>
+	
 	<%
 	try {
 		// Load Oracle Driver class file
@@ -58,7 +51,9 @@ table, th, td {
     	connection.setAutoCommit(false);
 		PreparedStatement pstmt2 = connection.prepareStatement(
 								"SELECT * FROM classes c " +
-								"WHERE c.quarter = 'SP' AND c.year = 2023");
+								"WHERE c.quarter = 'SP' AND c.year = 2023 " +
+								"ORDER BY c.section_id");
+					
 	
 		class_info = pstmt2.executeQuery();
 		connection.commit();
@@ -81,7 +76,6 @@ table, th, td {
 																"AND w.new_number = ce.class_name " +
 																"AND ce.student_id IN " + 
 																	"(SELECT * FROM student_in_current_course) " +
-																"AND w.section_id <> ? " +
 															"), " +
 													"date AS (SELECT DISTINCT date::date " +
 																"FROM GENERATE_SERIES(?::date, ?::date, '1 day'::interval) date " +
@@ -118,11 +112,10 @@ table, th, td {
 			
 			pstmt.setInt(1, id);
 			pstmt.setString(2, num);
-			pstmt.setInt(3, id);
-			pstmt.setString(4, sdate);
-			pstmt.setString(5, edate);
-			pstmt.setString(6, sdate);
-			pstmt.setString(7, edate);
+			pstmt.setString(3, sdate);
+			pstmt.setString(4, edate);
+			pstmt.setString(5, sdate);
+			pstmt.setString(6, edate);
 			
 			//System.out.println("Test3");
 		
@@ -204,7 +197,7 @@ table, th, td {
 	</table>
 	<br>
 	
-	<h3>Review Schedule</h3>
+	<h3>Available Times:</h3>
 	
 	<%-- Table --%>
 		<%
@@ -265,7 +258,7 @@ table, th, td {
 	} catch (SQLException sqle) {
 		out.println(sqle.getMessage());
 	} catch (Exception e) {
-		out.println(e.getMessage());
+		//out.println(e.getMessage());
 		out.println("Select Class Above First");
 	}
 	%>
