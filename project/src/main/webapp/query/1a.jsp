@@ -106,7 +106,7 @@ table, th, td {
 				%>
 			</select>
 		</div>
-		
+		<br>
 		<button type="submit" name="action" value="submit">Submit</button>
 	</form>
 	
@@ -157,43 +157,42 @@ table, th, td {
 		}
 	%>
 	<h3>Taking Classes</h3>
+	
 	<%
 	if(class_info != null)
 	{	
 		//System.out.println("Test0: " + student_info.isBeforeFirst());
-			
-		if(class_info.isBeforeFirst())
+		
+		if(!class_info.isBeforeFirst())
 		{
-			//System.out.println("Test1");
-			while(class_info.next())
-			{
-				//System.out.println("Hello");
-			%>	
+		%>
+			<p>No Current Classes Have Conflict</p>
+		<%
+		}
+		else
+		{%>
 			<table style="width:100%">
 				<tr>
 					<th>Section ID</th>
 					<th>Class</th>
+				</tr><%
+			//System.out.println("Test1");
+			while(class_info.next())
+			{
+				//System.out.println("Hello");
+			%>
+			<form>
+				<tr>
+					<td><%=class_info.getString("section_id") %></td>
+					<td><%=class_info.getString("class_name") %></td>
 				</tr>
-				
-				<form>
-					<tr>
-						<td><%=class_info.getString("section_id") %></td>
-						<td><%=class_info.getString("class_name") %></td>
-					</tr>
-				</form>
-			</table>
 				<%
 			}
-			}
-			else
-			{
-			%>
-			<p>No Classes Are Taken</p>
-			<%
-			}
 		}
+	}
 		%>
-		
+		</form>
+	</table>
 
 	<%-- Close --%>
 	<%
@@ -206,6 +205,7 @@ table, th, td {
 		out.println(e.getMessage());
 	}
 	%>
+	<br>
 </body>
-<a href="../../index.html">Go to Home Page</a>
+<a href="../../index.html">Back To Home Page Here</a>
 </html>

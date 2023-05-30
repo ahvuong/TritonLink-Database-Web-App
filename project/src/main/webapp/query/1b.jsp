@@ -165,7 +165,7 @@ table, th, td {
 				%>
 			</select>
 		</div>
-		
+		<br>
 		<button type="submit" name="action" value="submit">Submit</button>
 	</form>
 	
@@ -276,6 +276,8 @@ table, th, td {
 		out.println("Select Class Above First");
 	}
 	%>
+	<br>
+	<br>
 </body>
-<a href="../../index.html">Go to Home Page</a>
+<a href="../../index.html">Back To Home Page Here</a>
 </html>
