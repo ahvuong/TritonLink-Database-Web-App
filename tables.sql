@@ -127,7 +127,7 @@ CREATE TABLE review
 CREATE TABLE faculty
 (
     faculty_name varchar(20) PRIMARY KEY,
-    member_name varchar(20),
+    department varchar(20),
     member_title varchar(20)
 );
 
@@ -265,7 +265,7 @@ CREATE TABLE thesis_committee
     department varchar(10),
     PRIMARY KEY(student_id, instructor_name),
     FOREIGN KEY(student_id) references graduate(student_id) ON DELETE CASCADE,
-    FOREIGN KEY(department) references faculty(faculty_name) ON DELETE CASCADE
+    FOREIGN KEY(instructor_name) references faculty(faculty_name) ON DELETE CASCADE
 );
 
 CREATE TABLE course_enrollment

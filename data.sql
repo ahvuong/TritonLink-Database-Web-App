@@ -119,20 +119,34 @@ INSERT INTO ms_student(student_id, department) VALUES ('22', 'COGS');
 
 
 -----------------Faculty Info-----------------
-INSERT INTO faculty(faculty_name, member_name, member_title) 
-VALUES ('COGS', 'Justin_Smith', 'Associate Professor');
-INSERT INTO faculty(faculty_name, member_name, member_title)
-VALUES ('CSE', 'Flo_Rence', 'Professor');
-INSERT INTO faculty(faculty_name, member_name, member_title)
-VALUES ('MAE', 'Ada_Riz', 'Professor');
-INSERT INTO faculty(faculty_name, member_name, member_title)
-VALUES ('ECE', 'Taylor_Swan', 'Professor');
-INSERT INTO faculty(faculty_name, member_name, member_title)
-VALUES ('DSC', 'Robert_Clarkson', 'Professor');
-INSERT INTO faculty(faculty_name, member_name, member_title)
-VALUES ('NANO', 'Adam_Cao', 'Professor');
-INSERT INTO faculty(faculty_name, member_name, member_title)
-VALUES ('SE', 'Tim_Asreal', 'Professor');
+INSERT INTO faculty(faculty_name, department, member_title) 
+VALUES ('Justin_Smith', 'COGS', 'Associate Professor');
+INSERT INTO faculty(faculty_name, department, member_title) 
+VALUES ('Jannet_Taylor', 'COGS', 'Associate Professor');
+INSERT INTO faculty(faculty_name, department, member_title) 
+VALUES ('Flo_Rence', 'CSE', 'Assistant Professor');
+INSERT INTO faculty(faculty_name, department, member_title) 
+VALUES ('Thomas_Lee', 'CSE', 'Professor');
+INSERT INTO faculty(faculty_name, department, member_title) 
+VALUES ('Ada_Riz', 'MAE', 'Professor');
+INSERT INTO faculty(faculty_name, department, member_title) 
+VALUES ('Russel_Lance', 'MAE', 'Assistant Professor');
+INSERT INTO faculty(faculty_name, department, member_title) 
+VALUES ('Taylor_Swan', 'ECE', 'Professor');
+INSERT INTO faculty(faculty_name, department, member_title) 
+VALUES ('Maison_Stain', 'ECE', 'Professor');
+INSERT INTO faculty(faculty_name, department, member_title) 
+VALUES ('Robert_Clarkson', 'DSC', 'Associate Professor');
+INSERT INTO faculty(faculty_name, department, member_title) 
+VALUES ('Ben_Ray', 'DSC', 'Professor');
+INSERT INTO faculty(faculty_name, department, member_title) 
+VALUES ('Adam_Cao', 'NANO', 'Instructor');
+INSERT INTO faculty(faculty_name, department, member_title) 
+VALUES ('Linn_Trump', 'NANO', 'Professor');
+INSERT INTO faculty(faculty_name, department, member_title) 
+VALUES ('Tim_Asreal', 'SE', 'Professor');
+INSERT INTO faculty(faculty_name, department, member_title) 
+VALUES ('Hellen_Spruce', 'SE', 'Instructor');
 
 -----------------Course Info-----------------
 INSERT INTO courses(new_number, old_number, units, department, prerequisites, lab_requirements, grade) 
