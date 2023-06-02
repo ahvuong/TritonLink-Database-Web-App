@@ -220,7 +220,7 @@ VALUES('COGS330', 'COGS330', '4', 'COGS', 'BOTH', 'Not_Required', 'LETTER');
 
 -----------------Class Info-----------------
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('1', 'CSE132B', 'Database', '2023', 'SP', 'Flo_Rence', '100');
+VALUES('1', 'CSE132B', 'Database', '2023', 'SP', 'Flo_Rence', '2');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
 VALUES('2', 'CSE132A', 'Database', '2020', 'WI', 'Flo_Rence', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
@@ -324,6 +324,7 @@ INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter,
 VALUES('1', '1', 'CSE132B', '2023', 'SP', '4', 'LETTER');
 INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
 VALUES('2', '1', 'CSE132B', '2023', 'SP', '4', 'LETTER');
+
 INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
 VALUES('1', '5', 'DSC120', '2023', 'SP', '4', 'LETTER');
 INSERT INTO course_enrollment(student_id, section_id, class_name, year, quarter, units, grade) 
@@ -612,3 +613,25 @@ INSERT INTO concentration (id, department, concentration, class_name)
 VALUES (21, 'COGS', 'concentration_2', 'COGS220');
 INSERT INTO concentration (id, department, concentration, class_name)
 VALUES (22, 'COGS', 'concentration_3', 'COGS330');
+
+
+--------------------Milestone 4---------------------
+-----------------Enrollment Trigger-----------------
+DROP TRIGGER IF EXISTS enrollment_limit_trigger ON course_enrollment;
+DROP FUNCTION IF EXISTS enrollment_limit_trigger();
+
+CREATE FUNCTION enrollment_limit_trigger() RETURNS trigger AS $enrollment_limit_trigger$
+    BEGIN
+        -- Compare current enrollment size with section's limit
+        IF (SELECT COUNT(*) FROM course_enrollment WHERE section_id = NEW.section_id) >=
+        (SELECT enrollment_limit FROM classes WHERE section_id = NEW.section_id) THEN
+            RAISE EXCEPTION 'Error: Enrollment in section ID % is reaching its maximum limit of %.', NEW.section_id,
+            (SELECT enrollment_limit FROM classes WHERE section_id = NEW.section_id);
+        END IF;
+
+        RETURN NEW;
+    END;
+$enrollment_limit_trigger$ LANGUAGE plpgsql;
+
+CREATE TRIGGER enrollment_limit BEFORE INSERT ON course_enrollment
+FOR EACH ROW EXECUTE PROCEDURE enrollment_limit_trigger();
