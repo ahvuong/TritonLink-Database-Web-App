@@ -615,23 +615,33 @@ INSERT INTO concentration (id, department, concentration, class_name)
 VALUES (22, 'COGS', 'concentration_3', 'COGS330');
 
 
---------------------Milestone 4---------------------
------------------Enrollment Trigger-----------------
+------------------------Milestone 4-----------------------
+
+-----------------Enrollment Limit Trigger-----------------
 DROP TRIGGER IF EXISTS enrollment_limit_trigger ON course_enrollment;
 DROP FUNCTION IF EXISTS enrollment_limit_trigger();
 
-CREATE FUNCTION enrollment_limit_trigger() RETURNS trigger AS $enrollment_limit_trigger$
+CREATE FUNCTION enrollment_limit_trigger() 
+RETURNS trigger AS $enrollment_limit_trigger$
     BEGIN
         -- Compare current enrollment size with section's limit
-        IF (SELECT COUNT(*) FROM course_enrollment WHERE section_id = NEW.section_id) >=
-        (SELECT enrollment_limit FROM classes WHERE section_id = NEW.section_id) THEN
+        IF (SELECT COUNT(*) 
+            FROM course_enrollment 
+            WHERE section_id = NEW.section_id) 
+            >=
+            (SELECT enrollment_limit 
+            FROM classes 
+            WHERE section_id = NEW.section_id) 
+        THEN
             RAISE EXCEPTION 'Error: Enrollment in section ID % is reaching its maximum limit of %.', NEW.section_id,
-            (SELECT enrollment_limit FROM classes WHERE section_id = NEW.section_id);
+            (SELECT enrollment_limit 
+            FROM classes 
+            WHERE section_id = NEW.section_id);
         END IF;
 
         RETURN NEW;
     END;
 $enrollment_limit_trigger$ LANGUAGE plpgsql;
 
-CREATE TRIGGER enrollment_limit BEFORE INSERT ON course_enrollment
+CREATE TRIGGER enrollment_limit_trigger BEFORE INSERT ON course_enrollment
 FOR EACH ROW EXECUTE PROCEDURE enrollment_limit_trigger();
