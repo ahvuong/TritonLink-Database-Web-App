@@ -130,27 +130,40 @@ table, th, td {
 					<% 
 					
 					PreparedStatement pstmt = connection.prepareStatement(
-							"DELETE FROM meeting_sections WHERE section_id = ?");
-					
+							"DELETE FROM meeting_sections WHERE section_id = ? AND new_number = ? AND date_time = ?");
+							
 					pstmt.setInt(1,Integer.parseInt(request.getParameter("section_id")));
+					pstmt.setString(2, request.getParameter("new_number"));
+					pstmt.setDate(3, java.sql.Date.valueOf(request.getParameter("date_time")));
 	                  
 	                pstmt.executeUpdate();%>
 	                
 	                <%-- DELETE the entries related to courses. --%>
 	                <%
+	                String sectionType = request.getParameter("section_type");
+	                if(sectionType.equals("weekly"))
+	                {	
 	                PreparedStatement weekly = connection.prepareStatement(
-							"DELETE FROM weekly WHERE section_id = ?");
-					
-					PreparedStatement review = connection.prepareStatement(
-							"DELETE FROM review WHERE section_id = ?");
+							"DELETE FROM weekly WHERE section_id = ? AND new_number = ? AND date_time = ?");
 					
 					weekly.setInt(1,Integer.parseInt(request.getParameter("section_id")));
-					review.setInt(1,Integer.parseInt(request.getParameter("section_id")));
-	                
+					weekly.setString(2, request.getParameter("new_number"));
+					weekly.setDate(3, java.sql.Date.valueOf(request.getParameter("date_time")));
+
 					weekly.executeUpdate();
-					review.executeUpdate();
-	                
-	                
+	                }
+	                else if (sectionType.equals("review"))
+	                {
+	                	PreparedStatement review = connection.prepareStatement(
+								"DELETE FROM review WHERE section_id = ? AND new_number = ? AND date_time = ?");
+						
+						review.setInt(1,Integer.parseInt(request.getParameter("section_id")));
+						review.setString(2, request.getParameter("new_number"));
+						review.setDate(3, java.sql.Date.valueOf(request.getParameter("date_time")));
+		                
+						review.executeUpdate();
+	                }
+					
 	              	connection.commit();
 					connection.setAutoCommit(true);
 					}
@@ -211,7 +224,7 @@ table, th, td {
 					<form action="meeting_sections.jsp" method="get">
 				        <input type="hidden" value="update" name="action">
 				        <td><input value="<%= rs.getInt("section_id")%>" name="section_id"></td>
-				        <td><input value="<%= rs.getInt("new_number")%>" name="new_number"></td>
+				        <td><input value="<%= rs.getString("new_number")%>" name="new_number"></td>
 				        <td><input value="<%= rs.getString("date_time")%>" name="date_time" placeholder="yyyy-mm-dd" required></td>
 				        <td><input value="<%= rs.getString("begin_time")%>" name="begin_time" placeholder="hh:mm:ss" required></td>
 				        <td><input value="<%= rs.getString("end_time")%>" name="end_time" placeholder="hh:mm:ss" required></td>
@@ -233,7 +246,10 @@ table, th, td {
 					<form action="meeting_sections.jsp" method="get">
 						<input type="hidden" value="delete" name="action">
 						<input type="hidden" value="<%= rs.getInt("section_id") %>" name="section_id">
-                    	<td><input type="submit" value="Delete"></td>
+						<input type="hidden" value="<%= rs.getString("new_number") %>" name="new_number">
+                    	<input type="hidden" value="<%= rs.getString("date_time") %>" name="date_time">
+                    	<input type="hidden" value="<%= rs.getString("section_type") %>" name="section_type">
+               			<td><input type="submit" value="Delete"></td>
 					</form>
 				</tr>
 				<%

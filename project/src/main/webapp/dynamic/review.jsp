@@ -84,9 +84,11 @@
 					<% 
 					
 					PreparedStatement pstmt = connection.prepareStatement(
-							"DELETE FROM review WHERE section_id = ?");
-					
+							"DELETE FROM review WHERE section_id = ? AND new_number = ? AND date_time = ?");
+							
 					pstmt.setInt(1,Integer.parseInt(request.getParameter("section_id")));
+					pstmt.setString(2, request.getParameter("new_number"));
+					pstmt.setDate(3, java.sql.Date.valueOf(request.getParameter("date_time")));
 	                  
 	                pstmt.executeUpdate();
 	                
@@ -144,7 +146,7 @@
 					<form action="review.jsp" method="get">
 				        <input type="hidden" value="update" name="action">
 				        <td><input value="<%= rs.getInt("section_id")%>" name="section_id"></td>
-				        <td><input value="<%= rs.getInt("new_number")%>" name="new_number"></td>
+				        <td><input value="<%= rs.getString("new_number")%>" name="new_number"></td>
 				        <td><input value="<%= rs.getString("date_time")%>" name="date_time" placeholder="yyyy-mm-dd" required></td>
 				        <td><input value="<%= rs.getString("begin_time")%>" name="begin_time" placeholder="hh:mm:ss" required></td>
 				        <td><input value="<%= rs.getString("end_time")%>" name="end_time" placeholder="hh:mm:ss" required></td>
@@ -159,6 +161,8 @@
 					<form action="review.jsp" method="get">
 						<input type="hidden" value="delete" name="action">
 						<input type="hidden" value="<%= rs.getInt("section_id") %>" name="section_id">
+                    	<input type="hidden" value="<%= rs.getString("new_number") %>" name="new_number">
+                    	<input type="hidden" value="<%= rs.getString("date_time") %>" name="date_time">
                     	<td><input type="submit" value="Delete"></td>
 					</form>
 				</tr>
