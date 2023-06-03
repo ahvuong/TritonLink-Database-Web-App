@@ -55,18 +55,18 @@
 					<% 
 					
 					PreparedStatement pstmt = connection.prepareStatement(
-							"UPDATE review SET new_number = ?, date_time = ?, begin_time = ?, " +
-		                      "end_time = ?, room = ?, " +
-								"building = ? WHERE section_id = ?");
+							"UPDATE review SET begin_time = ?, end_time = ?, " +
+		                      "room = ?, building = ? " +
+								"WHERE section_id = ? AND new_number = ? AND date_time = ?");
 					
-					pstmt.setString(1,request.getParameter("new_number"));
-					pstmt.setDate(2,java.sql.Date.valueOf(request.getParameter("date_time")));
-					pstmt.setTime(3, java.sql.Time.valueOf(request.getParameter("begin_time")));
-					pstmt.setTime(4, java.sql.Time.valueOf(request.getParameter("end_time")));
-					pstmt.setString(5, request.getParameter("room"));
-					pstmt.setString(6, request.getParameter("building"));
-					pstmt.setInt(7,Integer.parseInt(request.getParameter("section_id")));
-	                  
+					pstmt.setTime(1, java.sql.Time.valueOf(request.getParameter("begin_time")));
+					pstmt.setTime(2, java.sql.Time.valueOf(request.getParameter("end_time")));
+					pstmt.setString(3, request.getParameter("room"));
+					pstmt.setString(4, request.getParameter("building"));
+					pstmt.setInt(5, Integer.parseInt(request.getParameter("section_id")));
+					pstmt.setString(6, request.getParameter("new_number"));
+					pstmt.setDate(7, java.sql.Date.valueOf(request.getParameter("date_time")));
+					
 	                pstmt.executeUpdate();
 	                
 	              	//connection.commit();
@@ -180,6 +180,7 @@
 				out.println(e.getMessage());
 			}
 			%>
+	<br>
 </body>
 <a href="../index.html">Go to Home Page</a>
 </html>

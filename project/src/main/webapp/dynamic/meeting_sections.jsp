@@ -6,6 +6,13 @@
 <meta charset="UTF-8">
 <title>Meeting Sections Home Page</title>
 </head>
+
+<style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
+
 <body>
 <%-- Set the scripting language to Java and --%>
 			<%@ page language="java" import="java.sql.*" %>
@@ -57,56 +64,55 @@
 					<% 
 					
 					PreparedStatement pstmt = connection.prepareStatement(
-							"UPDATE meeting_sections SET new_number = ?, date_time = ?, begin_time = ?, " +
-		                      "end_time = ?, room = ?, building = ?, " +
-								"section_type = ? WHERE section_id = ?");
+							"UPDATE meeting_sections SET begin_time = ?, end_time = ?, " +
+		                      "room = ?, building = ?, section_type = ? " +
+								"WHERE section_id = ? AND new_number = ? AND date_time = ?");
 					
-					pstmt.setString(1,request.getParameter("new_number"));
-					pstmt.setDate(2,java.sql.Date.valueOf(request.getParameter("date_time")));
-					pstmt.setTime(3, java.sql.Time.valueOf(request.getParameter("begin_time")));
-					pstmt.setTime(4, java.sql.Time.valueOf(request.getParameter("end_time")));
-					pstmt.setString(5, request.getParameter("room"));
-					pstmt.setString(6, request.getParameter("building")); 
+					
+					pstmt.setTime(1, java.sql.Time.valueOf(request.getParameter("begin_time")));
+					pstmt.setTime(2, java.sql.Time.valueOf(request.getParameter("end_time")));
+					pstmt.setString(3, request.getParameter("room"));
+					pstmt.setString(4, request.getParameter("building")); 
 					
 					String sectionType = request.getParameter("section_type");
-					pstmt.setString(7, sectionType);
-					pstmt.setInt(8,Integer.parseInt(request.getParameter("section_id")));
+					pstmt.setString(5, sectionType);
+					pstmt.setInt(6,Integer.parseInt(request.getParameter("section_id")));
+					pstmt.setString(7,request.getParameter("new_number"));
+					pstmt.setDate(8,java.sql.Date.valueOf(request.getParameter("date_time")));
 	                  
 	                pstmt.executeUpdate();%>
 	                
 	                <%-- Update related tables --%><%
 	                if(sectionType.equals("weekly")){	
 		                PreparedStatement weekly = connection.prepareStatement(
-								"UPDATE weekly SET new_number = ?, date_time = ?, " +
-									"begin_time = ?, end_time = ?, room = ?, " +
-			                      		"building = ?, mandatory = ? " +
-											"WHERE section_id = ?");
+		                		"UPDATE weekly SET begin_time = ?, end_time = ?, " +
+									"room = ?, building = ? " +
+										"WHERE section_id = ? AND new_number = ? AND date_time = ?");
 						
-		                weekly.setString(1,request.getParameter("new_number"));
-		                weekly.setDate(2, java.sql.Date.valueOf(request.getParameter("date_time")));
-		                weekly.setTime(3, java.sql.Time.valueOf(request.getParameter("begin_time")));
-		                weekly.setTime(4, java.sql.Time.valueOf(request.getParameter("end_time")));
-		                weekly.setString(5, request.getParameter("room"));
-		                weekly.setString(6, request.getParameter("building"));
-		                weekly.setBoolean(7, Boolean.parseBoolean(request.getParameter("mandatory")));
-		                weekly.setInt(8,Integer.parseInt(request.getParameter("section_id")));
-		                
+		                weekly.setTime(1, java.sql.Time.valueOf(request.getParameter("begin_time")));
+		                weekly.setTime(2, java.sql.Time.valueOf(request.getParameter("end_time")));
+		                weekly.setString(3, request.getParameter("room"));
+		                weekly.setString(4, request.getParameter("building"));
+		                weekly.setInt(5, Integer.parseInt(request.getParameter("section_id")));
+		                weekly.setString(6, request.getParameter("new_number"));
+		                weekly.setDate(7, java.sql.Date.valueOf(request.getParameter("date_time")));
+						
 		                weekly.executeUpdate();
 	                }
 	                else if (sectionType.equals("review")){
 	                	PreparedStatement reviews = connection.prepareStatement(
-		                		"UPDATE review SET new_number = ?, date_time = ?, begin_time = ?, " +
-		  		                      "end_time = ?, room = ?, " +
-		  								"building = ? WHERE section_id = ?");
-						
-		                reviews.setString(1,request.getParameter("new_number"));
-		                reviews.setDate(2,java.sql.Date.valueOf(request.getParameter("date_time")));
-		                reviews.setTime(3, java.sql.Time.valueOf(request.getParameter("begin_time")));
-		                reviews.setTime(4, java.sql.Time.valueOf(request.getParameter("end_time")));
-		                reviews.setString(5, request.getParameter("room"));
-		                reviews.setString(6, request.getParameter("building"));
-		                reviews.setInt(7,Integer.parseInt(request.getParameter("section_id")));
-		                  
+	                			"UPDATE review SET begin_time = ?, end_time = ?, " +
+	          	                      "room = ?, building = ? " +
+	          							"WHERE section_id = ? AND new_number = ? AND date_time = ?");
+				
+		                reviews.setTime(1, java.sql.Time.valueOf(request.getParameter("begin_time")));
+		                reviews.setTime(2, java.sql.Time.valueOf(request.getParameter("end_time")));
+		                reviews.setString(3, request.getParameter("room"));
+		                reviews.setString(4, request.getParameter("building"));
+		                reviews.setInt(5, Integer.parseInt(request.getParameter("section_id")));
+		                reviews.setString(6, request.getParameter("new_number"));
+		                reviews.setDate(7, java.sql.Date.valueOf(request.getParameter("date_time")));
+
 		                reviews.executeUpdate();
 	                }
 	                
@@ -248,6 +254,7 @@
 				out.println(e.getMessage());
 			}
 			%>
+	<br>
 </body>
 <a href="../index.html">Go to Home Page</a>
 </html>
