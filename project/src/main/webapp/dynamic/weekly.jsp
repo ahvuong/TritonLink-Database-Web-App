@@ -34,13 +34,15 @@
 					pstmt.setInt(1,Integer.parseInt(request.getParameter("section_id")));
 					pstmt.setString(2,request.getParameter("new_number"));
 					pstmt.setDate(3, java.sql.Date.valueOf(request.getParameter("date_time")));
-					pstmt.setTime(4, java.sql.Time.valueOf(request.getParameter("begin_time")));
-					pstmt.setTime(5, java.sql.Time.valueOf(request.getParameter("end_time")));
+					Time start = Time.valueOf(request.getParameter("begin_time"));
+					Time end = Time.valueOf(request.getParameter("end_time"));
+					pstmt.setTime(4, start);
+					pstmt.setTime(5, end);
 					pstmt.setString(6, request.getParameter("room"));
 					pstmt.setString(7, request.getParameter("building"));
 					pstmt.setBoolean(8, Boolean.parseBoolean(request.getParameter("mandatory")));
 					pstmt.setString(9, request.getParameter("session_type"));
-
+					
 					
 					pstmt.executeUpdate();
 					//connection.commit();
@@ -58,20 +60,19 @@
 					<% 
 					
 					PreparedStatement pstmt = connection.prepareStatement(
-							"UPDATE weekly SET new_number = ?, date_time = ?, " +
-								"begin_time = ?, end_time = ?, room = ?, " +
-		                      		"building = ?, mandatory = ?, " +
-										"session_type = ? WHERE section_id = ?");
+							"UPDATE weekly SET begin_time = ?, end_time = ?, " +
+								"room = ?, building = ?, mandatory = ?, session_type = ? " +
+									"WHERE section_id = ? AND new_number = ? AND date_time = ?");
 					
-					pstmt.setString(1,request.getParameter("new_number"));
-					pstmt.setDate(2, java.sql.Date.valueOf(request.getParameter("date_time")));
-					pstmt.setTime(3, java.sql.Time.valueOf(request.getParameter("begin_time")));
-					pstmt.setTime(4, java.sql.Time.valueOf(request.getParameter("end_time")));
-					pstmt.setString(5, request.getParameter("room"));
-					pstmt.setString(6, request.getParameter("building"));
-					pstmt.setBoolean(7, Boolean.parseBoolean(request.getParameter("mandatory")));
-					pstmt.setString(8, request.getParameter("session_type"));
-					pstmt.setInt(9,Integer.parseInt(request.getParameter("section_id")));
+					pstmt.setTime(1, java.sql.Time.valueOf(request.getParameter("begin_time")));
+					pstmt.setTime(2, java.sql.Time.valueOf(request.getParameter("end_time")));
+					pstmt.setString(3, request.getParameter("room"));
+					pstmt.setString(4, request.getParameter("building"));
+					pstmt.setBoolean(5, Boolean.parseBoolean(request.getParameter("mandatory")));
+					pstmt.setString(6, request.getParameter("session_type"));
+					pstmt.setInt(7, Integer.parseInt(request.getParameter("section_id")));
+					pstmt.setString(8, request.getParameter("new_number"));
+					pstmt.setDate(9, java.sql.Date.valueOf(request.getParameter("date_time")));
 	                  
 	                pstmt.executeUpdate();
 	                
@@ -167,7 +168,7 @@
 					<form action="weekly.jsp" method="get">
 				        <input type="hidden" value="update" name="action">
 				        <td><input value="<%= rs.getInt("section_id")%>" name="section_id"></td>
-				        <td><input value="<%= rs.getInt("new_number")%>" name="new_number"></td>				        
+				        <td><input value="<%= rs.getString("new_number")%>" name="new_number"></td>				        
 				        <td><input value="<%= rs.getString("date_time")%>" name="date_time" placeholder="yyyy-mm-dd" required></td>
 				        <td><input value="<%= rs.getString("begin_time")%>" name="begin_time" placeholder="hh:mm:ss" required></td>
 				        <td><input value="<%= rs.getString("end_time")%>" name="end_time" placeholder="hh:mm:ss" required></td>
@@ -216,6 +217,7 @@
 				out.println(e.getMessage());
 			}
 			%>
+	<br>
 </body>
 <a href="../index.html">Go to Home Page</a>
 </html>
