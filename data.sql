@@ -275,6 +275,8 @@ INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_nam
 VALUES('91', 'NANO119', 'SysDesign', '2023', 'SP', 'Adam_Cao', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
 VALUES('92', 'NANO119', 'SysDesign', '2023', 'SP', 'Adam_Cao', '100');
+INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
+VALUES('93', 'NANO119', 'SysDesign', '2023', 'SP', 'Adam_Cao', '100');
 
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
 VALUES('26', 'CE110', 'Computer Engineer 1', '2023', 'SP', 'Adam_Cao', '100');
@@ -508,6 +510,7 @@ INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room
 VALUES('91', 'NANO119', '2023-04-03', '14:00:00', '15:30:00', '4', 'NANO', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
 VALUES('91', 'NANO119', '2023-04-05', '13:00:00', '14:00:00', '4', 'NANO', 'Yes', 'LECTURE');
+
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
 VALUES('91', 'NANO119', '2023-04-10', '14:00:00', '15:30:00', '4', 'NANO', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
@@ -537,6 +540,9 @@ INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room
 VALUES('92', 'NANO119', '2023-04-24', '13:00:00', '14:00:00', '5', 'NANO', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
 VALUES('92', 'NANO119', '2023-04-26', '13:00:00', '14:00:00', '5', 'NANO', 'Yes', 'LECTURE');
+
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
+VALUES('93', 'NANO119', '2023-04-05', '13:30:00', '14:30:00', '5', 'NANO', 'Yes', 'LECTURE');
 
 -----------------degree Info-----------------
 INSERT INTO degree(degree_id, upper_units, lower_units, elective_units, total_units, min_grade, degree_name, degree_type) 
@@ -678,3 +684,65 @@ $enrollment_limit_trigger$ LANGUAGE plpgsql;
 
 CREATE TRIGGER enrollment_limit_trigger BEFORE INSERT ON course_enrollment
 FOR EACH ROW EXECUTE PROCEDURE enrollment_limit_trigger();
+
+
+
+-------------- Create a trigger function to check for conflicting sections---------------
+DROP TRIGGER IF EXISTS overlapped_teaching ON teaching;
+DROP FUNCTION IF EXISTS overlapped_teaching();
+
+CREATE FUNCTION overlapped_teaching() RETURNS trigger AS $overlapped_teaching$
+      DECLARE
+        overlap_exists BOOLEAN;
+	BEGIN
+        -- current schedule of teaching       
+        CREATE TEMP TABLE current_schedule AS
+        SELECT DISTINCT ct.section_id, w.date_time AS date_current_teaching , w.begin_time AS begin_current_teaching,
+        w.end_time AS end_current_teaching
+        FROM teaching ct
+        JOIN weekly w ON ct.section_id = w.section_id
+        WHERE faculty_name = NEW.faculty_name;
+        
+
+        -- weekly meeting sections to be inserted
+        CREATE TEMP TABLE inserted_schedule AS
+        SELECT DISTINCT date_time AS date_inserted_teaching, begin_time AS begin_inserted_teaching, end_time AS end_inserted_teaching
+        FROM weekly WHERE section_id = NEW.section_id;
+
+        
+        -- overlapping times in Day, HH12:MI:SS format        
+        SELECT EXISTS (
+            SELECT 1
+            FROM current_schedule, inserted_schedule
+            WHERE date_current_teaching = date_inserted_teaching
+            AND (begin_current_teaching, end_current_teaching) OVERLAPS (begin_inserted_teaching, end_inserted_teaching)
+        ) INTO overlap_exists;
+
+        IF overlap_exists THEN
+            RAISE EXCEPTION '% overlapped section id % The instructor is not available at this schedule.',
+            NEW.faculty_name, NEW.section_id;
+        END IF;
+
+		
+        -- drop temp tables
+        DROP TABLE IF EXISTS current_schedule;
+        DROP TABLE IF EXISTS inserted_schedule;
+        
+        RETURN NEW;
+    END;
+$overlapped_teaching$ LANGUAGE plpgsql;
+
+CREATE TRIGGER overlapped_teaching BEFORE INSERT ON teaching
+FOR EACH ROW EXECUTE PROCEDURE overlapped_teaching();
+
+
+--------------------Insert teaching info-------------------  
+
+INSERT INTO teaching (section_id, faculty_name)
+VALUES('72', 'Taylor_Swan');
+INSERT INTO teaching (section_id, faculty_name)
+VALUES('91', 'Adam_Cao');
+INSERT INTO teaching (section_id, faculty_name)
+VALUES('92', 'Adam_Cao');
+INSERT INTO teaching (section_id, faculty_name)
+VALUES('93', 'Adam_Cao');
