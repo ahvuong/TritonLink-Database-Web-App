@@ -620,6 +620,15 @@ VALUES (21, 'COGS', 'concentration_2', 'COGS220');
 INSERT INTO concentration (id, department, concentration, class_name)
 VALUES (22, 'COGS', 'concentration_3', 'COGS330');
 
+-----------------Teaching Info----------------- 
+INSERT INTO teaching (section_id, faculty_name)
+VALUES('72', 'Taylor_Swan');
+INSERT INTO teaching (section_id, faculty_name)
+VALUES('91', 'Adam_Cao');
+INSERT INTO teaching (section_id, faculty_name)
+VALUES('92', 'Adam_Cao');
+INSERT INTO teaching (section_id, faculty_name)
+VALUES('93', 'Adam_Cao');
 
 ------------------------Milestone 4-----------------------
 ----------------------Check Triggers----------------------
@@ -685,8 +694,6 @@ $enrollment_limit_trigger$ LANGUAGE plpgsql;
 CREATE TRIGGER enrollment_limit_trigger BEFORE INSERT ON course_enrollment
 FOR EACH ROW EXECUTE PROCEDURE enrollment_limit_trigger();
 
-
-
 -------------- Create a trigger function to check for conflicting sections---------------
 DROP TRIGGER IF EXISTS overlapped_teaching ON teaching;
 DROP FUNCTION IF EXISTS overlapped_teaching();
@@ -734,15 +741,3 @@ $overlapped_teaching$ LANGUAGE plpgsql;
 
 CREATE TRIGGER overlapped_teaching BEFORE INSERT ON teaching
 FOR EACH ROW EXECUTE PROCEDURE overlapped_teaching();
-
-
---------------------Insert teaching info-------------------  
-
-INSERT INTO teaching (section_id, faculty_name)
-VALUES('72', 'Taylor_Swan');
-INSERT INTO teaching (section_id, faculty_name)
-VALUES('91', 'Adam_Cao');
-INSERT INTO teaching (section_id, faculty_name)
-VALUES('92', 'Adam_Cao');
-INSERT INTO teaching (section_id, faculty_name)
-VALUES('93', 'Adam_Cao');
