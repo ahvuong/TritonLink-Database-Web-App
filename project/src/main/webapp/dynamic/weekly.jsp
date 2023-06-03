@@ -91,9 +91,11 @@
 					<% 
 					
 					PreparedStatement pstmt = connection.prepareStatement(
-							"DELETE FROM weekly WHERE section_id = ?");
+							"DELETE FROM weekly WHERE section_id = ? AND new_number = ? AND date_time = ?");
 					
 					pstmt.setInt(1,Integer.parseInt(request.getParameter("section_id")));
+					pstmt.setString(2, request.getParameter("new_number"));
+					pstmt.setDate(3, java.sql.Date.valueOf(request.getParameter("date_time")));
 	                  
 	                pstmt.executeUpdate();
 	                
@@ -182,9 +184,9 @@
 				        </td>
 				        <td>
 				        	<select name="session_type" required>
-                                  <option value="Lecture" <%= rs.getString("session_type").equals("Lecture") ? "selected":"" %>>Lecture</option>
-                                  <option value="Discussion" <%= rs.getString("session_type").equals("Discussion") ? "selected":"" %>>Discussion</option>
-                                  <option value="Lab" <%= rs.getString("session_type").equals("Lab") ? "selected":"" %>>Lab</option>
+                                  <option value="Lecture" <%= (rs.getString("session_type").equals("Lecture") || rs.getString("session_type").equals("LECTURE")) ? "selected":""  %>>Lecture</option>
+                                  <option value="Discussion" <%= (rs.getString("session_type").equals("Discussion") || rs.getString("session_type").equals("DISCUSSION")) ? "selected":"" %>>Discussion</option>
+                                  <option value="Lab" <%= (rs.getString("session_type").equals("Lab") || rs.getString("session_type").equals("LAB")) ? "selected":"" %>>Lab</option>
                             </select>
                         </td>
 				        
@@ -196,6 +198,8 @@
 					<form action="weekly.jsp" method="get">
 						<input type="hidden" value="delete" name="action">
 						<input type="hidden" value="<%= rs.getInt("section_id") %>" name="section_id">
+                    	<input type="hidden" value="<%= rs.getString("new_number") %>" name="new_number">
+                    	<input type="hidden" value="<%= rs.getString("date_time") %>" name="date_time">
                     	<td><input type="submit" value="Delete"></td>
 					</form>
 				</tr>
@@ -217,6 +221,7 @@
 				out.println(e.getMessage());
 			}
 			%>
+	<br>
 	<br>
 </body>
 <a href="../index.html">Go to Home Page</a>
