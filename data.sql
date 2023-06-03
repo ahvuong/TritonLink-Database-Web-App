@@ -444,8 +444,8 @@ INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room
 VALUES('63', 'DSC120', '2023-04-24', '14:00:00', '15:30:00', '1', 'DSC', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
 VALUES('63', 'DSC120', '2023-04-26', '14:00:00', '15:30:00', '1', 'DSC', 'Yes', 'LECTURE');
-INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
 
+INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
 VALUES('72', 'ECE108', '2023-04-03', '15:00:00', '17:00:00', '1', 'ECE', 'Yes', 'LECTURE');
 INSERT INTO weekly(section_id, new_number, date_time, begin_time, end_time, room, building, mandatory, session_type)
 VALUES('72', 'ECE108', '2023-04-05', '15:00:00', '17:00:00', '1', 'ECE', 'Yes', 'LECTURE');
@@ -616,6 +616,39 @@ VALUES (22, 'COGS', 'concentration_3', 'COGS330');
 
 
 ------------------------Milestone 4-----------------------
+----------------------Check Triggers----------------------
+SELECT trigger_name 
+FROM information_schema.triggers;
+
+-----------------Weekly Meeting Trigger-----------------
+DROP TRIGGER IF EXISTS weekly_meeting_trigger ON weekly;
+DROP FUNCTION IF EXISTS weekly_meeting_trigger();
+
+CREATE FUNCTION weekly_meeting_trigger() 
+RETURNS trigger AS $weekly_meeting_trigger$
+    BEGIN
+        -- Compare current enrollment size with section's limit
+        IF EXISTS (SELECT * 
+            FROM weekly as w
+            INNER JOIN classes c 
+                ON w.section_id = c.section_id
+                AND c.year = 2023 AND c.quarter IN ('SP', 'SPRING')
+            WHERE w.section_id = NEW.section_id
+                AND w.date_time = NEW.date_time
+                AND (NEW.begin_time, NEW.end_time) OVERLAPS (w.begin_time, w.end_time)
+                AND w.session_type <> NEW.session_type) 
+        THEN
+            RAISE EXCEPTION 'Conflicting meetings for %''s from % to % for section ID % detected. Lectures, discussions, and labs cannot happen simultaneously.', 
+            NEW.session_type, NEW.begin_time, NEW.end_time, NEW.section_id;
+        END IF;
+
+        RETURN NEW;
+    END;
+$weekly_meeting_trigger$ LANGUAGE plpgsql;
+
+CREATE TRIGGER weekly_meeting_trigger BEFORE INSERT ON weekly
+FOR EACH ROW EXECUTE PROCEDURE weekly_meeting_trigger();
+
 
 -----------------Enrollment Limit Trigger-----------------
 DROP TRIGGER IF EXISTS enrollment_limit_trigger ON course_enrollment;
@@ -633,7 +666,7 @@ RETURNS trigger AS $enrollment_limit_trigger$
             FROM classes 
             WHERE section_id = NEW.section_id) 
         THEN
-            RAISE EXCEPTION 'Error: Enrollment in section ID % is reaching its maximum limit of %.', NEW.section_id,
+            RAISE EXCEPTION 'Enrollment in section ID % is reaching its maximum limit of %.', NEW.section_id,
             (SELECT enrollment_limit 
             FROM classes 
             WHERE section_id = NEW.section_id);
