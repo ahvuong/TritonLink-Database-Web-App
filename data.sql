@@ -781,8 +781,8 @@ BEGIN
             (CASE WHEN NEW.grade IN ('A+', 'A', 'A-') THEN 1 ELSE 0 END),
             (CASE WHEN NEW.grade IN ('B+', 'B', 'B-') THEN 1 ELSE 0 END),
             (CASE WHEN NEW.grade IN ('C+', 'C', 'C-') THEN 1 ELSE 0 END),
-            (CASE WHEN NEW.grade IN ('D+', 'D', 'D-') THEN 1 ELSE 0 END),
-            (CASE WHEN NEW.grade NOT IN ('A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'D-') THEN 1 ELSE 0 END)
+            (CASE WHEN NEW.grade IN ('D') THEN 1 ELSE 0 END),
+            (CASE WHEN NEW.grade NOT IN ('A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D') THEN 1 ELSE 0 END)
         );
     ELSE
         UPDATE CPQG
@@ -790,8 +790,8 @@ BEGIN
         count_A = CASE WHEN OLD.grade IN ('A+', 'A', 'A-') THEN count_A - 1 ELSE count_A END,
         count_B = CASE WHEN OLD.grade IN ('B+', 'B', 'B-') THEN count_B - 1 ELSE count_B END,
         count_C = CASE WHEN OLD.grade IN ('C+', 'C', 'C-') THEN count_C - 1 ELSE count_C END,
-        count_D = CASE WHEN OLD.grade IN ('D+', 'D', 'D-') THEN count_D - 1 ELSE count_D END,
-        count_other = CASE WHEN OLD.grade NOT IN ('A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'D-') THEN count_other - 1 ELSE count_other END
+        count_D = CASE WHEN OLD.grade IN ('D') THEN count_D - 1 ELSE count_D END,
+        count_other = CASE WHEN OLD.grade NOT IN ('A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D') THEN count_other - 1 ELSE count_other END
         WHERE title = OLD.title
             AND year = OLD.year
             AND quarter = OLD.quarter
@@ -802,8 +802,8 @@ BEGIN
         count_A = CASE WHEN NEW.grade IN ('A+', 'A', 'A-') THEN count_A + 1 ELSE count_A END,
         count_B = CASE WHEN NEW.grade IN ('B+', 'B', 'B-') THEN count_B + 1 ELSE count_B END,
         count_C = CASE WHEN NEW.grade IN ('C+', 'C', 'C-') THEN count_C + 1 ELSE count_C END,
-        count_D = CASE WHEN NEW.grade IN ('D+', 'D', 'D-') THEN count_D + 1 ELSE count_D END,
-        count_other = CASE WHEN NEW.grade NOT IN ('A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'D-') THEN count_other + 1 ELSE count_other END
+        count_D = CASE WHEN NEW.grade IN ('D') THEN count_D + 1 ELSE count_D END,
+        count_other = CASE WHEN NEW.grade NOT IN ('A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D') THEN count_other + 1 ELSE count_other END
         WHERE title = NEW.title
             AND year = NEW.year
             AND quarter = NEW.quarter
@@ -833,8 +833,8 @@ BEGIN
     count_A = CASE WHEN OLD.grade IN ('A+', 'A', 'A-') THEN count_A - 1 ELSE count_A END,
     count_B = CASE WHEN OLD.grade IN ('B+', 'B', 'B-') THEN count_B - 1 ELSE count_B END,
     count_C = CASE WHEN OLD.grade IN ('C+', 'C', 'C-') THEN count_C - 1 ELSE count_C END,
-    count_D = CASE WHEN OLD.grade IN ('D+', 'D', 'D-') THEN count_D - 1 ELSE count_D END,
-    count_other = CASE WHEN OLD.grade NOT IN ('A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'D-') THEN count_other - 1 ELSE count_other END
+    count_D = CASE WHEN OLD.grade IN ('D') THEN count_D - 1 ELSE count_D END,
+    count_other = CASE WHEN OLD.grade NOT IN ('A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D') THEN count_other - 1 ELSE count_other END
     WHERE title = OLD.title
         AND year = OLD.year
         AND quarter = OLD.quarter
