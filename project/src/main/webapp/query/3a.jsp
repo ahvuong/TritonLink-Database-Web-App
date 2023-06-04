@@ -58,7 +58,7 @@
 			years</li>
 	</ol>
 
-	<h2>Choose Student And Degree Info</h2>
+	<h2>Please Choose Info</h2>
 	<form action="3a.jsp" method="POST">
 
 		<div>
@@ -140,8 +140,7 @@
         /* ----------------------------------------------------------------------------- */
         String courseId = request.getParameter("new_number");  
         String professorName = request.getParameter("instructor_name");
-        String quarter = request.getParameter("quarter");  
-        
+        String quarter = request.getParameter("quarter");          
 
         PreparedStatement statement1 = connection.prepareStatement("SELECT grade, COUNT(*) as count FROM past_classes " +
                 "WHERE title = ? AND instructor_name = ? AND quarter = ? " +
@@ -164,6 +163,7 @@
             	name = grade;
             }
             %>
+	<p>courseId: <%= courseId %>, professorName: <%= professorName %>, quarter: <%= quarter %></p>
 	<table style="width:20%">
 		<tr>
 			<th>Grade</th>
@@ -202,6 +202,7 @@
 	            	name = grade;
 	            }
 	            %>
+	<p>courseId: <%= courseId %></p>
 	<table style="width:20%">
 		<tr>
 			<th>Grade</th>
@@ -265,6 +266,7 @@
 	            	name = grade;
 	            }
 	            %>
+	<p>courseId: <%= courseId %>, professorName: <%= professorName %></p>
 	<table style="width:20%">
 		<tr>
 			<th>Grade</th>
@@ -299,5 +301,6 @@
       %>
 	<br>
 </body>
-<a href="../index.html">Back To Home Page Here</a>
+<a href="../../index.html">Back To Home Page Here</a>
+
 </html>
