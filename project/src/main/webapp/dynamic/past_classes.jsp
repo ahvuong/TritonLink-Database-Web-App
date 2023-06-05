@@ -24,7 +24,7 @@
 				
 				// Make a connection to the Oracle datasource
 				Connection connection = DriverManager.getConnection
-				("jdbc:postgresql:tables?user=postgres&password=trungtinvo");
+				("jdbc:postgresql:tables?user=postgres&password=ahvuong");
 				%>
 	<%-- Check if an insertion is requested --%>
 	<% String action = request.getParameter("action");
@@ -152,7 +152,6 @@
 						<option value="D">D</option>
 						<option value="S">S</option>
 						<option value="U">U</option>
-						<option value="I">I</option>
 					</select>
 				</th>
 				<th><input value="" name="units"></th>
@@ -163,9 +162,6 @@
 						<option value="lower_units">lower_units</option>
 						<option value="elective_units">elective_units</option>
 						<option value="UP&ELT_units">UP&ELT_units</option>
-						<option value="concentration_1_units">concentration_1_units</option>
-						<option value="concentration_2_units">concentration_2_units</option>
-						<option value="concentration_3_units">concentration_3_units</option>
 					</select>
 				</th>
 
@@ -232,7 +228,6 @@
 						<option value="D" <%= s.equals("D") ? "selected":"" %>>D</option>
 						<option value="S" <%= s.equals("S") ? "selected":"" %>>S</option>
 						<option value="U" <%= s.equals("U") ? "selected":"" %>>U</option>
-						<option value="I" <%= s.equals("I") ? "selected":"" %>>I</option>
 					</select></td>
 				<td>
 
@@ -288,12 +283,6 @@
 						</option>
 						<option value="UP&ELT_units" <%= t.equals("UP&ELT_units") ? "selected":"" %>>UP&ELT_units
 						</option>
-						<option value="concentration_1_units" <%= t.equals("concentration_1_units") ? "selected":"" %>>
-							concentration_1_units</option>
-						<option value="concentration_2_units" <%= t.equals("concentration_2_units") ? "selected":"" %>>
-							concentration_2_units</option>
-						<option value="concentration_3_units" <%= t.equals("concentration_3_units") ? "selected":"" %>>
-							concentration_3_units</option>
 					</select>
 				</td>
 
@@ -325,6 +314,5 @@
 			}
 			%>
 </body>
-<a href="../../index.html">Go to Home Page</a>
-
+<a href="../index.html">Go to Home Page</a>
 </html>
