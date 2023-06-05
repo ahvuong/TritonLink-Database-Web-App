@@ -745,11 +745,12 @@ FOR EACH ROW EXECUTE PROCEDURE overlapped_teaching();
 
 ------------------------Milestone 5-----------------------
 ------------------------Materialized View CPQG-----------------------
-'''Build a view, named CPQG, that has one tuple for every course id X, 
-professor Y, quarter Z, and grade W, where W is one of “A”, “B”, “C”, “D”, and “other”. 
-The tuple contains the count of grade W’s that professor Y gave at quarter Z 
-to the students taking course X. This view is supposed to facilitate the decision support query (3.a.2). 
-All the explanations applicable to (3.a.2) apply to the view as well.'''
+--Build a view, named CPQG, that has one tuple for every course id X, 
+--professor Y, quarter Z, and grade W, where W is one of “A”, “B”, “C”, “D”, and “other”. 
+--The tuple contains the count of grade W’s that professor Y gave at quarter Z 
+--to the students taking course X. This view is supposed to facilitate the decision support query (3.a.2). 
+--All the explanations applicable to (3.a.2) apply to the view as well.
+
 DROP TABLE IF EXISTS CPQG CASCADE;
 CREATE TABLE CPQG AS
     SELECT title, year, quarter, instructor_name,
@@ -851,17 +852,6 @@ AFTER DELETE ON past_classes
 FOR EACH ROW
 EXECUTE FUNCTION delete_CPQG_trigger();
 
-
-------------------------CPQG TEST CASES-----------------------
-INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
-VALUES('21', '3', 'CSE142', '2021', 'FA', 'Flo_Rence', 'B-', '4','3.7', 'lower_units');
-
-UPDATE past_classes
-SET grade = 'D'
-WHERE student_id = '21' AND section_id = '3';
-
-DELETE FROM past_classes WHERE student_id = '21' AND section_id = '3';
-
 ------------------------Materialized View CPG-----------------------
 DROP TABLE IF EXISTS CPG CASCADE;
 CREATE TABLE CPG AS
@@ -954,3 +944,14 @@ CREATE TRIGGER delete_CPG_trigger
 AFTER DELETE ON past_classes
 FOR EACH ROW
 EXECUTE FUNCTION delete_CPG_trigger();
+
+
+------------------------CPQG AND CPG TEST CASES-----------------------
+INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
+VALUES('21', '3', 'CSE142', '2021', 'FA', 'Flo_Rence', 'B-', '4','2.8', 'lower_units');
+
+UPDATE past_classes
+SET grade = 'D'
+WHERE student_id = '21' AND section_id = '3';
+
+DELETE FROM past_classes WHERE student_id = '21' AND section_id = '3';
