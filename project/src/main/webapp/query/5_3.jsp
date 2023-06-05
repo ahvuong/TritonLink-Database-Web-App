@@ -159,6 +159,9 @@ table, th, td {
 						<option value="lower_units">lower_units</option>
 						<option value="elective_units">elective_units</option>
 						<option value="UP&ELT_units">UP&ELT_units</option>
+						<option value="concentration_1_units">concentration_1_units</option>
+						<option value="concentration_2_units">concentration_2_units</option>
+						<option value="concentration_3_units">concentration_3_units</option>
 					</select>
 				</th>
 
