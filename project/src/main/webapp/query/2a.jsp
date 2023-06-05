@@ -41,7 +41,7 @@ table, th, td {
 								"s.middle_name, s.last_name " +
 								"FROM students s JOIN course_enrollment ce " + 
 								"ON ce.student_id = s.student_id " +
-								"WHERE ce.quarter = 'SP' AND ce.year = 2022 " + 
+								"WHERE ce.quarter = 'SP' AND ce.year = 2023 " + 
 								"ORDER BY s.ssn ASC";
 		String ssn = "";
 		String first = "";
@@ -77,14 +77,14 @@ table, th, td {
 									"WHERE s.student_id = ce.student_id " +
 										"AND w.section_id = ce.section_id " +
 										"AND w.new_number = ce.class_name " +
-										"AND ce.quarter = 'SP' AND ce.year = 2022 " +
+										"AND ce.quarter = 'SP' AND ce.year = 2023 " +
 										"AND s.ssn = ? " +
 									"), " +
 				"unenrolled_classes AS (SELECT w.* " +
 									"FROM weekly w, classes c " +
 									"WHERE w.section_id = c.section_id " + 
 									"AND w.new_number = c.new_number " +
-									"AND c.quarter = 'SP' AND c.year = 2022 " +
+									"AND c.quarter = 'SP' AND c.year = 2023 " +
 									"AND w.new_number NOT IN " +
 									"(SELECT new_number FROM enrolled_classes) " +
 									") " +
