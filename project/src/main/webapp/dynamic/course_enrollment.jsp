@@ -57,17 +57,17 @@
 	<% 
 					
 					PreparedStatement pstmt = connection.prepareStatement(
-							"UPDATE course_enrollment SET section_id = ?, class_name = ?, " +
+							"UPDATE course_enrollment SET class_name = ?, " +
 		                      "year = ?, quarter = ?, units = ?, " +
-								"grade = ? WHERE student_id = ?");
+								"grade = ? WHERE student_id = ? AND section_id = ?");
 					
-					pstmt.setInt(1,Integer.parseInt(request.getParameter("section_id")));
-					pstmt.setString(2,request.getParameter("class_name"));
-					pstmt.setInt(3, Integer.parseInt(request.getParameter("year")));
-					pstmt.setString(4, request.getParameter("quarter"));
-					pstmt.setInt(5, Integer.parseInt(request.getParameter("units")));
-					pstmt.setString(6, request.getParameter("grade"));
-					pstmt.setInt(7,Integer.parseInt(request.getParameter("student_id")));
+					pstmt.setString(1,request.getParameter("class_name"));
+					pstmt.setInt(2, Integer.parseInt(request.getParameter("year")));
+					pstmt.setString(3, request.getParameter("quarter"));
+					pstmt.setInt(4, Integer.parseInt(request.getParameter("units")));
+					pstmt.setString(5, request.getParameter("grade"));
+					pstmt.setInt(6,Integer.parseInt(request.getParameter("student_id")));
+					pstmt.setInt(7,Integer.parseInt(request.getParameter("section_id")));
 	                  
 	                pstmt.executeUpdate();
 	                
@@ -86,9 +86,10 @@
 	<% 
 					
 					PreparedStatement pstmt = connection.prepareStatement(
-							"DELETE FROM course_enrollment WHERE section_id = ?");
+							"DELETE FROM course_enrollment WHERE student_id = ? AND section_id = ?");
 					
-					pstmt.setInt(1,Integer.parseInt(request.getParameter("section_id")));
+					pstmt.setInt(1,Integer.parseInt(request.getParameter("student_id")));
+					pstmt.setInt(2,Integer.parseInt(request.getParameter("section_id")));
 	                  
 	                pstmt.executeUpdate();
 	                
@@ -175,6 +176,7 @@
 
 		<form action="course_enrollment.jsp" method="get">
 			<input type="hidden" value="delete" name="action">
+			<input type="hidden" value="<%= rs.getInt("student_id") %>" name="student_id">
 			<input type="hidden" value="<%= rs.getInt("section_id") %>" name="section_id">
 			<tr>
 				<th><input type="submit" value="Delete"></th>
@@ -199,6 +201,7 @@
 				out.println(e.getMessage());
 			}
 			%>
+	<br>	
 </body>
 <a href="../index.html">Go to Home Page</a>
 </html>
