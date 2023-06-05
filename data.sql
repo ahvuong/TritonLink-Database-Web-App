@@ -387,35 +387,35 @@ INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructo
 VALUES('10', '15', 'DSC104', '2023', 'FA', 'Robert_Clarkson', 'B-', '4','2.8', 'upper_units');
 
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
-VALUES('16', '6', 'CE110', '2021', 'SP', 'Robert_Clarkson', 'B', '4','3.1', 'concentration_1_units');
+VALUES('16', '26', 'CE110', '2023', 'SP', 'Adam_Cao', 'B', '4','3.1', 'concentration_1_units');
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
-VALUES('16', '7', 'CE330', '2021', 'SP', 'Robert_Clarkson', 'B', '4','3.1', 'concentration_3_units');
+VALUES('16', '32', 'CE330', '2023', 'FA', 'Adam_E', 'B', '4','3.1', 'concentration_3_units');
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
-VALUES('16', '8', 'CE220', '2021', 'SP', 'Robert_Clarkson', 'B', '4','3.1', 'concentration_2_units');
+VALUES('16', '29', 'CE220', '2023', 'WI', 'Adam_C', 'B', '4','3.1', 'concentration_2_units');
 
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
-VALUES('17', '7', 'CSE220', '2021', 'WI', 'Taylor_Swan', 'S', '4','0.0','concentration_2_units');
+VALUES('17', '37', 'CSE220', '2023', 'SP', 'GreenFord_C', 'S', '4','0.0','concentration_2_units');
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
-VALUES('17', '8', 'CSE110', '2021', 'WI', 'Taylor_Swan', 'S', '4','0.0','concentration_1_units');
+VALUES('17', '35', 'CSE110', '2023', 'WI', 'GreenFord_A', 'S', '4','0.0','concentration_1_units');
 
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
-VALUES('18', '9', 'ME110', '2021', 'FA', 'Ada_Riz', 'U', '4','0.0','concentration_1_units');
+VALUES('18', '39', 'ME110', '2023', 'SP', 'Chris_A', 'U', '4','0.0','concentration_1_units');
 
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
-VALUES('19', '10', 'CE220', '2020', 'SP', 'Ada_Riz', 'S', '4','0.0','concentration_2_units');
+VALUES('19', '29', 'CE220', '2023', 'WI', 'Adam_C', 'S', '4','0.0','concentration_2_units');
 
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
-VALUES('20', '1', 'DS110', '2021', 'WI', 'Tim_Asreal', 'A+', '4','4.3','concentration_1_units');
+VALUES('20', '41', 'DS110', '2023', 'SP', 'Chris_C', 'A+', '4','4.3','concentration_1_units');
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
-VALUES('20', '2', 'DS220', '2021', 'WI', 'Tim_Asreal', 'A+', '4','4.3','concentration_2_units');
+VALUES('20', '42', 'DS220', '2023', 'SP', 'Chris_D', 'A+', '4','4.3','concentration_2_units');
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
-VALUES('20', '3', 'DS330', '2021', 'WI', 'Tim_Asreal', 'A+', '4','4.3','concentration_3_units');
+VALUES('20', '43', 'DS330', '2023', 'FA', 'Chris_E', 'A+', '4','4.3','concentration_3_units');
 
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
-VALUES('21', '14', 'DS220', '2020', 'FA', 'Justin_Smith', 'C', '4','2.2','concentration_2_units');
+VALUES('21', '42', 'DS220', '2023', 'SP', 'Chris_D', 'C', '4','2.2','concentration_2_units');
 
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
-VALUES('22', '15', 'COGS330', '2023', 'FA', 'Robert_Clarkson', 'B-', '4','2.8', 'concentration_3_units');
+VALUES('22', '46', 'COGS330', '2023', 'WI', 'Ben_3', 'B-', '4','2.8', 'concentration_3_units');
 
 -----------------Grade Conversion Info-----------------
 INSERT INTO grade_conversion VALUES('A+', 4.3);
@@ -575,6 +575,10 @@ INSERT INTO ms_degree(degree_id, concentration_min_grade, concentration_1_units,
 VALUES ('4', '3.5', '4', '4', '4', '12', 'DS');
 INSERT INTO ms_degree(degree_id, concentration_min_grade, concentration_1_units, concentration_2_units, concentration_3_units, concentration_total_units, ms_name) 
 VALUES ('5', '3.5', '4', '4', '4', '12', 'COGS');
+
+
+
+
 
 -----------------Concentration Info-----------------
 INSERT INTO concentration (id, department, concentration, class_name)

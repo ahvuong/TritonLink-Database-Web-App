@@ -24,7 +24,7 @@
 				
 				// Make a connection to the Oracle datasource
 				Connection connection = DriverManager.getConnection
-				("jdbc:postgresql:tables?user=postgres&password=ahvuong");
+				("jdbc:postgresql:tables?user=postgres&password=trungtinvo");
 				%>
 	<%-- Check if an insertion is requested --%>
 	<% String action = request.getParameter("action");
@@ -162,6 +162,9 @@
 						<option value="lower_units">lower_units</option>
 						<option value="elective_units">elective_units</option>
 						<option value="UP&ELT_units">UP&ELT_units</option>
+						<option value="concentration_1_units">concentration_1_units</option>
+						<option value="concentration_2_units">concentration_2_units</option>
+						<option value="concentration_3_units">concentration_3_units</option>
 					</select>
 				</th>
 
@@ -283,6 +286,12 @@
 						</option>
 						<option value="UP&ELT_units" <%= t.equals("UP&ELT_units") ? "selected":"" %>>UP&ELT_units
 						</option>
+						<option value="concentration_1_units" <%= t.equals("concentration_1_units") ? "selected":"" %>>
+							Concentration_1</option>
+						<option value="concentration_2_units" <%= t.equals("concentration_2_units") ? "selected":"" %>>
+							Concentration_2</option>
+						<option value="concentration_3_units" <%= t.equals("concentration_3_units") ? "selected":"" %>>
+							Concentration_3</option>
 					</select>
 				</td>
 
@@ -315,4 +324,5 @@
 			%>
 </body>
 <a href="../index.html">Go to Home Page</a>
+
 </html>
