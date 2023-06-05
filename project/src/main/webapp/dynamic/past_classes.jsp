@@ -24,7 +24,7 @@
 				
 				// Make a connection to the Oracle datasource
 				Connection connection = DriverManager.getConnection
-				("jdbc:postgresql:tables?user=postgres&password=trungtinvo");
+				("jdbc:postgresql:tables?user=postgres&password=ahvuong");
 				%>
 	<%-- Check if an insertion is requested --%>
 	<% String action = request.getParameter("action");
@@ -93,9 +93,10 @@
 	<% 
 					
 					PreparedStatement pstmt = connection.prepareStatement(
-							"DELETE FROM past_classes WHERE section_id = ?");
+							"DELETE FROM past_classes WHERE student_id = ? AND section_id = ?");
 					
-					pstmt.setInt(1,Integer.parseInt(request.getParameter("section_id")));
+					pstmt.setInt(1,Integer.parseInt(request.getParameter("student_id")));
+					pstmt.setInt(2,Integer.parseInt(request.getParameter("section_id")));
 	                  
 	                pstmt.executeUpdate();
 	                
@@ -301,6 +302,7 @@
 			</form>
 			<form action="past_classes.jsp" method="get">
 				<input type="hidden" value="delete" name="action">
+				<input type="hidden" value="<%= rs.getInt("student_id") %>" name="student_id">
 				<input type="hidden" value="<%= rs.getInt("section_id") %>" name="section_id">
 				<td><input type="submit" value="Delete"></td>
 			</form>
@@ -322,7 +324,7 @@
 				out.println(e.getMessage());
 			}
 			%>
+	<br>
 </body>
 <a href="../index.html">Go to Home Page</a>
-
 </html>
