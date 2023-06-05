@@ -8,7 +8,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Grade Distribution Report</title>
+	<title>CPQG Grade Distribution Report</title>
 </head>
 <style>
 	table,
