@@ -53,12 +53,12 @@
 	<% 
 					
 					PreparedStatement pstmt = connection.prepareStatement(
-							"UPDATE thesis_committee SET instructor_name = ?, department = ? " +
-		                      "WHERE student_id = ?");
+							"UPDATE thesis_committee SET department = ? " +
+		                      "WHERE student_id = ? AND instructor_name = ?");
 	
-					pstmt.setString(1, request.getParameter("instructor_name"));
-					pstmt.setString(2, request.getParameter("department"));
-					pstmt.setInt(3, Integer.parseInt(request.getParameter("student_id")));
+					pstmt.setString(1, request.getParameter("department"));
+					pstmt.setInt(2, Integer.parseInt(request.getParameter("student_id")));
+					pstmt.setString(3, request.getParameter("instructor_name"));
 	                  
 	                pstmt.executeUpdate();
 	                
@@ -77,9 +77,10 @@
 	<% 
 					
 					PreparedStatement pstmt = connection.prepareStatement(
-							"DELETE FROM thesis_committee WHERE department = ?");
+							"DELETE FROM thesis_committee WHERE student_id = ? AND instructor_name = ?");
 					
-					pstmt.setString(1, request.getParameter("department"));
+					pstmt.setInt(1, Integer.parseInt(request.getParameter("student_id")));
+					pstmt.setString(2, request.getParameter("instructor_name"));
 	                  
 	                pstmt.executeUpdate();
 	                
@@ -138,7 +139,8 @@
 
 			<form action="thesis_committee.jsp" method="get">
 				<input type="hidden" value="delete" name="action">
-				<input type="hidden" value="<%= rs.getInt("department") %>" name="department">
+				<input type="hidden" value="<%= rs.getInt("student_id") %>" name="student_id">
+				<input type="hidden" value="<%= rs.getString("instructor_name") %>" name="instructor_name">
 				<td><input type="submit" value="Delete"></td>
 			</form>
 		</tr>
@@ -160,6 +162,7 @@
 				out.println(e.getMessage());
 			}
 			%>
+			<br>
 </body>
 <a href="../index.html">Go to Home Page</a>
 </html>

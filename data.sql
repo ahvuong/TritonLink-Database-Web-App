@@ -293,9 +293,9 @@ VALUES('31', 'CE222', 'Computer Engineer 6', '2023', 'FA', 'Adam_D', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
 VALUES('32', 'CE330', 'Computer Engineer 7', '2023', 'FA', 'Adam_E', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('33', 'CE331', 'Computer Engineer 8', '2024', 'SP', 'Adam_F', '100');
+VALUES('33', 'CE331', 'Computer Engineer 8', '2023', 'SP', 'Adam_F', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
-VALUES('34', 'CE332', 'Computer Engineer 9', '2024', 'WI', 'Adam_F', '100');
+VALUES('34', 'CE332', 'Computer Engineer 9', '2023', 'WI', 'Adam_F', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
 VALUES('35', 'CSE110', 'Computer Science 4', '2023', 'WI', 'GreenFord_A', '100');
 INSERT INTO classes(section_id, new_number, title, year, quarter, instructor_name, enrollment_limit) 
@@ -387,32 +387,32 @@ INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructo
 VALUES('10', '15', 'DSC104', '2023', 'FA', 'Robert_Clarkson', 'B-', '4','2.8', 'upper_units');
 
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
-VALUES('16', '26', 'CE110', '2023', 'SP', 'Adam_Cao', 'B', '4','3.1', 'concentration_1_units');
+VALUES('16', '26', 'CE110', '2022', 'SP', 'Adam_Cao', 'B', '4','3.1', 'concentration_1_units');
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
 VALUES('16', '32', 'CE330', '2023', 'FA', 'Adam_E', 'B', '4','3.1', 'concentration_3_units');
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
 VALUES('16', '29', 'CE220', '2023', 'WI', 'Adam_C', 'B', '4','3.1', 'concentration_2_units');
 
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
-VALUES('17', '37', 'CSE220', '2023', 'SP', 'GreenFord_C', 'S', '4','0.0','concentration_2_units');
+VALUES('17', '37', 'CSE220', '2022', 'SP', 'GreenFord_C', 'S', '4','0.0','concentration_2_units');
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
 VALUES('17', '35', 'CSE110', '2023', 'WI', 'GreenFord_A', 'S', '4','0.0','concentration_1_units');
 
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
-VALUES('18', '39', 'ME110', '2023', 'SP', 'Chris_A', 'U', '4','0.0','concentration_1_units');
+VALUES('18', '39', 'ME110', '2022', 'SP', 'Chris_A', 'U', '4','0.0','concentration_1_units');
 
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
 VALUES('19', '29', 'CE220', '2023', 'WI', 'Adam_C', 'S', '4','0.0','concentration_2_units');
 
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
-VALUES('20', '41', 'DS110', '2023', 'SP', 'Chris_C', 'A+', '4','4.3','concentration_1_units');
+VALUES('20', '41', 'DS110', '2022', 'SP', 'Chris_C', 'A+', '4','4.3','concentration_1_units');
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
-VALUES('20', '42', 'DS220', '2023', 'SP', 'Chris_D', 'A+', '4','4.3','concentration_2_units');
+VALUES('20', '42', 'DS220', '2022', 'SP', 'Chris_D', 'A+', '4','4.3','concentration_2_units');
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
 VALUES('20', '43', 'DS330', '2023', 'FA', 'Chris_E', 'A+', '4','4.3','concentration_3_units');
 
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
-VALUES('21', '42', 'DS220', '2023', 'SP', 'Chris_D', 'C', '4','2.2','concentration_2_units');
+VALUES('21', '42', 'DS220', '2022', 'SP', 'Chris_D', 'C', '4','2.2','concentration_2_units');
 
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
 VALUES('22', '46', 'COGS330', '2023', 'WI', 'Ben_3', 'B-', '4','2.8', 'concentration_3_units');
@@ -746,7 +746,6 @@ $overlapped_teaching$ LANGUAGE plpgsql;
 CREATE TRIGGER overlapped_teaching BEFORE INSERT ON teaching
 FOR EACH ROW EXECUTE PROCEDURE overlapped_teaching();
 
-
 ------------------------Milestone 5-----------------------
 ------------------------Materialized View CPQG-----------------------
 --Build a view, named CPQG, that has one tuple for every course id X, 
@@ -952,10 +951,14 @@ EXECUTE FUNCTION delete_CPG_trigger();
 
 ------------------------CPQG AND CPG TEST CASES-----------------------
 INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
-VALUES('21', '3', 'CSE142', '2021', 'FA', 'Flo_Rence', 'B-', '4','2.8', 'lower_units');
+VALUES('21', '3', 'CSE142', '2021', 'FA', 'Flo_Rence', 'B-', '4','2.8', 'upper_units');
 
 UPDATE past_classes
 SET grade = 'D'
 WHERE student_id = '21' AND section_id = '3';
 
 DELETE FROM past_classes WHERE student_id = '21' AND section_id = '3';
+
+--Insert new classes, new student_id, new section_id for past_classes
+INSERT INTO past_classes(student_id, section_id, title, year, quarter, instructor_name, grade, units, grade_conversion,class_type) 
+VALUES('15', '31', 'CE222', '2023', 'FA', 'Adam_D', 'D', '4','1.6', 'upper_units');

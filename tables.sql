@@ -255,14 +255,15 @@ CREATE TABLE past_classes
     PRIMARY KEY(student_id, section_id),
     FOREIGN KEY(section_id) references classes(section_id) ON DELETE CASCADE,
     FOREIGN KEY(student_id) references students(student_id) ON DELETE CASCADE,
-    FOREIGN KEY(title) references courses(new_number) ON DELETE CASCADE
+    FOREIGN KEY(title) references courses(new_number) ON DELETE CASCADE,
+    CONSTRAINT Year_Quarter CHECK (NOT(Year = 2023 and quarter IN ('SP', 'SPRING')))
 );
 
 CREATE TABLE thesis_committee
 (
-    student_id int UNIQUE,
-    instructor_name varchar(10),
-    department varchar(10),
+    student_id int,
+    instructor_name varchar(20),
+    department varchar(20),
     PRIMARY KEY(student_id, instructor_name),
     FOREIGN KEY(student_id) references graduate(student_id) ON DELETE CASCADE,
     FOREIGN KEY(instructor_name) references faculty(faculty_name) ON DELETE CASCADE
@@ -273,8 +274,8 @@ CREATE TABLE course_enrollment
     student_id int,
     section_id serial,
     class_name varchar(20),
-    year int,
-    quarter varchar(20),
+    year int CHECK (year = 2023),
+    quarter varchar(20) CHECK (quarter IN ('SP', 'SPRING')),
     units int,
     grade varchar(20),
     PRIMARY KEY(student_id, section_id),
