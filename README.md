@@ -1,5 +1,9 @@
 # CSE132B_Database_System_Application
 
+## Group:
+- **Anh Vuong**
+- **Trung Tin Vo**
+
 ## Home Page
 ### Data Entry Forms  
 1. Student Entry Form
@@ -44,15 +48,15 @@ Teaching Submission
    - Entry Form & Grade Distribution Report
 
 ## Project Milestones  
-### Part 1: Schema Design  
+### [Part 1](/milestone_1.pdf): Schema Design  
 Design an **E/R schema** that fully captures the data set. Include key information.
 If there is information that is not captured in the schema include it in the form of notes associated with the appropriate entities or relationships.  
 Translate your E/R schema into a 3th Normal Form **relational schema**.  
 Include in the relational schema all applicable information on keys and foreign keys.  
 You are advised to look ahead: Does the schema you produced make development of queries and constraints clean and easy? A bit more work now will save you from much more later.  
   
-### Part 2: Entry Forms  
-You are requested to build applications for inserting pieces of the data set in the database. In particular, the following data entry forms are required. Please enforce the primary-foreign key intergrity constraints on the database at table creation time.  
+### [Part 2](/project/src/main/webapp/dynamic/): Entry Forms  
+You are requested to build applications for inserting pieces of the [data](/data.sql) set in the [database](/tables.sql). In particular, the following data entry forms are required. Please enforce the primary-foreign key intergrity constraints on the database at table creation time.  
   
 **1. Course Entry Form:** Provide forms that prompt for course data, one at a time, and appropriately insert them into the database. Course data include prerequisite information.  
 **2. Class Entry Form:** Provide forms that prompt for class data (excluding the list of students who are taking the class) and insert them into the database. Classes will have to refer to courses you have already entered.  
@@ -69,10 +73,10 @@ You should make sure that the entry forms that you have build make it possible t
   
 You could have additional forms if you think it is necessary (for instance to enter departments).  
   
-### Part 3: Reports and Decision Support Queries  
+### [Part 3](/project/src/main/webapp/query/): Reports and Decision Support Queries  
 Build query forms and reports for the queries listed above. Your forms must prompt for the X, Y, Z, etc that appear in the query specification and they should produce reports with the results. The reports will most likely be tabular. Again, do not spend too much time on the UI.  
   
-### Part 4: Constraints  
+### [Part 4](/milestone_4.sql): Constraints
 As we all very well know, there are multiple constraints on students, schedules, degree requirements, etc. Such requirements must be reflected in the database by using an appropriate schema design or explicit constraints. In every case, when data are entered that violate a constraint you should reject the data and display a message that explains which constraint has been violated.  
   
 You will have to build the following constraints using triggers. Hints: You can use additional tables and variables to store intermediate results if necessary. Every time a trigger is triggered you should take necessary actions to restore the correctness of the database (if it has been compromised) and **display an appropriate message** to the user.  
@@ -84,5 +88,5 @@ In your application, data should be entered using a Web interface. You can use t
   
 *Hint:* you can use additional tables and variables as needed to store the intermediate results.  
   
-### Part 5: Materialized Views and Maintenance  
+### [Part 5](/milestone_5.sql): Materialized Views and Maintenance  
 Build the decision support queries (3.a.2) and (3.a.3) again, using the views described in the Materialized Views section. Then build triggers that **incrementally** update (i.e., avoid deleting the old views and then recomputing them using the new values, but try to update the content of the materialized views in an incremental fashion: update the content of the views with the latest arrived updates) the materialized views upon insertion or change of a student’s grade.  
