@@ -1,4 +1,48 @@
 # CSE132B_Database_System_Application
+
+## Home Page
+### Data Entry Forms  
+1. Student Entry Form
+   - Period Of Attendance Form
+   - Degree Earned Determination Form
+   - Probation Info Submission
+   - Undergraduate Info Submission
+   - BS/MS Program Info Submission
+   - Graduate Info Submission
+     - MS Info Submission
+     - PhD Candidates Info Submission
+     - Thesis Committee Submission
+     - Advisor Submission
+2. Faculty Entry Form
+Teaching Submission
+3. Course Enrollment
+4. Class Entry Form  
+   - Classes Taken In the Past
+   - Meeting Sessions 
+     - Review Session Info Submission
+     - Weekly Session Info Submission
+5. Course Entry Form
+6. Degree Requirements’ Info Submission
+   - MS Degree Requirement Info
+### Query Forms
+1. Reports I
+   - Current Class Report
+   - Class Roster Report
+   - Grade Report
+   - Undergraduate Degree Requirement Report
+   - MS Degree Requirement Report
+2. Reports II
+   - Class Schedule Report
+   - Review Schedule Report
+3. Reports III
+   - Grade Distribution Report
+### Milestone5 Query Forms
+1. Milestone 5_2
+   - CPQG Grade Distribution Report
+   - CPG Grade Distribution Report
+1. Milestone 5_3
+   - Entry Form & Grade Distribution Report
+
 ## Project Milestones  
 ### Part 1: Schema Design  
 Design an **E/R schema** that fully captures the data set. Include key information.
@@ -39,8 +83,6 @@ You will have to build the following constraints using triggers. Hints: You can 
 In your application, data should be entered using a Web interface. You can use the one you created in part 2, Data Entry, of the project or modify it. The error message to be displayed should include the error text coming from the DB server, possibly accompanied by your own message which clearly identifies the constraint that was violated.  
   
 *Hint:* you can use additional tables and variables as needed to store the intermediate results.  
-  
-   
   
 ### Part 5: Materialized Views and Maintenance  
 Build the decision support queries (3.a.2) and (3.a.3) again, using the views described in the Materialized Views section. Then build triggers that **incrementally** update (i.e., avoid deleting the old views and then recomputing them using the new values, but try to update the content of the materialized views in an incremental fashion: update the content of the views with the latest arrived updates) the materialized views upon insertion or change of a student’s grade.  
