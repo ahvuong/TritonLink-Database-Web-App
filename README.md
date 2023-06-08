@@ -5,7 +5,7 @@
 - **Trung Tin Vo**
 
 ## Home Page
-### Data Entry Forms  
+### [Data Entry Forms](/project/src/main/webapp/dynamic/)
 1. Student Entry Form
    - Period Of Attendance Form
    - Degree Earned Determination Form
@@ -28,24 +28,24 @@ Teaching Submission
 5. Course Entry Form
 6. Degree Requirements’ Info Submission
    - MS Degree Requirement Info
-### Query Forms
+### [Query Forms](/project/src/main/webapp/query/)
 1. Reports I
-   - Current Class Report
-   - Class Roster Report
-   - Grade Report
-   - Undergraduate Degree Requirement Report
-   - MS Degree Requirement Report
+   - [Current Class Report](/project/src/main/webapp/query/1a.jsp)
+   - [Class Roster Report](/project/src/main/webapp/query/1b.jsp)
+   - [Grade Report](/project/src/main/webapp/query/1c.jsp)
+   - [Undergraduate Degree Requirement Report](/project/src/main/webapp/query/1d.jsp)
+   - [MS Degree Requirement Report](/project/src/main/webapp/query/1e.jsp)
 2. Reports II
-   - Class Schedule Report
-   - Review Schedule Report
+   - [Class Schedule Report](/project/src/main/webapp/query/2a.jsp)
+   - [Review Schedule Report](/project/src/main/webapp/query/2b.jsp)
 3. Reports III
-   - Grade Distribution Report
-### Milestone5 Query Forms
+   - [Grade Distribution Report](/project/src/main/webapp/query/3a.jsp)
+### [Milestone5 Query Forms](/project/src/main/webapp/query/)
 1. Milestone 5_2
-   - CPQG Grade Distribution Report
-   - CPG Grade Distribution Report
-1. Milestone 5_3
-   - Entry Form & Grade Distribution Report
+   - [CPQG Grade Distribution Report](/project/src/main/webapp/query/5_2_2.jsp)
+   - [CPG Grade Distribution Report](/project/src/main/webapp/query/5_2_3.jsp)
+2. Milestone 5_3
+   - [Entry Form & Grade Distribution Report](/project/src/main/webapp/query/5_3.jsp)
 
 ## Project Milestones  
 ### [Part 1](/milestone_1.pdf): Schema Design  
