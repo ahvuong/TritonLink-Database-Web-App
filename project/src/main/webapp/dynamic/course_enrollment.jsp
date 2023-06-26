@@ -137,9 +137,8 @@
 						<option value="LETTER  & S/U">LETTER  & S/U</option>
 					</select>
 				</th>
-		<tr>
-			<th><input type="submit" value="Insert"></th>
-		</tr>
+				
+				<th><input type="submit" value="Insert"></th>
 		</form>
 		</tr>
 
@@ -168,19 +167,17 @@
 	                    <option value="LETTER  & S/U" <%= s.equals("LETTER  & S/U") ? "selected":"" %>>LETTER  & S/U</option>
                 	</select></td>
 				<td>
-		<tr>
-			<th><input type="submit" value="Update"></th>
-		</tr>
-
+				
+				<td><input type="submit" value="Update"></td>
 		</form>
 
 		<form action="course_enrollment.jsp" method="get">
 			<input type="hidden" value="delete" name="action">
 			<input type="hidden" value="<%= rs.getInt("student_id") %>" name="student_id">
 			<input type="hidden" value="<%= rs.getInt("section_id") %>" name="section_id">
-			<tr>
-				<th><input type="submit" value="Delete"></th>
-			</tr>
+			
+			<td><input type="submit" value="Delete"></td>
+			
 		</form>
 		</tr>
 		<%
