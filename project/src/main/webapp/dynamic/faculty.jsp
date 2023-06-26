@@ -34,7 +34,7 @@
 							("INSERT INTO faculty VALUES (?, ?, ?)"));
 	
 					pstmt.setString(1,request.getParameter("faculty_name"));
-					pstmt.setString(2, request.getParameter("member_name"));
+					pstmt.setString(2, request.getParameter("department"));
 					pstmt.setString(3, request.getParameter("member_title"));
 					
 					pstmt.executeUpdate();
@@ -53,10 +53,10 @@
 	<% 
 					
 					PreparedStatement pstmt = connection.prepareStatement(
-							"UPDATE faculty SET member_name = ?, member_title = ? " +
+							"UPDATE faculty SET department = ?, member_title = ? " +
 		         				" WHERE faculty_name = ?");
 					
-					pstmt.setString(1, request.getParameter("member_name"));
+					pstmt.setString(1, request.getParameter("department"));
 					pstmt.setString(2, request.getParameter("member_title"));
 					pstmt.setString(3,request.getParameter("faculty_name"));
 	                  
@@ -120,7 +120,7 @@
 				<input type="hidden" value="insert" name="action">
 
 				<th><input value="" name="faculty_name" size="15"></th>
-				<th><input value="" name="member_name" size="10"></th>
+				<th><input value="" name="department" size="10"></th>
 				<th><input value="" name="member_title" size="10"></th>
 
 				<th><input type="submit" value="Insert"></th>
@@ -138,7 +138,7 @@
 			<form action="faculty.jsp" method="get">
 				<input type="hidden" value="update" name="action">
 				<td><input value="<%= rs.getString("faculty_name")%>" name="faculty_name"></td>
-				<td><input value="<%= rs.getString("member_name")%>" name="member_name"></td>
+				<td><input value="<%= rs.getString("department")%>" name="department"></td>
 				<td><input value="<%= rs.getString("member_title")%>" name="member_title"></td>
 
 				<td>
